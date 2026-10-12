@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Space Mafia — Computer</title>
+  <meta name="description" content="Space Mafia is an Among Us-style social deduction game for Discord, run by the Computer bot: impostors, crewmates, discussion rounds, voting and configurable house rules.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/vendor/98.css">
+  <link rel="stylesheet" href="assets/css/retro.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+
+  <header class="site-header window">
+    <div class="title-bar">
+      <div class="title-bar-text"><img class="title-logo" src="assets/img/logo.svg" alt="">Computer — Discord bot</div>
+      <div class="title-bar-controls" aria-hidden="true">
+        <button aria-label="Minimize" tabindex="-1"></button>
+        <button aria-label="Maximize" tabindex="-1"></button>
+        <button aria-label="Close" tabindex="-1"></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <div class="brand-row">
+        <img class="brand-logo" src="assets/img/logo.svg" alt="Pixel-art CRT computer logo">
+        <div class="brand-text">
+          <h1>Space Mafia</h1>
+          <p class="tagline">An Among Us-style murder mystery that runs in your DMs.</p>
+        </div>
+        <div class="brand-cta">
+          <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1532049960693006376&amp;permissions=4503599627683904&amp;integration_type=0&amp;scope=bot" rel="noopener">Add to Discord</a>
+          <a class="btn" href="commands.html#space-mafia">All game commands</a>
+        </div>
+      </div>
+      <button class="nav-toggle btn" aria-expanded="true" aria-controls="mainnav">&#9776; Menu</button>
+      <nav class="menubar" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="space-mafia.html" aria-current="page">Space Mafia</a>
+        <a href="telephone.html">Telephone</a>
+        <a href="commands.html">Commands</a>
+        <a href="docs.html">Documentation</a>
+        <a href="community.html">Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="section window" aria-labelledby="sm-intro">
+      <div class="title-bar">
+        <div class="title-bar-text">space_mafia — about</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="sm-intro">The lobby is in a channel. The game happens in your DMs.</h2>
+        <p class="panel-copy">
+          Run <code>/sus new</code> in any channel and players press <strong>join</strong>. When the host
+          presses <strong>begin</strong>, everyone gets a role card and a live control panel in their DMs:
+          their room, who is standing nearby, their task list, cooldowns and sabotage timers.
+        </p>
+        <p class="panel-copy">
+          Crewmates finish tasks or vote out every impostor. Impostors win by killing down to parity, or by
+          letting the reactor blow. Bots can fill the empty seats and argue right back.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ lobby demo ============================ -->
+    <section class="section window" aria-labelledby="sm-lobby">
+      <div class="title-bar">
+        <div class="title-bar-text">Lobby preview <span class="sample-flag">simulated</span></div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="sm-lobby">Lobby control console</h2>
+        <p class="panel-copy">
+          This is an <strong>interactive illustration only</strong>. It does not start, join or represent a
+          live game, and the names below are fictional. Player limits come from the bot's configuration:
+          <strong>minimum 4</strong>, <strong>maximum 10</strong>.
+        </p>
+
+        <div class="field-row" style="flex-wrap:wrap;gap:6px;margin-bottom:8px">
+          <button class="btn" id="slot-minus" type="button">&minus; Player</button>
+          <button class="btn" id="slot-plus" type="button">+ Player</button>
+          <button class="btn" id="slot-reset" type="button">Reset</button>
+          <span class="tag">Seats: <span id="slot-count">6 / 10</span></span>
+          <span class="tag">Impostors: <span id="slot-impostors">1</span></span>
+          <span class="tag">Specials: <span id="slot-specials">Guardian Angel</span></span>
+        </div>
+
+        <div class="slots" id="slot-grid" role="list" aria-label="Simulated lobby seats"></div>
+
+        <h3 style="margin:10px 0 4px;font-size:13px">Game phase</h3>
+        <menu role="tablist" class="phase-tabs" data-tabs>
+          <li role="tab" aria-selected="true" aria-controls="phase-lobby" tabindex="0"><a href="#phase-lobby">Lobby</a></li>
+          <li role="tab" aria-selected="false" aria-controls="phase-disc" tabindex="-1"><a href="#phase-disc">Discussion</a></li>
+          <li role="tab" aria-selected="false" aria-controls="phase-vote" tabindex="-1"><a href="#phase-vote">Voting</a></li>
+          <li role="tab" aria-selected="false" aria-controls="phase-res" tabindex="-1"><a href="#phase-res">Results</a></li>
+        </menu>
+        <div class="window" role="tabpanel" id="phase-lobby" aria-label="Lobby phase">
+          <div class="window-body">
+            <p class="panel-copy">Players join, the host pads the crew with bots (<em>+ bot</em> / <em>&minus; bot</em>), pings the server with <em>ping players</em>, then hits <em>begin</em>.</p>
+          </div>
+        </div>
+        <div class="window" role="tabpanel" id="phase-disc" aria-label="Discussion phase" hidden>
+          <div class="window-body">
+            <p class="panel-copy">A body is reported or the emergency button is hit. Everyone gathers in the cafeteria; chat lines relay into every living player's DMs while the discussion timer runs.</p>
+          </div>
+        </div>
+        <div class="window" role="tabpanel" id="phase-vote" aria-label="Voting phase" hidden>
+          <div class="window-body">
+            <p class="panel-copy">Vote menus slide into living players' DMs. Majority ejects; ties and skip-majority eject nobody. Then it is back to tasks.</p>
+          </div>
+        </div>
+        <div class="window" role="tabpanel" id="phase-res" aria-label="Results phase" hidden>
+          <div class="window-body">
+            <p class="panel-copy">A victory card posts in the channel with the full case file: role reveal, kill timeline, kill-cam reel and voting record. One button starts a rematch.</p>
+          </div>
+        </div>
+        <p class="phase-note">Demo note: phase tabs and seat counts above are local to your browser.</p>
+      </div>
+    </section>
+
+    <!-- ============================== roles ============================== -->
+    <section class="section window" aria-labelledby="sm-roles">
+      <div class="title-bar">
+        <div class="title-bar-text">Roles</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="sm-roles">Crewmates, impostors, and the ones in between</h2>
+        <p class="panel-copy">
+          <span class="role-chip crew">Crewmate</span>
+          Does tasks tied to rooms, reports bodies, and gets one emergency button.
+        </p>
+        <p class="panel-copy">
+          <span class="role-chip imp">Impostor</span>
+          Kills, vents, sabotages and fakes tasks. The second impostor is always a Shapeshifter.
+        </p>
+        <div class="table-scroll">
+          <table class="doc-table">
+            <thead>
+              <tr><th>Role</th><th>Side</th><th>Power</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Crewmate</td><td>crew</td><td>Tasks tied to rooms, report, one emergency.</td></tr>
+              <tr><td>Scientist</td><td>crew</td><td>Vitals button — who is truly alive (30s cooldown).</td></tr>
+              <tr><td>Engineer</td><td>crew</td><td>Vent network access (30s cooldown).</td></tr>
+              <tr><td>Guardian Angel</td><td>crew</td><td>Shield someone for 10s (45s cooldown).</td></tr>
+              <tr><td>Sheriff</td><td>crew</td><td>One bullet — shoot a suspect sharing your room; a wrong shot kills an innocent.</td></tr>
+              <tr><td>Jester</td><td>neutral</td><td>Wins instantly if voted out.</td></tr>
+              <tr><td>Marionette</td><td>neutral</td><td>Clips secret controllers on crewmates and casts their votes; wins alone when puppets outnumber everyone else.</td></tr>
+              <tr><td>Impostor</td><td>impostor</td><td>Kill, vent, sabotage, fake tasks.</td></tr>
+              <tr><td>Shapeshifter</td><td>impostor</td><td>As impostor, plus morph into anyone for 20s.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="panel-copy" style="margin-top:8px">
+          Special roles unlock as the ship fills: <strong>Scientist</strong> at 4 players, <strong>Engineer</strong> at 5,
+          <strong>Guardian Angel</strong> at 6, <strong>Sheriff</strong> at 7, <strong>Marionette</strong> at 8,
+          <strong>Jester</strong> at 9. Bots play the special roles too.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== voting ============================= -->
+    <section class="section window" aria-labelledby="sm-vote">
+      <div class="title-bar">
+        <div class="title-bar-text">Voting interface <span class="sample-flag">example</span></div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="sm-vote">What a vote looks like</h2>
+        <p class="panel-copy">A static example of the DM vote menu. Real ballots appear in players' DMs during a game.</p>
+        <div class="vote-box" role="table" aria-label="Example vote tally">
+          <div class="vote-item" role="row"><span role="cell">Vote: <strong>Orange</strong></span><span class="tally" role="cell">3 votes</span></div>
+          <div class="vote-item" role="row"><span role="cell">Vote: <strong>Pink</strong></span><span class="tally" role="cell">2 votes</span></div>
+          <div class="vote-item" role="row"><span role="cell">Vote: <strong>Skip</strong></span><span class="tally" role="cell">1 vote</span></div>
+        </div>
+        <p class="panel-copy" style="margin-top:8px">
+          Majority ejects. Ties and a skip-majority eject nobody. Dead players keep spectating and can still
+          chat in the ghost channel.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================== ship + tasks ========================= -->
+    <section class="section window" aria-labelledby="sm-ship">
+      <div class="title-bar">
+        <div class="title-bar-text">The ship &amp; your tasks</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="sm-ship">Rooms, sabotage and minigames</h2>
+        <div class="grid-2">
+          <div>
+            <h3 style="font-size:13px">The ship</h3>
+            <ul class="tight">
+              <li>14 rooms connected by corridors; each hop takes about 6 seconds by default.</li>
+              <li>Vents are instant teleports, for Engineers and impostors only.</li>
+              <li>Sabotages (shared 60s cooldown): lights out, comms down, sealed doors, reactor meltdown.</li>
+              <li>Bodies stay where they fall until somebody walks in and reports them.</li>
+              <li>Cameras in Security and the Admin table give live, refreshing views.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size:13px">Tasks are real minigames</h3>
+            <ul class="tight">
+              <li>Fix Wiring, Swipe Card, Unlock Manifolds, Calibrate Distributor, Align Engine Output.</li>
+              <li>Clear Asteroids, Stabilize Steering, Chart Course, Download / Upload, Inspect Sample.</li>
+              <li>Clean O2 Filter, Water Plants, Sort Records, Charge Laptop, Reset Breakers, Fuel Engines.</li>
+              <li>Short tasks finish where you solve them; long tasks make you stay put.</li>
+              <li>Impostors get the same minigames with zero progress on the bar.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="panel-copy">The task bar counts completed steps, not whole tasks.</p>
+      </div>
+    </section>
+
+    <!-- ========================== house rules ========================== -->
+    <section class="section window" aria-labelledby="sm-rules">
+      <div class="title-bar">
+        <div class="title-bar-text">House rules — /sus settings</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="sm-rules">Tune the voyage</h2>
+        <p class="panel-copy">The host opens <code>/sus settings</code> for an interactive panel. Settings are saved per channel and apply to every new game, with some applied live.</p>
+        <div class="table-scroll">
+          <table class="doc-table">
+            <thead><tr><th>Setting</th><th>Range / values</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td><code>kill_cooldown</code></td><td>10&ndash;60 s</td><td>Seconds between impostor kills.</td></tr>
+              <tr><td><code>walk_seconds</code></td><td>3&ndash;15 s</td><td>Time per room-to-room hop.</td></tr>
+              <tr><td><code>tasks_per_crew</code></td><td>2&ndash;8</td><td>Tasks each crewmate must finish.</td></tr>
+              <tr><td><code>long_task_seconds</code></td><td>6&ndash;30 s</td><td>How long a long task holds you in place.</td></tr>
+              <tr><td><code>ai_chatter</code></td><td>on / off</td><td>Whether bots use AI-generated chat (needs a key).</td></tr>
+              <tr><td><code>impostors</code></td><td>1&ndash;3</td><td>Force the impostor count.</td></tr>
+              <tr><td><code>sabotage_cooldown</code></td><td>15&ndash;120 s</td><td>Seconds between sabotages.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="panel-copy" style="margin-top:8px">
+          A <strong>preset</strong> button cycles Quick &rarr; Classic &rarr; Slow burn in one tap.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ commands =========================== -->
+    <section class="section window" aria-labelledby="sm-cmds">
+      <div class="title-bar">
+        <div class="title-bar-text">Game commands</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="sm-cmds">Running a game</h2>
+        <div class="table-scroll">
+          <table class="doc-table">
+            <thead><tr><th class="col-cmd">Command</th><th class="col-who">Who</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td class="col-cmd"><code>/sus new</code></td><td>anyone</td><td>Open a lobby in this channel.</td></tr>
+              <tr><td class="col-cmd"><code>/sus bots n</code></td><td>host</td><td>Set the bot-player count directly (lobby only).</td></tr>
+              <tr><td class="col-cmd"><code>/sus settings</code></td><td>host</td><td>Open the house-rules panel.</td></tr>
+              <tr><td class="col-cmd"><code>/sus panel</code></td><td>players</td><td>Re-send your control panel to your DMs.</td></tr>
+              <tr><td class="col-cmd"><code>/sus task</code></td><td>players</td><td>List your remaining (or fake) tasks.</td></tr>
+              <tr><td class="col-cmd"><code>/sus spectate</code></td><td>anyone</td><td>Get a sanitized spectator feed in your DMs.</td></tr>
+              <tr><td class="col-cmd"><code>/sus end</code></td><td>host</td><td>Abort the running game.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="panel-copy" style="margin-top:8px"><a href="commands.html#space-mafia">Full game command list &rarr;</a></p>
+      </div>
+    </section>
+
+    <!-- ============================== how ============================== -->
+    <section class="section window" aria-labelledby="sm-how">
+      <div class="title-bar">
+        <div class="title-bar-text">How a round flows</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="sm-how">From lobby to case file</h2>
+        <ol>
+          <li><strong>Lobby</strong> — <code>/sus new</code>, players join, the host adds bots and begins.</li>
+          <li><strong>Play</strong> — walk the ship, do tasks, watch the bar fill. Impostors stalk and sabotage.</li>
+          <li><strong>Report</strong> — a body or the emergency button gathers everyone and starts discussion.</li>
+          <li><strong>Vote</strong> — menus open in DMs; majority decides who gets ejected.</li>
+          <li><strong>Win</strong> — crew by tasks or ejections; impostors by parity or a blown reactor.</li>
+          <li><strong>Rematch</strong> — the victory card rebuilds the lobby with who stayed.</li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">Computer — site information</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <div class="footer-row">
+          <nav class="footer-links" aria-label="Footer">
+            <a href="index.html">Home</a>
+            <a href="space-mafia.html">Space Mafia</a>
+            <a href="telephone.html">Telephone</a>
+            <a href="commands.html">Commands</a>
+            <a href="docs.html">Documentation</a>
+            <a href="community.html">Community</a>
+            <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/privacy.html" rel="noopener">Privacy</a>
+            <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/terms.html" rel="noopener">Terms</a>
+          </nav>
+          <div>Visitors: <span class="odometer" id="hit-counter" aria-hidden="true"></span><span class="visually-hidden">decorative counter, not real analytics</span></div>
+        </div>
+        <hr class="dotted">
+        <div class="footer-row">
+          <span class="badge800">Best viewed at 800 &times; 600</span>
+          <span>Last updated: <time datetime="2026-10-12">12 Oct 2026</time></span>
+        </div>
+        <p class="footer-fineprint">
+          &copy; <span data-year>2026</span> Computer. Not affiliated with Discord Inc., Innersloth or Among Us.
+          Lobby and vote previews are simulated with fictional players.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

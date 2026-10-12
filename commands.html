@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Commands — Computer</title>
+  <meta name="description" content="The full Computer Discord bot command reference: General, Space Mafia, Telephone, Administration and Configuration, with syntax and permissions.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/vendor/98.css">
+  <link rel="stylesheet" href="assets/css/retro.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+
+  <header class="site-header window">
+    <div class="title-bar">
+      <div class="title-bar-text"><img class="title-logo" src="assets/img/logo.svg" alt="">Computer — Discord bot</div>
+      <div class="title-bar-controls" aria-hidden="true">
+        <button aria-label="Minimize" tabindex="-1"></button>
+        <button aria-label="Maximize" tabindex="-1"></button>
+        <button aria-label="Close" tabindex="-1"></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <div class="brand-row">
+        <img class="brand-logo" src="assets/img/logo.svg" alt="Pixel-art CRT computer logo">
+        <div class="brand-text">
+          <h1>Command reference</h1>
+          <p class="tagline">Every slash command, sorted by department.</p>
+        </div>
+        <div class="brand-cta">
+          <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1532049960693006376&amp;permissions=4503599627683904&amp;integration_type=0&amp;scope=bot" rel="noopener">Add to Discord</a>
+          <a class="btn" href="docs.html">Setup &amp; troubleshooting</a>
+        </div>
+      </div>
+      <button class="nav-toggle btn" aria-expanded="true" aria-controls="mainnav">&#9776; Menu</button>
+      <nav class="menubar" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="space-mafia.html">Space Mafia</a>
+        <a href="telephone.html">Telephone</a>
+        <a href="commands.html" aria-current="page">Commands</a>
+        <a href="docs.html">Documentation</a>
+        <a href="community.html">Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section window" aria-labelledby="cmd-intro">
+      <div class="title-bar">
+        <div class="title-bar-text">commands.hlp</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="cmd-intro">Only a handful of commands exist</h2>
+        <p class="panel-copy">
+          Almost everything in Computer is buttons, dropdowns and modals once a command opens a panel.
+          The tables below list the slash commands, their syntax and who may use them.
+        </p>
+        <p class="panel-copy">
+          <span class="sample-flag">note</span> Syntax and permissions mirror the bot's documented command set.
+          Commands you cannot see in Discord are usually permission-gated, and behaviour can change between
+          versions — verify against your own deployment.
+        </p>
+        <div class="field-row" style="margin-top:8px;flex-wrap:wrap;gap:6px">
+          <label for="cmd-filter">Filter:</label>
+          <input id="cmd-filter" type="search" data-filter-input placeholder="type to search commands&hellip;" style="min-width:220px">
+          <button class="btn" type="button" data-filter-clear>Clear</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="docs-layout" style="margin-top:12px">
+
+      <aside class="docnav" aria-label="Command categories">
+        <button class="docnav-toggle btn" aria-expanded="false" aria-controls="docnav-list">&#9776; Categories</button>
+        <nav id="docnav-list">
+          <ul class="tree-view">
+            <li><a href="#general">General</a></li>
+            <li><a href="#space-mafia">Space Mafia</a></li>
+            <li><a href="#telephone">Telephone</a></li>
+            <li><a href="#administration">Administration</a></li>
+            <li><a href="#configuration">Configuration</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="docs-body">
+
+        <p data-filter-empty hidden style="font-weight:700">No commands match that filter.</p>
+
+        <!-- ============================ GENERAL ============================ -->
+        <section id="general" data-filter-section aria-labelledby="h-general">
+          <div class="window">
+            <div class="title-bar"><div class="title-bar-text">General</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+            <div class="window-body">
+              <h2 class="section-title" id="h-general">General</h2>
+              <div class="table-scroll">
+                <table class="doc-table">
+                  <thead><tr><th>Name</th><th>Syntax</th><th>Description</th><th>Permissions</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>/commands</code></td><td><code>/commands</code> <button class="btn" data-copy="/commands">Copy</button></td><td>Show the full command directory across <code>/sus</code>, <code>/user</code> and <code>/phone</code>.</td><td>anyone</td></tr>
+                    <tr><td><code>/vote</code></td><td><code>/vote</code> <button class="btn" data-copy="/vote">Copy</button></td><td>Vote on top.gg for 12h of premium perks and a voter badge; shows your streak and top voters.</td><td>anyone</td></tr>
+                    <tr><td><code>/policy</code></td><td><code>/policy</code> <button class="btn" data-copy="/policy">Copy</button></td><td>Read the rules of the wire and the privacy policy, or revoke consent.</td><td>anyone (revoke: admin)</td></tr>
+                    <tr><td><code>/sus account</code></td><td><code>/sus account</code> <button class="btn" data-copy="/sus account">Copy</button></td><td>Your profile panel: ship extension, career stats, customize and data buttons.</td><td>anyone</td></tr>
+                    <tr><td><code>/sus customize</code></td><td><code>/sus customize</code> <button class="btn" data-copy="/sus customize">Copy</button></td><td>Open the profile customization form directly.</td><td>anyone</td></tr>
+                    <tr><td><code>/sus export</code></td><td><code>/sus export</code> <button class="btn" data-copy="/sus export">Copy</button></td><td>DM yourself a JSON copy of everything stored about you.</td><td>anyone</td></tr>
+                    <tr><td><code>/sus forget</code></td><td><code>/sus forget confirm:ERASE</code> <button class="btn" data-copy="/sus forget confirm:ERASE">Copy</button></td><td>Erase your profile, stats and ship extension. Irreversible.</td><td>anyone</td></tr>
+                    <tr><td><code>/sus privacy</code></td><td><code>/sus privacy [ai] [server_ai]</code> <button class="btn" data-copy="/sus privacy ai:true">Copy</button></td><td>What is stored and who gets it; toggle AI chat sharing for you or your whole server.</td><td>anyone (server_ai: admin)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================== SPACE MAFIA ========================= -->
+        <section id="space-mafia" data-filter-section aria-labelledby="h-sm" style="margin-top:12px">
+          <div class="window">
+            <div class="title-bar"><div class="title-bar-text">Space Mafia</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+            <div class="window-body">
+              <h2 class="section-title" id="h-sm">Space Mafia</h2>
+              <div class="table-scroll">
+                <table class="doc-table">
+                  <thead><tr><th>Name</th><th>Syntax</th><th>Description</th><th>Permissions</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>/sus new</code></td><td><code>/sus new</code> <button class="btn" data-copy="/sus new">Copy</button></td><td>Open a lobby in this channel (join, + bot / &minus; bot, ping players, begin).</td><td>anyone</td></tr>
+                    <tr><td><code>/sus bots</code></td><td><code>/sus bots n</code> <button class="btn" data-copy="/sus bots n">Copy</button></td><td>Set the bot-player count directly (lobby only).</td><td>host</td></tr>
+                    <tr><td><code>/sus settings</code></td><td><code>/sus settings</code> <button class="btn" data-copy="/sus settings">Copy</button></td><td>Open the house-rules panel (dropdowns and cycle buttons).</td><td>host</td></tr>
+                    <tr><td><code>/sus panel</code></td><td><code>/sus panel</code> <button class="btn" data-copy="/sus panel">Copy</button></td><td>Re-send your control panel to your DMs.</td><td>players</td></tr>
+                    <tr><td><code>/sus task</code></td><td><code>/sus task</code> <button class="btn" data-copy="/sus task">Copy</button></td><td>List your remaining (or fake) tasks.</td><td>players</td></tr>
+                    <tr><td><code>/sus spectate</code></td><td><code>/sus spectate</code> <button class="btn" data-copy="/sus spectate">Copy</button></td><td>Get a sanitized spectator feed in your DMs for the game in this channel.</td><td>anyone</td></tr>
+                    <tr><td><code>/sus end</code></td><td><code>/sus end</code> <button class="btn" data-copy="/sus end">Copy</button></td><td>Abort the running game.</td><td>host</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================== TELEPHONE =========================== -->
+        <section id="telephone" data-filter-section aria-labelledby="h-tel" style="margin-top:12px">
+          <div class="window">
+            <div class="title-bar"><div class="title-bar-text">Telephone</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+            <div class="window-body">
+              <h2 class="section-title" id="h-tel">Telephone</h2>
+
+              <h3 style="font-size:13px">Ship phone — <code>/user</code> (player to player by DM)</h3>
+              <div class="table-scroll">
+                <table class="doc-table">
+                  <thead><tr><th>Name</th><th>Syntax</th><th>Description</th><th>Permissions</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>/user phone</code></td><td><code>/user phone</code> <button class="btn" data-copy="/user phone">Copy</button></td><td>Show your 4-digit ship phone extension.</td><td>anyone</td></tr>
+                    <tr><td><code>/user call</code></td><td><code>/user call numero:#4271</code> <button class="btn" data-copy="/user call numero:#4271">Copy</button></td><td>Ring another player's extension; the bot relays the chat.</td><td>anyone</td></tr>
+                    <tr><td><code>/user hangup</code></td><td><code>/user hangup</code> <button class="btn" data-copy="/user hangup">Copy</button></td><td>End your current call.</td><td>anyone</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3 style="font-size:13px;margin-top:10px">Cross-server line — <code>/phone</code> (server to server)</h3>
+              <div class="table-scroll">
+                <table class="doc-table">
+                  <thead><tr><th>Name</th><th>Syntax</th><th>Description</th><th>Permissions</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>/phone menu</code></td><td><code>/phone menu</code> <button class="btn" data-copy="/phone menu">Copy</button></td><td>The Switchboard GUI: roulette, dial, redial, voicemail, beeps, transfers, bridge, speed dials, settings, mailbox, trust/block, listing, DND, presence, reports, call pings, OFFICIAL stamp, hangup, book, status.</td><td>anyone</td></tr>
+                    <tr><td><code>/phone dial</code></td><td><code>/phone dial server [mode]</code> <button class="btn" data-copy="/phone dial server:#4621-K">Copy</button></td><td>Dial a listed server, a <code>#number</code> (including <code>911</code>), or a speed-dial slot. Mode may be private or official.</td><td>anyone (official: admin)</td></tr>
+                    <tr><td><code>/phone random</code></td><td><code>/phone random [mode]</code> <button class="btn" data-copy="/phone random">Copy</button></td><td>Party-line roulette, or join the call-waiting queue.</td><td>anyone (official: admin)</td></tr>
+                    <tr><td><code>/phone redial</code></td><td><code>/phone redial [mode]</code> <button class="btn" data-copy="/phone redial">Copy</button></td><td>Call back your server's last outgoing number.</td><td>anyone (official: admin)</td></tr>
+                    <tr><td><code>/phone conference</code></td><td><code>/phone conference [leave:true]</code> <button class="btn" data-copy="/phone conference">Copy</button></td><td>Join or leave the multi-server party bridge.</td><td>anyone</td></tr>
+                    <tr><td><code>/phone transfer</code></td><td><code>/phone transfer server</code> <button class="btn" data-copy="/phone transfer server:#1140-M">Copy</button></td><td>Patch your current call through to another server and bow out.</td><td>anyone</td></tr>
+                    <tr><td><code>/phone beep</code></td><td><code>/phone beep server</code> <button class="btn" data-copy="/phone beep server:#1140-M">Copy</button></td><td>Call-waiting nag on a busy line (one per 30s; blocks and DND bounce it).</td><td>anyone</td></tr>
+                    <tr><td><code>/phone speeddial</code></td><td><code>/phone speeddial [slot] [server] [clear:true]</code> <button class="btn" data-copy="/phone speeddial slot:1 server:#4621-K">Copy</button></td><td>Bind, list or clear speed-dial slots 1-9 for one-digit dialing.</td><td>anyone</td></tr>
+                    <tr><td><code>/phone voicemail</code></td><td><code>/phone voicemail server message</code> <button class="btn" data-copy="/phone voicemail server:#4621-K message:Hi!">Copy</button></td><td>Leave a 300-character tape in another server's mailbox.</td><td>anyone</td></tr>
+                    <tr><td><code>/phone mailbox</code></td><td><code>/phone mailbox [clear:true]</code> <button class="btn" data-copy="/phone mailbox">Copy</button></td><td>Listen to your voicemails, or snap every tape.</td><td>anyone (clear: admin)</td></tr>
+                    <tr><td><code>/phone stats</code></td><td><code>/phone stats [log:true]</code> <button class="btn" data-copy="/phone stats log:true">Copy</button></td><td>Network traffic report, or your own line's recent history.</td><td>anyone</td></tr>
+                    <tr><td><code>/phone status</code></td><td><code>/phone status</code> <button class="btn" data-copy="/phone status">Copy</button></td><td>Is your line ringing, live, or on dial tone?</td><td>anyone</td></tr>
+                    <tr><td><code>/phone presence</code></td><td><code>/phone presence</code> <button class="btn" data-copy="/phone presence">Copy</button></td><td>Network status board — every line's current state.</td><td>anyone</td></tr>
+                    <tr><td><code>/phone report</code></td><td><code>/phone report [reason] [server]</code> <button class="btn" data-copy="/phone report reason:Spam">Copy</button></td><td>Flag a call to the operators with the transcript attached.</td><td>anyone</td></tr>
+                    <tr><td><code>/phone info</code></td><td><code>/phone info</code> <button class="btn" data-copy="/phone info">Copy</button></td><td>The operator's manual.</td><td>anyone</td></tr>
+                    <tr><td><code>/phone phonebook</code></td><td><code>/phone phonebook</code> <button class="btn" data-copy="/phone phonebook">Copy</button></td><td>The Phone Book — every listed server.</td><td>anyone</td></tr>
+                    <tr><td><code>/phone hangup</code></td><td><code>/phone hangup</code> <button class="btn" data-copy="/phone hangup">Copy</button></td><td>End the current call.</td><td>anyone</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================= ADMINISTRATION ======================== -->
+        <section id="administration" data-filter-section aria-labelledby="h-admin" style="margin-top:12px">
+          <div class="window">
+            <div class="title-bar"><div class="title-bar-text">Administration</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+            <div class="window-body">
+              <h2 class="section-title" id="h-admin">Administration</h2>
+              <div class="table-scroll">
+                <table class="doc-table">
+                  <thead><tr><th>Name</th><th>Syntax</th><th>Description</th><th>Permissions</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>/setup</code></td><td><code>/setup</code> <button class="btn" data-copy="/setup">Copy</button></td><td>One admin panel for the whole house: wire or delist the jack, toggle filters and DND, read the rules, grab the vote link.</td><td>Manage Server</td></tr>
+                    <tr><td><code>/phone register</code></td><td><code>/phone register [channel] [remove:true]</code> <button class="btn" data-copy="/phone register channel:#jack">Copy</button></td><td>List a consented server in the Phone Book, move an existing jack, or remove it.</td><td>Manage Server</td></tr>
+                    <tr><td><code>/phone rename</code></td><td><code>/phone rename name</code> <button class="btn" data-copy="/phone rename name:My Server">Copy</button></td><td>Restyle how your listing appears across the Book, calls and logs.</td><td>Manage Server</td></tr>
+                    <tr><td><code>/phone block</code></td><td><code>/phone block [server] [remove:true]</code> <button class="btn" data-copy="/phone block server:#1140-M">Copy</button></td><td>Wall a server off in both directions, list blocks, or un-block.</td><td>Manage Server</td></tr>
+                    <tr><td><code>/phone trust</code></td><td><code>/phone trust [server] [remove:true]</code> <button class="btn" data-copy="/phone trust server:#1140-M">Copy</button></td><td>Exempt a server from your filters, revoke, or list trusts.</td><td>Manage Server</td></tr>
+                    <tr><td><code>/phone pingrole</code></td><td><code>/phone pingrole [role]</code> <button class="btn" data-copy="/phone pingrole role:@on-call">Copy</button></td><td>Ping a role whenever your server gets a call (leave empty to clear).</td><td>Manage Server</td></tr>
+                    <tr><td><code>/phone data export</code></td><td><code>/phone data export</code> <button class="btn" data-copy="/phone data export">Copy</button></td><td>DM yourself everything the network stores about your server.</td><td>Manage Server</td></tr>
+                    <tr><td><code>/phone data forget</code></td><td><code>/phone data forget confirm:ERASE</code> <button class="btn" data-copy="/phone data forget confirm:ERASE">Copy</button></td><td>Wipe your listing, number, history, voicemails, reports and consent. Irreversible.</td><td>Manage Server</td></tr>
+                    <tr><td><code>/phone data reports</code></td><td><code>/phone data reports [report]</code> <button class="btn" data-copy="/phone data reports">Copy</button></td><td>Read filed call reports and their transcripts.</td><td>Operators only</td></tr>
+                    <tr><td><code>/phone data blacklist</code></td><td><code>/phone data blacklist [server] [reason] [remove:true]</code> <button class="btn" data-copy="/phone data blacklist server:#1140-M">Copy</button></td><td>Cut a server off the network, or view and pull lines.</td><td>Operators only</td></tr>
+                    <tr><td><code>/phone forward</code></td><td><code>/phone forward set server / clear / view</code> <button class="btn" data-copy="/phone forward view">Copy</button></td><td>Bounce busy or DND calls to a nominated line. Premium perk (top.gg vote or support-server membership).</td><td>Manage Server + premium</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================== CONFIGURATION ======================== -->
+        <section id="configuration" data-filter-section aria-labelledby="h-conf" style="margin-top:12px">
+          <div class="window">
+            <div class="title-bar"><div class="title-bar-text">Configuration</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+            <div class="window-body">
+              <h2 class="section-title" id="h-conf">Configuration</h2>
+              <div class="table-scroll">
+                <table class="doc-table">
+                  <thead><tr><th>Name</th><th>Syntax</th><th>Description</th><th>Permissions</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>/phone settings</code></td><td><code>/phone settings [profanity] [slurs] [links] [gifs] [dnd] [autoanswer]</code> <button class="btn" data-copy="/phone settings">Copy</button></td><td>Tune the safety filters and ring modes. All four filters ship ON by default.</td><td>anyone (toggles: admin)</td></tr>
+                    <tr><td><code>/phone notify</code></td><td><code>/phone notify on|off</code> <button class="btn" data-copy="/phone notify on">Copy</button></td><td>Sign yourself up (or out) to be pinged on incoming calls.</td><td>anyone</td></tr>
+                    <tr><td><code>/sus settings</code></td><td><code>/sus settings</code> <button class="btn" data-copy="/sus settings">Copy</button></td><td>Game house rules — see <a href="space-mafia.html#sm-rules">the Space Mafia page</a>.</td><td>host</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3 style="font-size:13px;margin-top:10px">Server-side environment variables</h3>
+              <p class="panel-copy">For a self-hosted bot, tuning lives in <code>.env</code>. These are the documented knobs:</p>
+              <div class="table-scroll">
+                <table class="doc-table">
+                  <thead><tr><th>Variable</th><th>Default</th><th>Effect</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>SUS_KILL_COOLDOWN</code></td><td>30</td><td>Seconds between impostor kills.</td></tr>
+                    <tr><td><code>SUS_DISCUSSION</code></td><td>60</td><td>Meeting chat seconds before voting.</td></tr>
+                    <tr><td><code>SUS_VOTING</code></td><td>45</td><td>How long vote menus stay open.</td></tr>
+                    <tr><td><code>SUS_TRAVEL</code></td><td>6</td><td>Seconds per room-to-room hop.</td></tr>
+                    <tr><td><code>SUS_PHONE_LIMIT</code></td><td>400</td><td>Cross-server message length cap.</td></tr>
+                    <tr><td><code>SUS_PHONE_COOLDOWN</code></td><td>3</td><td>Seconds between relayed messages per person.</td></tr>
+                    <tr><td><code>SUS_PHONE_RING</code></td><td>90</td><td>Seconds before an unanswered call times out.</td></tr>
+                    <tr><td><code>SUS_PHONE_IDLE</code></td><td>0</td><td>Silence before a live call auto-hangs up (0 = never).</td></tr>
+                    <tr><td><code>SUS_AI_ENABLED</code></td><td>true</td><td>Network-wide kill switch for AI meeting chat.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">Computer — site information</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <div class="footer-row">
+          <nav class="footer-links" aria-label="Footer">
+            <a href="index.html">Home</a>
+            <a href="space-mafia.html">Space Mafia</a>
+            <a href="telephone.html">Telephone</a>
+            <a href="commands.html">Commands</a>
+            <a href="docs.html">Documentation</a>
+            <a href="community.html">Community</a>
+            <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/privacy.html" rel="noopener">Privacy</a>
+            <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/terms.html" rel="noopener">Terms</a>
+          </nav>
+          <div>Visitors: <span class="odometer" id="hit-counter" aria-hidden="true"></span><span class="visually-hidden">decorative counter, not real analytics</span></div>
+        </div>
+        <hr class="dotted">
+        <div class="footer-row">
+          <span class="badge800">Best viewed at 800 &times; 600</span>
+          <span>Last updated: <time datetime="2026-10-12">12 Oct 2026</time></span>
+        </div>
+        <p class="footer-fineprint">
+          &copy; <span data-year>2026</span> Computer. Not affiliated with Discord Inc., Innersloth or Among Us.
+          Command syntax mirrors the bot's documentation and may change between versions.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

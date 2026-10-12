@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Telephone — Computer</title>
+  <meta name="description" content="The Computer bot's cross-server telephone: dial a whole Discord server, ring a party line, leave voicemail and hang up — with consent, filters and data rights built in.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/vendor/98.css">
+  <link rel="stylesheet" href="assets/css/retro.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+
+  <header class="site-header window">
+    <div class="title-bar">
+      <div class="title-bar-text"><img class="title-logo" src="assets/img/logo.svg" alt="">Computer — Discord bot</div>
+      <div class="title-bar-controls" aria-hidden="true">
+        <button aria-label="Minimize" tabindex="-1"></button>
+        <button aria-label="Maximize" tabindex="-1"></button>
+        <button aria-label="Close" tabindex="-1"></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <div class="brand-row">
+        <img class="brand-logo" src="assets/img/telephone.svg" alt="Pixel-art telephone logo">
+        <div class="brand-text">
+          <h1>Telephone</h1>
+          <p class="tagline">Dial an entire Discord server. Answer, get a busy signal, hang up.</p>
+        </div>
+        <div class="brand-cta">
+          <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1532049960693006376&amp;permissions=4503599627683904&amp;integration_type=0&amp;scope=bot" rel="noopener">Add to Discord</a>
+          <a class="btn" href="commands.html#telephone">All phone commands</a>
+        </div>
+      </div>
+      <button class="nav-toggle btn" aria-expanded="true" aria-controls="mainnav">&#9776; Menu</button>
+      <nav class="menubar" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="space-mafia.html">Space Mafia</a>
+        <a href="telephone.html" aria-current="page">Telephone</a>
+        <a href="commands.html">Commands</a>
+        <a href="docs.html">Documentation</a>
+        <a href="community.html">Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="section window" aria-labelledby="tel-intro">
+      <div class="title-bar">
+        <div class="title-bar-text">telephone — about</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="tel-intro">A party line between servers</h2>
+        <p class="panel-copy">
+          The <code>/phone</code> system connects <strong>whole Discord servers</strong> to each other. Each listed
+          server gets a permanent number like <code>#4621-K</code> and a <em>jack</em> — one channel on each side
+          that is wired to the other for the duration of a call.
+        </p>
+        <p class="panel-copy">
+          Someone dials, the other side's channel shows a <em>RIIIING</em> card, anyone (or an admin) picks up, and
+          from then on both channels relay messages between each other until somebody hangs up.
+        </p>
+        <p class="panel-copy">
+          <strong>Important:</strong> this page cannot place or carry Discord calls. Only the Discord bot, running
+          in your server, implements calling. The interface below is an illustration of the bot's behaviour, not a
+          working telephone.
+        </p>
+        <p class="panel-copy">
+          Looking for the <em>player-to-player</em> ship phone instead? That is the separate
+          <code>/user</code> system — see <a href="#user-phone">the ship phone</a> below.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================== phone demo =========================== -->
+    <section class="section" aria-label="Telephone demonstration">
+      <div class="grid-2">
+
+        <div class="window" id="phone-card" aria-labelledby="tel-demo">
+          <div class="title-bar">
+            <div class="title-bar-text">switchboard.exe <span class="sample-flag">simulated</span></div>
+            <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+          </div>
+          <div class="window-body">
+            <h2 class="section-title" id="tel-demo">Place a demonstration call</h2>
+            <div class="phone">
+              <div class="lcd" role="status" aria-live="polite">
+                <div class="lcd-status"><span id="phone-status">Idle</span><span class="lcd-timer" id="phone-timer">00:00</span></div>
+                <div class="lcd-dest" id="phone-dest-display">&nbsp;</div>
+              </div>
+
+              <div class="field-row-stacked" style="margin-bottom:6px">
+                <label for="phone-dest">Destination (a #number, 911, or speed-dial slot 1&ndash;9)</label>
+                <input id="phone-dest" type="text" inputmode="text" autocomplete="off" placeholder="#4621-K" aria-describedby="phone-error">
+              </div>
+              <p id="phone-error" role="alert" hidden style="color:#a00000;font-size:12px;margin:0 0 6px"></p>
+
+              <div class="keypad" role="group" aria-label="Keypad">
+                <button type="button" data-key="1">1</button>
+                <button type="button" data-key="2">2</button>
+                <button type="button" data-key="3">3</button>
+                <button type="button" data-key="4">4</button>
+                <button type="button" data-key="5">5</button>
+                <button type="button" data-key="6">6</button>
+                <button type="button" data-key="7">7</button>
+                <button type="button" data-key="8">8</button>
+                <button type="button" data-key="9">9</button>
+                <button type="button" data-key="0">0</button>
+                <button type="button" data-key="#">#</button>
+                <button type="button" data-key="-">-</button>
+              </div>
+
+              <div class="phone-actions">
+                <button class="btn" type="button" id="phone-call">Call</button>
+                <button class="btn" type="button" id="phone-answer">Answer</button>
+                <button class="btn" type="button" id="phone-decline">Decline</button>
+                <button class="btn" type="button" id="phone-hangup">Hang up</button>
+                <button class="btn" type="button" id="phone-clear">Clear</button>
+              </div>
+
+              <p class="phase-note">
+                Statuses you can reach here: <strong>Idle &rarr; Ringing &rarr; Connected / Busy &rarr; Ended</strong>.
+                This simulator is local to your browser and does not contact anyone.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="window" aria-labelledby="tel-logh">
+          <div class="title-bar">
+            <div class="title-bar-text">call_log.txt <span class="sample-flag">demo data</span></div>
+            <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+          </div>
+          <div class="window-body">
+            <h2 class="section-title" id="tel-logh">Call history</h2>
+            <p class="panel-copy">
+              The rows below are <strong>fictional demonstration data</strong>. Calls you simulate in the panel on
+              the left are appended at the top. The real bot keeps your server's own call log, visible with
+              <code>/phone stats log:true</code>.
+            </p>
+            <div class="table-scroll">
+              <table class="doc-table">
+                <thead><tr><th>Time</th><th>Contact</th><th>Outcome</th><th>Duration</th></tr></thead>
+                <tbody id="call-log-body">
+                  <tr><td>14:02:11</td><td>#1140-M</td><td>connected</td><td>07:31</td></tr>
+                  <tr><td>13:58:40</td><td>#8802-Q</td><td>declined</td><td>00:00</td></tr>
+                  <tr><td>13:41:03</td><td>#7035-A</td><td>missed</td><td>00:00</td></tr>
+                  <tr><td>13:12:55</td><td>911</td><td>connected</td><td>02:14</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================ how it works ============================ -->
+    <section class="section window" aria-labelledby="tel-how">
+      <div class="title-bar">
+        <div class="title-bar-text">Operator's manual</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="tel-how">Finding people, answering, and privacy</h2>
+
+        <h3 style="font-size:13px">How servers discover each other</h3>
+        <ul class="tight">
+          <li><strong>The Phone Book</strong> — <code>/phone phonebook</code> lists every server that opted in, with its number and jack.</li>
+          <li><strong>Dial by name or number</strong> — <code>/phone dial</code> autocompletes the directory, or takes any <code>#number</code>.</li>
+          <li><strong>Party-line roulette</strong> — <code>/phone random</code> wires you to a random server; nobody at the other end parks you in a call-waiting queue.</li>
+          <li><strong>Speed dial</strong> — bind slots 1&ndash;9 and reach a regular line with a single digit.</li>
+        </ul>
+
+        <h3 style="font-size:13px">How a call is answered</h3>
+        <ul class="tight">
+          <li>A ringing call posts a <em>RIIIING</em> card in the target's jack channel; anyone may pick up.</li>
+          <li>A call stamped <strong>OFFICIAL BUSINESS</strong> can only be answered by admins there.</li>
+          <li>Party-house mode (<code>/phone settings autoanswer:true</code>) connects ordinary calls instantly.</li>
+          <li>Either side ends the call with the <strong>HANG UP</strong> button or <code>/phone hangup</code>.</li>
+        </ul>
+
+        <h3 style="font-size:13px">How privacy is protected</h3>
+        <ul class="tight">
+          <li>Nothing is listed until an admin accepts the rules and privacy gates — no name, number or dial tone before consent.</li>
+          <li>Incoming messages are screened per-category for slurs, profanity, links and GIF/video links; all filters ship ON and are optional.</li>
+          <li>Mentions are stripped crossing the wire, so a call cannot ping strangers.</li>
+          <li>Admins can block a server, set do-not-disturb, or leave the network entirely with <code>/phone data forget</code>.</li>
+          <li>Call logs, reports and voicemails follow published retention windows and can be exported or erased.</li>
+        </ul>
+
+        <p class="panel-copy">
+          Read the full rules in <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/terms.html" rel="noopener">the Terms</a>
+          and the data practices in <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/privacy.html" rel="noopener">the Privacy Policy</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ ship phone ============================ -->
+    <section class="section window" id="user-phone" aria-labelledby="tel-user">
+      <div class="title-bar">
+        <div class="title-bar-text">ship phone — /user</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="tel-user">The player-to-player ship phone</h2>
+        <p class="panel-copy">
+          Not to be confused with the cross-server line. The <code>/user</code> phone calls
+          <strong>one person to another by DM</strong> using a 4-digit ship extension.
+        </p>
+        <ul class="tight">
+          <li><code>/user phone</code> — get your own extension.</li>
+          <li><code>/user call numero:#4271</code> — ring someone; they answer or decline with a button.</li>
+          <li><code>/user hangup</code> — end the call.</li>
+          <li>Every account has a profile that follows you across servers the bot is in.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================ etiquette ============================ -->
+    <section class="section window" aria-labelledby="tel-eti">
+      <div class="title-bar">
+        <div class="title-bar-text">Telephone etiquette</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <h2 class="section-title" id="tel-eti">House rules for a public wire</h2>
+        <ul class="tight">
+          <li>No slurs, ever. Keep it clean by default.</li>
+          <li>No links or GIFs unless the receiving server opted out of that filter.</li>
+          <li>Respect do-not-disturb, blocks and filter receipts.</li>
+          <li>Do not flood a line; there is a short per-person cooldown.</li>
+          <li>OFFICIAL BUSINESS stays admin-only.</li>
+        </ul>
+        <p class="panel-copy">Each server enforces the etiquette house by house, so nobody has to be the bad guy.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">Computer — site information</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <div class="footer-row">
+          <nav class="footer-links" aria-label="Footer">
+            <a href="index.html">Home</a>
+            <a href="space-mafia.html">Space Mafia</a>
+            <a href="telephone.html">Telephone</a>
+            <a href="commands.html">Commands</a>
+            <a href="docs.html">Documentation</a>
+            <a href="community.html">Community</a>
+            <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/privacy.html" rel="noopener">Privacy</a>
+            <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/terms.html" rel="noopener">Terms</a>
+          </nav>
+          <div>Visitors: <span class="odometer" id="hit-counter" aria-hidden="true"></span><span class="visually-hidden">decorative counter, not real analytics</span></div>
+        </div>
+        <hr class="dotted">
+        <div class="footer-row">
+          <span class="badge800">Best viewed at 800 &times; 600</span>
+          <span>Last updated: <time datetime="2026-10-12">12 Oct 2026</time></span>
+        </div>
+        <p class="footer-fineprint">
+          &copy; <span data-year>2026</span> Computer. Not affiliated with Discord Inc.
+          The telephone panel and call history on this page are simulated demonstrations with fictional data.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

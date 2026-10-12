@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation — Computer</title>
+  <meta name="description" content="Install the Computer Discord bot, understand the permissions it needs, self-host it, and fix common problems. Spaceship-manual style.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/vendor/98.css">
+  <link rel="stylesheet" href="assets/css/retro.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+
+  <header class="site-header window">
+    <div class="title-bar">
+      <div class="title-bar-text"><img class="title-logo" src="assets/img/logo.svg" alt="">Computer — Discord bot</div>
+      <div class="title-bar-controls" aria-hidden="true">
+        <button aria-label="Minimize" tabindex="-1"></button>
+        <button aria-label="Maximize" tabindex="-1"></button>
+        <button aria-label="Close" tabindex="-1"></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <div class="brand-row">
+        <img class="brand-logo" src="assets/img/logo.svg" alt="Pixel-art CRT computer logo">
+        <div class="brand-text">
+          <h1>Documentation</h1>
+          <p class="tagline">Installation, permissions, troubleshooting and FAQ.</p>
+        </div>
+        <div class="brand-cta">
+          <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1532049960693006376&amp;permissions=4503599627683904&amp;integration_type=0&amp;scope=bot" rel="noopener">Add to Discord</a>
+          <a class="btn" href="commands.html">Command reference</a>
+        </div>
+      </div>
+      <button class="nav-toggle btn" aria-expanded="true" aria-controls="mainnav">&#9776; Menu</button>
+      <nav class="menubar" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="space-mafia.html">Space Mafia</a>
+        <a href="telephone.html">Telephone</a>
+        <a href="commands.html">Commands</a>
+        <a href="docs.html" aria-current="page">Documentation</a>
+        <a href="community.html">Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="docs-layout">
+
+      <aside class="docnav" aria-label="Documentation contents">
+        <button class="docnav-toggle btn" aria-expanded="false" aria-controls="docnav-list">&#9776; Contents</button>
+        <nav id="docnav-list">
+          <ul class="tree-view">
+            <li><a href="#install">Installation</a></li>
+            <li><a href="#permissions">Permissions</a></li>
+            <li><a href="#self-host">Self-hosting</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#support">Support</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="docs-body">
+
+        <section id="install" class="section window" aria-labelledby="h-install">
+          <div class="title-bar"><div class="title-bar-text">computer_manual.chm — Installation</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+          <div class="window-body">
+            <h2 class="section-title" id="h-install">Installation</h2>
+            <ol>
+              <li><strong>Invite the bot.</strong> Click <a href="https://discord.com/oauth2/authorize?client_id=1532049960693006376&amp;permissions=4503599627683904&amp;integration_type=0&amp;scope=bot" rel="noopener">Add to Discord</a> and pick your server. Grant the permissions listed below for the best experience.</li>
+              <li><strong>Let it post its consent cards.</strong> When Computer joins, it posts a privacy-policy card. An admin clicks <em>I AGREE</em> to allow the server to be listed in the Phone Book; the rules card appears the first time anyone uses a <code>/phone</code> command.</li>
+              <li><strong>Wire the jack.</strong> An admin runs <code>/phone register channel:#jack</code> to choose the channel that will relay calls.</li>
+              <li><strong>Open the control panel.</strong> <code>/setup</code> gathers everything: wire or delist the jack, toggle the safety filters and DND, read the house rules, and grab the vote link.</li>
+              <li><strong>Optional:</strong> start a game with <code>/sus new</code>.</li>
+            </ol>
+            <p class="panel-copy"><a href="commands.html">See every command &rarr;</a></p>
+          </div>
+        </section>
+
+        <section id="permissions" class="section window" aria-labelledby="h-perm">
+          <div class="title-bar"><div class="title-bar-text">Permissions</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+          <div class="window-body">
+            <h2 class="section-title" id="h-perm">What the bot needs, and why</h2>
+            <div class="table-scroll">
+              <table class="doc-table">
+                <thead><tr><th>Permission / scope</th><th>Needed for</th><th>If missing</th></tr></thead>
+                <tbody>
+                  <tr><td><code>bot</code> + <code>applications.commands</code></td><td>Being present and registering slash commands.</td><td>The bot cannot be added or used.</td></tr>
+                  <tr><td>Send Messages, Embed Links</td><td>Lobbies, call cards, notices and the Phone Book.</td><td>Most panels cannot render.</td></tr>
+                  <tr><td><strong>Manage Webhooks</strong></td><td>Relaying calls with the sender's real name and avatar.</td><td>Limited mode: messages arrive as plain <code>**name** text</code> lines.</td></tr>
+                  <tr><td>Manage Server (for admins)</td><td>Running <code>/setup</code>, <code>/phone register</code>, block/trust and data commands.</td><td>Those admin commands are hidden.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="panel-copy" style="margin-top:8px">
+              The invite link requests the same permission bitfield the public listing uses. If you self-host, you
+              control the invite yourself.
+            </p>
+            <p class="panel-copy">
+              <strong>Message Content Intent.</strong> The telephone relay reads channel messages, so the bot
+              application must have the privileged <em>Message Content Intent</em> enabled in the Discord
+              developer portal. On the public bot this is already on; only self-hosters need to set it.
+            </p>
+          </div>
+        </section>
+
+        <section id="self-host" class="section window" aria-labelledby="h-host">
+          <div class="title-bar"><div class="title-bar-text">Self-hosting</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+          <div class="window-body">
+            <h2 class="section-title" id="h-host">Running your own copy</h2>
+            <p class="panel-copy">
+              Computer is a Python bot built on <strong>discord.py</strong>. The internal package is still named
+              <code>suspicion</code>, so the module you launch is <code>suspicion.main</code>.
+            </p>
+            <p class="panel-copy">Requirements: Python 3.11 or newer, plus <code>discord.py&gt;=2.6</code>, <code>python-dotenv&gt;=1.0</code> and <code>aiohttp&gt;=3.9</code>.</p>
+<pre><code>git clone &lt;your repo&gt; computer
+cd computer
+python -m venv .venv &amp;&amp; . .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env      # then set DISCORD_TOKEN
+python -m suspicion.main</code></pre>
+            <p class="panel-copy" style="margin-top:8px">
+              The bot needs the <em>Message Content Intent</em> turned on in the developer portal before it will
+              start. Games live in memory (a restart drops running matches); accounts, the phone registry and votes
+              live on disk and survive. Point <code>SUS_DATA_DIR</code> at a persistent folder for those files.
+            </p>
+            <p class="panel-copy">
+              Hosting notes: the repository ships a <code>render.yaml</code> blueprint for Render, and the bot runs
+              happily as a systemd service on a home server. The vote webhook is optional — outbound polling works
+              without a public URL.
+            </p>
+          </div>
+        </section>
+
+        <section id="troubleshooting" class="section window" aria-labelledby="h-trouble">
+          <div class="title-bar"><div class="title-bar-text">Troubleshooting</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+          <div class="window-body">
+            <h2 class="section-title" id="h-trouble">When something is wrong</h2>
+            <details class="doc"><summary>The bot will not start / PrivilegedIntentsRequired</summary>
+              <div class="doc-inner"><p>Enable the privileged <strong>Message Content Intent</strong> in the Discord developer portal &rarr; your app &rarr; Bot &rarr; Privileged Gateway Intents. The telephone reads channel messages, so startup fails without it.</p></div>
+            </details>
+            <details class="doc"><summary>The phone is silent / calls go nowhere</summary>
+              <div class="doc-inner"><p>The two consent gates must be cleared. An admin clicks <em>I AGREE</em> on the privacy card, and the rules card must be accepted too. Until then the whole line is dark. Check the switchboard's <em>My listing</em> entry to see where you stand.</p></div>
+            </details>
+            <details class="doc"><summary>Messages arrive as plain text, not with names and avatars</summary>
+              <div class="doc-inner"><p>The bot is in limited mode because it lacks <strong>Manage Webhooks</strong>. Grant it in the channel or server permissions for the full experience.</p></div>
+            </details>
+            <details class="doc"><summary>Vote rewards are not showing up</summary>
+              <div class="doc-inner"><p>Polling needs a top.gg API token (<code>TOPGG_TOKEN</code>). The webhook is optional and needs a public URL plus the shared secret. Run <code>/vote</code> to force a fresh check — all three paths are deduplicated.</p></div>
+            </details>
+            <details class="doc"><summary>A running game vanished</summary>
+              <div class="doc-inner"><p>Games are held in memory. Restarting the bot ends running matches. Accounts, career stats and the phone registry are stored on disk and come back; only active calls hang up.</p></div>
+            </details>
+            <details class="doc"><summary>I cannot see an admin command</summary>
+              <div class="doc-inner"><p>Admin commands are permission-gated. You need <strong>Manage Server</strong> for house settings, and the operator-only data commands are limited to the bot owner.</p></div>
+            </details>
+          </div>
+        </section>
+
+        <section id="faq" class="section window" aria-labelledby="h-faq">
+          <div class="title-bar"><div class="title-bar-text">FAQ.TXT</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+          <div class="window-body">
+            <h2 class="section-title" id="h-faq">Frequently asked questions</h2>
+            <details class="doc"><summary>Is the telephone a real voice call?</summary>
+              <div class="doc-inner"><p>No. The cross-server telephone relays <em>text</em> between two channels on different servers. It does not open a Discord voice connection, and the website cannot place any call at all.</p></div>
+            </details>
+            <details class="doc"><summary>Can this website start a game or ring a server?</summary>
+              <div class="doc-inner"><p>No. Every demo here is simulated in your browser. Starting games and placing calls happen only through the Discord bot inside Discord.</p></div>
+            </details>
+            <details class="doc"><summary>Do I have to use both features?</summary>
+              <div class="doc-inner"><p>No. The game (<code>/sus</code>), the ship phone (<code>/user</code>) and the cross-server line (<code>/phone</code>) are independent. Use whichever you like.</p></div>
+            </details>
+            <details class="doc"><summary>Is anything charged?</summary>
+              <div class="doc-inner"><p>The bot is free. Premium perks (such as call forwarding) come from voting on top.gg or from membership of the support server — not from payment.</p></div>
+            </details>
+            <details class="doc"><summary>How is my data handled?</summary>
+              <div class="doc-inner"><p>You keep normal data rights: <code>/sus export</code> and <code>/phone data export</code> give you a copy; <code>/sus forget</code> and <code>/phone data forget</code> erase it. AI meeting chat is optional and can be disabled per user or per server. Details are in the <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/privacy.html" rel="noopener">Privacy Policy</a>.</p></div>
+            </details>
+          </div>
+        </section>
+
+        <section id="support" class="section window" aria-labelledby="h-support">
+          <div class="title-bar"><div class="title-bar-text">Support</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+          <div class="window-body">
+            <h2 class="section-title" id="h-support">Getting help</h2>
+            <ul>
+              <li>Join the <a href="https://discord.gg/3ew2nxAjbC" rel="noopener">support Discord</a> for setup help and bug reports.</li>
+              <li>Vote and check the listing on <a href="https://top.gg/bot/1532049960693006376" rel="noopener">top.gg</a>.</li>
+              <li>Read the <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/terms.html" rel="noopener">Terms of Service</a> and <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/privacy.html" rel="noopener">Privacy Policy</a>.</li>
+              <li>More links are on the <a href="community.html">Community page</a>.</li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">Computer — site information</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <div class="footer-row">
+          <nav class="footer-links" aria-label="Footer">
+            <a href="index.html">Home</a>
+            <a href="space-mafia.html">Space Mafia</a>
+            <a href="telephone.html">Telephone</a>
+            <a href="commands.html">Commands</a>
+            <a href="docs.html">Documentation</a>
+            <a href="community.html">Community</a>
+            <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/privacy.html" rel="noopener">Privacy</a>
+            <a href="https://notmicrosoft2000-cmd.github.io/suspicion-site/terms.html" rel="noopener">Terms</a>
+          </nav>
+          <div>Visitors: <span class="odometer" id="hit-counter" aria-hidden="true"></span><span class="visually-hidden">decorative counter, not real analytics</span></div>
+        </div>
+        <hr class="dotted">
+        <div class="footer-row">
+          <span class="badge800">Best viewed at 800 &times; 600</span>
+          <span>Last updated: <time datetime="2026-10-12">12 Oct 2026</time></span>
+        </div>
+        <p class="footer-fineprint">
+          &copy; <span data-year>2026</span> Computer. Not affiliated with Discord Inc., Innersloth or Among Us.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
