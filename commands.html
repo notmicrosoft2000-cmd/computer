@@ -103,6 +103,7 @@
                     <tr><td><code>/commands</code></td><td><code>/commands</code> <button class="btn" data-copy="/commands">Copy</button></td><td>Show the full command directory across <code>/sus</code>, <code>/user</code> and <code>/phone</code>.</td><td>anyone</td></tr>
                     <tr><td><code>/vote</code></td><td><code>/vote</code> <button class="btn" data-copy="/vote">Copy</button></td><td>Vote on top.gg for 12h of premium perks and a voter badge; shows your streak and top voters.</td><td>anyone</td></tr>
                     <tr><td><code>/policy</code></td><td><code>/policy</code> <button class="btn" data-copy="/policy">Copy</button></td><td>Read the rules of the wire and the privacy policy, or revoke consent.</td><td>anyone (revoke: admin)</td></tr>
+                    <tr><td><code>/phonebook</code></td><td><code>/phonebook</code> <button class="btn" data-copy="/phonebook">Copy</button></td><td>The Phone Book — every server that opted in, with its number and current status.</td><td>anyone</td></tr>
                     <tr><td><code>/sus account</code></td><td><code>/sus account</code> <button class="btn" data-copy="/sus account">Copy</button></td><td>Your profile panel: ship extension, career stats, customize and data buttons.</td><td>anyone</td></tr>
                     <tr><td><code>/sus customize</code></td><td><code>/sus customize</code> <button class="btn" data-copy="/sus customize">Copy</button></td><td>Open the profile customization form directly.</td><td>anyone</td></tr>
                     <tr><td><code>/sus export</code></td><td><code>/sus export</code> <button class="btn" data-copy="/sus export">Copy</button></td><td>DM yourself a JSON copy of everything stored about you.</td><td>anyone</td></tr>
@@ -178,7 +179,6 @@
                     <tr><td><code>/phone presence</code></td><td><code>/phone presence</code> <button class="btn" data-copy="/phone presence">Copy</button></td><td>Network status board — every line's current state.</td><td>anyone</td></tr>
                     <tr><td><code>/phone report</code></td><td><code>/phone report [reason] [server]</code> <button class="btn" data-copy="/phone report reason:Spam">Copy</button></td><td>Flag a call to the operators with the transcript attached.</td><td>anyone</td></tr>
                     <tr><td><code>/phone info</code></td><td><code>/phone info</code> <button class="btn" data-copy="/phone info">Copy</button></td><td>The operator's manual.</td><td>anyone</td></tr>
-                    <tr><td><code>/phone phonebook</code></td><td><code>/phone phonebook</code> <button class="btn" data-copy="/phone phonebook">Copy</button></td><td>The Phone Book — every listed server.</td><td>anyone</td></tr>
                     <tr><td><code>/phone hangup</code></td><td><code>/phone hangup</code> <button class="btn" data-copy="/phone hangup">Copy</button></td><td>End the current call.</td><td>anyone</td></tr>
                   </tbody>
                 </table>
@@ -227,7 +227,6 @@
                   <tbody>
                     <tr><td><code>/phone settings</code></td><td><code>/phone settings [profanity] [slurs] [links] [gifs] [dnd] [autoanswer]</code> <button class="btn" data-copy="/phone settings">Copy</button></td><td>Tune the safety filters and ring modes. All four filters ship ON by default.</td><td>anyone (toggles: admin)</td></tr>
                     <tr><td><code>/phone notify</code></td><td><code>/phone notify on|off</code> <button class="btn" data-copy="/phone notify on">Copy</button></td><td>Sign yourself up (or out) to be pinged on incoming calls.</td><td>anyone</td></tr>
-                    <tr><td><code>/sus settings</code></td><td><code>/sus settings</code> <button class="btn" data-copy="/sus settings">Copy</button></td><td>Game house rules — see <a href="space-mafia.html#sm-rules">the Space Mafia page</a>.</td><td>host</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -246,6 +245,10 @@
                     <tr><td><code>SUS_PHONE_COOLDOWN</code></td><td>3</td><td>Seconds between relayed messages per person.</td></tr>
                     <tr><td><code>SUS_PHONE_RING</code></td><td>90</td><td>Seconds before an unanswered call times out.</td></tr>
                     <tr><td><code>SUS_PHONE_IDLE</code></td><td>0</td><td>Silence before a live call auto-hangs up (0 = never).</td></tr>
+                    <tr><td><code>SUS_CALL_LOG_DAYS</code></td><td>90</td><td>Days a server's call history is kept (privacy policy window).</td></tr>
+                    <tr><td><code>SUS_REPORT_DAYS</code></td><td>180</td><td>Days filed call reports and their transcripts are kept.</td></tr>
+                    <tr><td><code>SUS_VOICEMAIL_KEEP</code></td><td>20</td><td>Voicemail tapes kept per mailbox.</td></tr>
+                    <tr><td><code>SUS_TRANSCRIPT_TTL_SECONDS</code></td><td>3600</td><td>How long a live call's transcript survives in memory after the call ends.</td></tr>
                     <tr><td><code>SUS_AI_ENABLED</code></td><td>true</td><td>Network-wide kill switch for AI meeting chat.</td></tr>
                   </tbody>
                 </table>
