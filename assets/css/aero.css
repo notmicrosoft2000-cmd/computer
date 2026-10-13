@@ -193,7 +193,6 @@ pre code {
   text-decoration: none;
   white-space: nowrap;
 }
-.nav-link img { width: 18px; height: 18px; opacity: .85; }
 .nav-link:hover {
   text-decoration: none;
   color: #0f3153;
@@ -746,7 +745,9 @@ input[type="search"]:focus {
 }
 
 /* ---------------------------------------------------------- responsive --- */
-@media (max-width: 940px) {
+/* The header has seven nav links; collapse to the hamburger before they would
+   wrap into the fixed-height bar. */
+@media (max-width: 1080px) {
   .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
   .site-nav {
     position: absolute;

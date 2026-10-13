@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cross-server matchmaking — Computer</title>
+  <meta name="description" content="Cross-server matchmaking for Space Mafia. /mm queue gathers players from any Discord server, then runs a normal game in a thread on the hub server.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/aero.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="aero-bg" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.svg" alt="" width="28" height="28">
+      <span class="brand-name">Computer</span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a class="nav-link" href="index.html"><span>Home</span></a>
+      <a class="nav-link" href="space-mafia.html"><span>Space Mafia</span></a>
+      <a class="nav-link" href="telephone.html"><span>Telephone</span></a>
+      <a class="nav-link is-current" href="matchmaking.html" aria-current="page"><span>Matchmaking</span></a>
+      <a class="nav-link" href="commands.html"><span>Commands</span></a>
+      <a class="nav-link" href="docs.html"><span>Documentation</span></a>
+      <a class="nav-link" href="community.html"><span>Community</span></a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1532049960693006376&permissions=4503599627683904&integration_type=0&scope=bot" rel="noopener">Add to Discord</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">&#9776;</button>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <div class="page-grid has-aside">
+    <aside class="page-aside" aria-label="On this page">
+      <p class="aside-title">On this page</p>
+      <ul class="toc">
+        <li><a href="#mm-what">What it is</a></li>
+        <li><a href="#mm-commands">The /mm commands</a></li>
+        <li><a href="#mm-launch">How a match launches</a></li>
+        <li><a href="#mm-before">Before you queue</a></li>
+        <li><a href="#mm-limits">What crosses servers</a></li>
+        <li><a href="#mm-fix">If something is wrong</a></li>
+        <li><a href="#mm-privacy">Privacy</a></li>
+      </ul>
+    </aside>
+    <article class="page-main">
+      <header class="page-head">
+        <h1>Cross-server matchmaking</h1>
+        <p class="page-lead">Fill a Space Mafia crew with players from any server, then play a normal game in a thread on the hub.</p>
+      </header>
+
+<section class="section" aria-labelledby="mm-what">
+      <div class="section-body">
+        <h2 class="section-title" id="mm-what">What it is</h2>
+        <p class="panel-copy">
+          <code>/mm</code> gathers Space Mafia players from <em>every</em> server the bot is in. Anyone who has
+          joined the hub server can queue from wherever they are; once enough players are waiting, the bot opens a
+          public thread in the hub and runs an ordinary game there.
+        </p>
+        <p class="panel-copy">
+          The match itself still plays out in DMs. The only things that cross a server boundary are the
+          <strong>queue</strong>, the <strong>launch</strong> and the public <strong>status card</strong>.
+        </p>
+        <div class="box warn">
+          <p style="margin:0 0 8px"><strong>You do not have to share a server with the other players &mdash; but you
+          do have to be a member of the hub server</strong>, because that is where the match thread lives.</p>
+          <p style="margin:0">
+            <a class="btn btn-primary" href="https://discord.gg/3ew2nxAjbC" rel="noopener">Join the hub server</a>
+          </p>
+        </div>
+        <p class="panel-copy">
+          The hub is the project's support server. Joining costs nothing and only gates matchmaking &mdash; the rest
+          of the bot, including ordinary <code>/sus</code> games, works on any server.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="mm-commands">
+      <div class="section-body">
+        <h2 class="section-title" id="mm-commands">The <code>/mm</code> commands</h2>
+        <div class="table-scroll">
+          <table class="doc-table">
+            <thead><tr><th>Name</th><th>Syntax</th><th>Description</th><th>Permissions</th></tr></thead>
+            <tbody>
+              <tr><td><code>/mm queue</code></td><td><code>/mm queue</code> <button class="btn" data-copy="/mm queue">Copy</button></td><td>Join the matchmaking queue from any server. Requires membership of the hub server, since the match runs there.</td><td>anyone (hub member)</td></tr>
+              <tr><td><code>/mm status</code></td><td><code>/mm status</code> <button class="btn" data-copy="/mm status">Copy</button></td><td>Show who is queued and how long until launch.</td><td>anyone</td></tr>
+              <tr><td><code>/mm leave</code></td><td><code>/mm leave</code> <button class="btn" data-copy="/mm leave">Copy</button></td><td>Drop out of the queue.</td><td>anyone</td></tr>
+              <tr><td><code>/mm cancel</code></td><td><code>/mm cancel</code> <button class="btn" data-copy="/mm cancel">Copy</button></td><td>Stop a pending launch countdown. Only the first player in the queue can cancel.</td><td>queue host</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="phase-note">Behaviour can change between bot versions; this page mirrors the bot's own documentation.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="mm-launch">
+      <div class="section-body">
+        <h2 class="section-title" id="mm-launch">How a match launches</h2>
+        <ol class="steps">
+          <li>Queue with <code>/mm queue</code>. You can be anywhere &mdash; a server of your own, or a DM channel.</li>
+          <li>When the <strong>fourth</strong> player queues, a <strong>45-second countdown</strong> starts so stragglers can still join.</li>
+          <li>At launch the bot opens a public <strong>thread on the hub server</strong> and DMs everyone their role.</li>
+          <li>Play an ordinary Space Mafia game. At the end, a <strong>rematch</strong> button starts another round.</li>
+        </ol>
+        <ul class="tight">
+          <li>Minimum <strong>4</strong> players, maximum <strong>10</strong>.</li>
+          <li>If too many players leave before the countdown expires, the countdown <strong>folds</strong> and the queue waits again.</li>
+          <li>Players who are already in a game are <strong>skipped</strong> at launch, so you never get pulled into two matches.</li>
+          <li>Two players with the same display name are <strong>numbered apart</strong> (for example <em>Alex 2</em>).</li>
+        </ul>
+        <p class="phase-note">The lobby console on the <a href="space-mafia.html">Space Mafia page</a> simulates the same seat counts and phases.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="mm-before">
+      <div class="section-body">
+        <h2 class="section-title" id="mm-before">Before you queue</h2>
+        <ul class="tight">
+          <li><strong>Join the hub server.</strong> <code>/mm queue</code> checks membership before it adds you.</li>
+          <li><strong>Expect a wait.</strong> Nothing happens until at least four players are queued. <code>/mm status</code> shows the count and the timer.</li>
+          <li><strong>The queue is in memory.</strong> It is not saved, so a bot restart or update empties it &mdash; just run <code>/mm queue</code> again.</li>
+        </ul>
+        <p class="panel-copy" style="margin-top:8px">
+          <a class="btn" href="https://discord.gg/3ew2nxAjbC" rel="noopener">Join the hub server</a>
+          <span class="tag">Min 4 players</span>
+          <span class="tag">Max 10 players</span>
+          <span class="tag">45&nbsp;s countdown</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="mm-limits">
+      <div class="section-body">
+        <h2 class="section-title" id="mm-limits">What crosses servers</h2>
+        <div class="table-scroll">
+          <table class="doc-table">
+            <thead><tr><th>Crosses into the hub</th><th>Stays put</th></tr></thead>
+            <tbody>
+              <tr><td>The matchmaking queue</td><td>The rest of your server</td></tr>
+              <tr><td>The public launch and status card</td><td>Your server's own channels</td></tr>
+              <tr><td>The public match thread on the hub</td><td>The actual play, which happens in DMs</td></tr>
+              <tr><td>Your display name, for the roster</td><td>Nothing else &mdash; no message history is forwarded</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="panel-copy">
+          Matchmaking runs the same game engine as a normal <code>/sus</code> match, so kills, meetings and votes
+          behave exactly as they do on your own server.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="mm-fix">
+      <div class="section-body">
+        <h2 class="section-title" id="mm-fix">If something is wrong</h2>
+        <details class="doc">
+          <summary>I queued, but nothing is happening.</summary>
+          <div class="doc-inner"><p>You need at least four queued players. Run <code>/mm status</code> to see the
+          count and the countdown. If the queue looks empty, the bot may have restarted &mdash; the queue is only
+          kept in memory, so queue again.</p></div>
+        </details>
+        <details class="doc">
+          <summary>It says I need to be a member of the hub server.</summary>
+          <div class="doc-inner"><p>Matches run in a thread on the hub server, so you must be a member there to
+          queue. Join it from the <a href="https://discord.gg/3ew2nxAjbC" rel="noopener">support invite</a>, then
+          try <code>/mm queue</code> again.</p></div>
+        </details>
+        <details class="doc">
+          <summary>The 45-second countdown vanished.</summary>
+          <div class="doc-inner"><p>The countdown only starts once the minimum is reached, and it folds if too many
+          players leave before it expires. When that happens the queue simply waits for more players.</p></div>
+        </details>
+        <details class="doc">
+          <summary>My name shows up as &ldquo;Alex 2&rdquo;.</summary>
+          <div class="doc-inner"><p>Two queued players had the same display name, so the roster numbers them apart
+          to keep the vote menus unambiguous. It only affects the match lobby.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="mm-privacy">
+      <div class="section-body">
+        <h2 class="section-title" id="mm-privacy">Privacy</h2>
+        <p class="panel-copy">
+          Matchmaking adds no new stored data. The queue and the launch are held in memory and are gone when the
+          process ends; a completed match records the same counters as any other Space Mafia game. Nothing from
+          your server is forwarded to the hub beyond the roster name shown in the thread.
+        </p>
+        <p class="smallprint">
+          Full details are in the <a href="privacy.html">Privacy Policy</a>. You can export or erase your game data
+          with <code>/sus export</code> and <code>/sus forget</code>.
+        </p>
+        <p class="panel-copy" style="margin-top:8px">
+          <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1532049960693006376&amp;permissions=4503599627683904&amp;integration_type=0&amp;scope=bot" rel="noopener">Add to Discord</a>
+          <a class="btn" href="commands.html">Command reference</a>
+          <a class="btn" href="space-mafia.html">About Space Mafia</a>
+        </p>
+      </div>
+    </section>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="f-col">
+      <div class="f-brand"><img src="assets/img/logo.svg" alt=""><b>Computer</b></div>
+      <p class="f-blurb">A Discord bot with two halves: <strong>Space&nbsp;Mafia</strong>, an
+      Among&nbsp;Us-style social deduction game, and a cross-server <strong>telephone</strong>.
+      A community fansite &mdash; not affiliated with Discord&nbsp;Inc., Innersloth or Among&nbsp;Us.</p>
+    </div>
+    <nav class="f-col" aria-label="Games">
+      <h4>Games</h4>
+      <ul>
+        <li><a href="space-mafia.html">Space Mafia</a></li>
+        <li><a href="telephone.html">Telephone</a></li>
+        <li><a href="matchmaking.html">Matchmaking</a></li>
+        <li><a href="commands.html">Commands</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+      </ul>
+    </nav>
+    <nav class="f-col" aria-label="Project">
+      <h4>Project</h4>
+      <ul>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="https://github.com/notmicrosoft2000-cmd/computer/issues" rel="noopener">Report an issue</a></li>
+        <li><a href="https://top.gg/bot/1532049960693006376" rel="noopener">Vote on top.gg</a></li>
+        <li><a href="https://discord.gg/3ew2nxAjbC" rel="noopener">Support server</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </nav>
+    <div class="f-col" id="about">
+      <h4>About this site</h4>
+      <p><strong>Computer</strong> &mdash; a Discord bot with two halves: <em>Space Mafia</em>,
+      an Among&nbsp;Us-style social deduction game, and a cross-server <em>telephone</em>.</p>
+      <p>This is a community fansite. It is not affiliated with Discord&nbsp;Inc., Innersloth or Among&nbsp;Us.</p>
+      <p>Made by <strong>neptunetheii</strong> &middot; Discord <code>neptunetheii</code> &middot;
+      <a href="mailto:neptunetheii@proton.me">neptunetheii@proton.me</a></p>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>&copy; <span data-year>2026</span> Computer &middot; made by neptunetheii</p>
+    <p><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot;
+    <a href="https://discord.gg/3ew2nxAjbC" rel="noopener">Support server</a></p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
