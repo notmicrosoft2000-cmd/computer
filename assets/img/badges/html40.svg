@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="31" viewBox="0 0 88 31" shape-rendering="crispEdges" role="img" aria-label="HTML 4.0 valid">
+  <rect width="88" height="31" fill="#ffffff"/>
+  <rect x="1" y="1" width="86" height="29" fill="none" stroke="#000000"/>
+  <rect x="4" y="4" width="80" height="4" fill="#000080"/>
+  <rect x="4" y="4" width="80" height="1" fill="#4040c0"/>
+  <text x="44" y="20" text-anchor="middle" font-family="'Courier New',monospace" font-size="11" font-weight="bold" fill="#000080">HTML 4.0</text>
+  <text x="44" y="28" text-anchor="middle" font-family="'Courier New',monospace" font-size="6" fill="#808080">W3C VALID</text>
+</svg>
