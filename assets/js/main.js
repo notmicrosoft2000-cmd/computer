@@ -11,46 +11,107 @@
     return Array.prototype.slice.call((root || document).querySelectorAll(sel));
   };
 
-  /* ---------------------------------------------------------------- m nav */
-  function initNav() {
-    var toggle = qs(".nav-toggle");
-    var menu = qs(".menubar");
-    if (!toggle || !menu) return;
-    // Collapse the menu by default on small screens.
-    if (window.matchMedia("(max-width: 760px)").matches) {
-      menu.classList.add("collapsed");
-      toggle.setAttribute("aria-expanded", "false");
+  /* ------------------------------------------------------ Start menu + clock */
+  function initShell() {
+    var orb = qs("#start-orb");
+    var menu = qs("#startmenu");
+    var search = qs("#sm-search");
+    var empty = qs("#sm-empty");
+
+    function setOpen(open) {
+      if (!menu || !orb) return;
+      menu.classList.toggle("open", open);
+      orb.setAttribute("aria-expanded", String(open));
+      if (open && search) { search.value = ""; filterPrograms(); search.focus(); }
     }
-    toggle.addEventListener("click", function () {
-      var open = menu.classList.toggle("collapsed") === false;
-      toggle.setAttribute("aria-expanded", String(open));
-    });
+    function filterPrograms() {
+      if (!menu || !search) return;
+      var term = search.value.trim().toLowerCase();
+      var any = false;
+      qsa(".sm-programs .sm-link", menu).forEach(function (a) {
+        var show = !term || a.textContent.toLowerCase().indexOf(term) !== -1;
+        a.hidden = !show;
+        if (show) any = true;
+      });
+      if (empty) empty.hidden = any || !term;
+    }
+
+    if (orb && menu) {
+      orb.addEventListener("click", function (ev) {
+        ev.stopPropagation();
+        setOpen(!menu.classList.contains("open"));
+      });
+      search && search.addEventListener("input", filterPrograms);
+      document.addEventListener("click", function (ev) {
+        if (!menu.classList.contains("open")) return;
+        if (menu.contains(ev.target) || orb.contains(ev.target)) return;
+        setOpen(false);
+      });
+    }
+
+    // ---- clock -----------------------------------------------------------
+    var time = qs("#tray-time");
+    var date = qs("#tray-date");
+    function tick() {
+      var now = new Date();
+      if (time) {
+        time.textContent = ("0" + now.getHours()).slice(-2) + ":" + ("0" + now.getMinutes()).slice(-2);
+      }
+      if (date) {
+        date.textContent = (now.getMonth() + 1) + "/" + now.getDate() + "/" + now.getFullYear();
+      }
+    }
+    tick();
+    window.setInterval(tick, 15000);
   }
 
-  /* ----------------------------------------------------------- doc sidebar */
-  function initDocNav() {
-    var toggle = qs(".docnav-toggle");
-    var nav = qs(".docnav");
-    if (!toggle || !nav) return;
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(open));
-    });
-    // Highlight the section currently in view.
-    var links = qsa(".docnav a[href^='#']");
-    if (!links.length || !("IntersectionObserver" in window)) return;
-    var sections = links
-      .map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); })
-      .filter(Boolean);
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        links.forEach(function (a) {
-          a.setAttribute("aria-current", a.getAttribute("href") === "#" + e.target.id ? "true" : "false");
-        });
+  /* ------------------------------------------------- window controls + dialogs */
+  function initWindows() {
+    var win = qs("#app");
+    if (win) {
+      var min = qs(".title-bar-controls .is-minimize", win);
+      var max = qs(".title-bar-controls .is-maximize", win);
+      var close = qs(".title-bar-controls .is-close", win);
+      min && min.addEventListener("click", function () { win.classList.toggle("is-minimized"); });
+      max && max.addEventListener("click", function () { win.classList.toggle("is-maximized"); });
+      close && close.addEventListener("click", function () { openDialog("closed"); });
+    }
+
+    function openDialog(id) {
+      var d = document.getElementById(id);
+      if (d) d.classList.add("show");
+    }
+    function closeDialog(d) {
+      d.classList.remove("show");
+      if (location.hash === "#" + d.id) {
+        history.replaceState(null, "", location.pathname + location.search);
+      }
+    }
+    qsa("[data-dialog-close]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var d = document.getElementById(btn.getAttribute("data-dialog-close"));
+        if (d) closeDialog(d);
       });
-    }, { rootMargin: "-20% 0px -70% 0px" });
-    sections.forEach(function (s) { obs.observe(s); });
+    });
+    // #about / #closed links work through :target too — mirror into .show.
+    function syncHash() {
+      qsa('.window[role="dialog"]').forEach(function (d) {
+        if (location.hash === "#" + d.id) d.classList.add("show");
+      });
+    }
+    window.addEventListener("hashchange", syncHash);
+    syncHash();
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape") {
+        qsa('.window[role="dialog"].show').forEach(closeDialog);
+        var menu = qs("#startmenu");
+        if (menu && menu.classList.contains("open")) {
+          menu.classList.remove("open");
+          var orb = qs("#start-orb");
+          orb && orb.setAttribute("aria-expanded", "false");
+        }
+      }
+    });
   }
 
   /* ---------------------------------------------------------- copy buttons */
@@ -102,9 +163,7 @@
   }
 
   /* ----------------------------------------------------- space mafia demo */
-  var CREW_NAMES = [
-    "Red", "Blue", "Green", "Pink", "Orange"
-  ];
+  var CREW_NAMES = ["Red", "Blue", "Green", "Pink", "Orange"];
   var BOT_NAMES = ["Alex", "Skye", "Rune", "Patch", "Nova"];
 
   function initLobbyDemo() {
@@ -123,7 +182,6 @@
         var isBot = i >= Math.min(count, 5);
         crews.push({ name: name, bot: isBot });
       }
-      // second impostor only appears once the ship is full (7+), matching config
       var impostors = count >= 7 ? 2 : 1;
       grid.innerHTML = "";
       crews.forEach(function (c, idx) {
@@ -134,7 +192,6 @@
           (idx < impostors ? "impostor" : (c.bot ? "crewmate (bot)" : "crewmate")) + "</small>";
         grid.appendChild(d);
       });
-      // pad to MAX 10 with empty seats
       for (var e = count; e < MAX; e++) {
         var s = document.createElement("div");
         s.className = "slot empty";
@@ -210,9 +267,7 @@
       state = s;
       statusEl.textContent = s;
       var card = qs("#phone-card");
-      if (card) {
-        card.classList.toggle("ring-anim", s === "Ringing");
-      }
+      if (card) card.classList.toggle("ring-anim", s === "Ringing");
     }
     function fmt(n) {
       var m = Math.floor(n / 60), sec = n % 60;
@@ -297,28 +352,16 @@
 
   /* --------------------------------------------------------- site stamps */
   function initStamps() {
+    // The copyright year only. Nothing here is real analytics.
     qsa("[data-year]").forEach(function (el) {
       el.textContent = String(new Date().getFullYear());
     });
-    // Decorative "hit counter": shown, but explicitly not real analytics.
-    var counter = qs("#hit-counter");
-    if (counter) {
-      var base = 1998;
-      var digits = String(base).padStart(6, "0").split("");
-      counter.innerHTML = "";
-      digits.forEach(function (d) {
-        var s = document.createElement("span");
-        s.textContent = d;
-        counter.appendChild(s);
-      });
-      counter.setAttribute("title", "Decorative odometer — not real analytics");
-    }
   }
 
   /* ------------------------------------------------------------- bootstrap */
   function init() {
-    initNav();
-    initDocNav();
+    initShell();
+    initWindows();
     initCopy();
     initFilter();
     initLobbyDemo();

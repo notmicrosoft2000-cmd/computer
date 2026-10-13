@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="88" height="31" viewBox="0 0 88 31" shape-rendering="crispEdges" role="img" aria-label="Sign my guestbook">
-  <rect width="88" height="31" fill="#ffffe0"/>
-  <rect x="1" y="1" width="86" height="29" fill="none" stroke="#000080"/>
-  <text x="44" y="13" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" font-weight="bold" fill="#000080">SIGN MY</text>
-  <text x="44" y="24" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" font-weight="bold" fill="#c0392b">GUESTBOOK</text>
-</svg>

@@ -1,8 +1,12 @@
 # Computer — website
 
-Retro late-1990s website for the **Computer** Discord bot, built on the real
-[98.css](https://jdan.github.io/98.css/) library. It is a plain, static site —
-no build step, no framework — published with GitHub Pages.
+Windows&nbsp;7 desktop-style site for the **Computer** Discord bot, built on the
+real [7.css](https://khang-nd.github.io/7.css/) library. It is a plain, static
+site — no build step, no framework — published with GitHub Pages.
+
+Every page is an application window on a shared desktop: the same wallpaper,
+desktop shortcuts, taskbar, Start menu and window frame surround each page's
+content.
 
 **Live:** https://notmicrosoft2000-cmd.github.io/computer/
 
@@ -10,26 +14,29 @@ no build step, no framework — published with GitHub Pages.
 
 | File | Purpose |
 |------|---------|
-| `index.html` | Home — welcome panel, two feature windows, command preview, setup guide, sample status, changelog. |
+| `index.html` | Home — welcome, two feature windows, command preview, setup guide, sample status, changelog. |
 | `space-mafia.html` | The Space Mafia game: simulated lobby console, roles, voting example, house rules. |
 | `telephone.html` | The cross-server telephone: simulated switchboard + call log, etiquette, privacy. |
 | `commands.html` | Full command reference, filterable, grouped into General / Space Mafia / Telephone / Administration / Configuration. |
 | `docs.html` | Installation, permissions, self-hosting, troubleshooting and FAQ. |
 | `community.html` | Verified project links and contributing notes. |
-| `404.html` | Retro "page not found" page. |
+| `privacy.html` | Privacy policy. |
+| `terms.html` | Terms of service. |
+| `404.html` | "Page not found" (GitHub Pages custom 404; note the `<base href="/computer/">`). |
 
 ## Structure
 
 ```
 computer-site/
 ├── index.html, space-mafia.html, telephone.html,
-│   commands.html, docs.html, community.html, 404.html
+│   commands.html, docs.html, community.html,
+│   privacy.html, terms.html, 404.html
 ├── .nojekyll                 # serve files as-is on GitHub Pages
 └── assets/
-    ├── vendor/98.css         # the 98.css library (vendored, unpinned from CDN)
-    ├── vendor/ms_sans_*.woff2# the fonts 98.css references
-    ├── css/retro.css         # layout, typography and retro-web decoration
-    ├── js/main.js            # vanilla JS for the demos and interactions
+    ├── vendor/7.css          # the 7.css library (vendored, self-contained)
+    ├── vendor/7.css.LICENSE  # its MIT licence
+    ├── css/win7.css          # desktop shell + content styling on top of 7.css
+    ├── js/main.js            # vanilla JS for the shell and the demos
     └── img/*.svg             # pixel-art icons (crispEdges, no gradients)
 ```
 
@@ -43,13 +50,13 @@ python3 -m http.server 8000
 # then open http://localhost:8000/
 ```
 
-(Opening the `.html` files directly from disk also works, except that the
-vendored font and CSS load more reliably over HTTP.)
+To preview `404.html` with its real base path, serve a directory that contains a
+`computer/` folder pointing at this one, then open `/computer/404.html`.
 
 ## Ground rules baked into this site
 
-- **Nothing is faked as live.** The status lights, visitor counter and call log
-  are explicitly labelled *sample* / *demo*. There is no backend.
+- **Nothing is faked as live.** The status lights and call log are explicitly
+  labelled *sample* / *demo*. There is no backend.
 - **Every demo is simulated.** The lobby console and telephone run entirely in
   the browser; they never contact Discord or the bot.
 - **Commands are real.** The reference is taken from the bot's own
@@ -63,9 +70,11 @@ vendored font and CSS load more reliably over HTTP.)
 
 ## Editing
 
-- Visual language comes from 98.css. Add layout in `assets/css/retro.css` rather
-  than overriding the core bevels.
+- Visual language comes from 7.css. Add desktop shell and content styling in
+  `assets/css/win7.css` rather than overriding the Aero window frames, buttons
+  and fields.
 - Page behaviour lives in `assets/js/main.js`; it is defensive, so pages only
-  use the parts they include.
+  use the parts they include. The shell (Start menu, clock, window controls)
+  and the Space Mafia / telephone demos are all self-contained.
 - When you change the real bot's commands or features, update `commands.html`
   and the relevant feature page to match.
