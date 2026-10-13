@@ -151,7 +151,7 @@
         if (show) any = true;
       });
       sections.forEach(function (sec) {
-        var visible = qsa("tr, .filter-item", sec).some(function (r) { return !r.hidden; });
+        var visible = qsa("tbody tr, .filter-item", sec).some(function (r) { return !r.hidden; });
         sec.hidden = !visible;
       });
       if (empty) empty.hidden = any || !term;

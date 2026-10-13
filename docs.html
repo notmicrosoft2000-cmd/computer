@@ -100,7 +100,7 @@
               <li><strong>Let it post its consent cards.</strong> When Computer joins, it posts a privacy-policy card. An admin clicks <em>I AGREE</em> to allow the server to be listed in the Phone Book; the rules card appears the first time anyone uses a <code>/phone</code> command.</li>
               <li><strong>Wire the jack.</strong> An admin runs <code>/phone register channel:#jack</code> to choose the channel that will relay calls.</li>
               <li><strong>Open the control panel.</strong> <code>/setup</code> gathers everything: wire or delist the jack, toggle the safety filters and DND, read the house rules, and grab the vote link.</li>
-              <li><strong>Optional:</strong> start a game with <code>/sus new</code>.</li>
+              <li><strong>Optional:</strong> start a game with <code>/sus new</code>, or find a crew from any server with <code>/mm queue</code>.</li>
             </ol>
             <p class="panel-copy"><a href="commands.html">See every command &rarr;</a></p>
           </div>
@@ -116,6 +116,7 @@
                   <tr><td><code>bot</code> + <code>applications.commands</code></td><td>Being present and registering slash commands.</td><td>The bot cannot be added or used.</td></tr>
                   <tr><td>Send Messages, Embed Links</td><td>Lobbies, call cards, notices and the Phone Book.</td><td>Most panels cannot render.</td></tr>
                   <tr><td><strong>Manage Webhooks</strong></td><td>Relaying calls with the sender's real name and avatar.</td><td>Limited mode: messages arrive as plain <code>**name** text</code> lines.</td></tr>
+                  <tr><td>Create Public Threads, Send Messages in Threads</td><td>Opening the matchmaking game thread in the hub server.</td><td>Cross-server matchmaking cannot launch.</td></tr>
                   <tr><td>Manage Server (for admins)</td><td>Running <code>/setup</code>, <code>/phone register</code>, block/trust and data commands.</td><td>Those admin commands are hidden.</td></tr>
                 </tbody>
               </table>
@@ -177,6 +178,12 @@ python -m suspicion.main</code></pre>
             <details class="doc"><summary>A running game vanished</summary>
               <div class="doc-inner"><p>Games are held in memory. Restarting the bot ends running matches. Accounts, career stats and the phone registry are stored on disk and come back; only active calls hang up.</p></div>
             </details>
+            <details class="doc"><summary>Matchmaking says I need to join the hub server</summary>
+              <div class="doc-inner"><p>Cross-server matches run in a thread on the hub server, so you must be a member there to queue. Join it from the <a href="https://discord.gg/3ew2nxAjbC" rel="noopener">support invite</a>, then try <code>/mm queue</code> again.</p></div>
+            </details>
+            <details class="doc"><summary>Matchmaking found nobody, or the countdown folded</summary>
+              <div class="doc-inner"><p>The queue needs at least four waiting players and lives in memory, so a bot restart empties it. If players leave before the countdown ends, the launch is cancelled. Use <code>/mm status</code> to see the queue, or <code>/mm queue</code> to start it again.</p></div>
+            </details>
             <details class="doc"><summary>I cannot see an admin command</summary>
               <div class="doc-inner"><p>Admin commands are permission-gated. You need <strong>Manage Server</strong> for house settings, and the operator-only data commands are limited to the bot owner.</p></div>
             </details>
@@ -194,6 +201,9 @@ python -m suspicion.main</code></pre>
             </details>
             <details class="doc"><summary>Do I have to use both features?</summary>
               <div class="doc-inner"><p>No. The game (<code>/sus</code>), the ship phone (<code>/user</code>) and the cross-server line (<code>/phone</code>) are independent. Use whichever you like.</p></div>
+            </details>
+            <details class="doc"><summary>What is cross-server matchmaking?</summary>
+              <div class="doc-inner"><p><code>/mm</code> lets players from any server queue together. Once enough are waiting, the bot opens a public thread on the hub server and runs a normal Space Mafia game there &mdash; the play still happens in DMs. You do not have to share a server with the other players, but you do have to be in the hub server.</p></div>
             </details>
             <details class="doc"><summary>Is anything charged?</summary>
               <div class="doc-inner"><p>The bot is free. Premium perks (such as call forwarding) come from voting on top.gg or from membership of the support server — not from payment.</p></div>

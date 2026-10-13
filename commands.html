@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Commands — Computer</title>
-  <meta name="description" content="The full Computer Discord bot command reference: General, Space Mafia, Telephone, Administration and Configuration, with syntax and permissions.">
+  <meta name="description" content="The full Computer Discord bot command reference: General, Space Mafia, cross-server matchmaking, Telephone, Administration and Configuration, with syntax and permissions.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/vendor/7.css">
   <link rel="stylesheet" href="assets/css/win7.css">
@@ -158,6 +158,41 @@
                   </tbody>
                 </table>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== CROSS-SERVER MATCHMAKING =================== -->
+        <section id="matchmaking" data-filter-section aria-labelledby="h-mm" style="margin-top:12px">
+          <div class="group">
+            <div class="section-body">
+              <h2 class="section-title" id="h-mm">Cross-server matchmaking</h2>
+              <p class="panel-copy">
+                <code>/mm</code> gathers Space Mafia players from <em>every</em> server the bot is in.
+                Anyone who has joined the hub server can queue from wherever they are; once enough players
+                are waiting, the bot opens a public thread in the hub and runs an ordinary game there.
+              </p>
+              <p class="panel-copy">
+                The match itself still plays out in DMs, so the only thing that crosses servers is the queue,
+                the launch and the public status card. The queue lives in memory &mdash; a bot restart clears it.
+              </p>
+              <div class="table-scroll">
+                <table class="doc-table">
+                  <thead><tr><th>Name</th><th>Syntax</th><th>Description</th><th>Permissions</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>/mm queue</code></td><td><code>/mm queue</code> <button class="btn" data-copy="/mm queue">Copy</button></td><td>Join the matchmaking queue from any server. Requires membership of the hub server, since the match runs there.</td><td>anyone (hub member)</td></tr>
+                    <tr><td><code>/mm status</code></td><td><code>/mm status</code> <button class="btn" data-copy="/mm status">Copy</button></td><td>Show who is queued and how long until launch.</td><td>anyone</td></tr>
+                    <tr><td><code>/mm leave</code></td><td><code>/mm leave</code> <button class="btn" data-copy="/mm leave">Copy</button></td><td>Drop out of the queue.</td><td>anyone</td></tr>
+                    <tr><td><code>/mm cancel</code></td><td><code>/mm cancel</code> <button class="btn" data-copy="/mm cancel">Copy</button></td><td>Stop a pending launch countdown. Only the first player in the queue can cancel.</td><td>queue host</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="panel-copy" style="margin-top:8px">
+                Minimum <strong>4</strong> players, maximum <strong>10</strong>. When the fourth player queues, a
+                <strong>45-second</strong> countdown starts so stragglers can still join; if too many leave before it
+                expires, the countdown folds. Players already in a game are skipped at launch, and two players with
+                the same display name are numbered apart (for example <em>Alex 2</em>).
+              </p>
             </div>
           </div>
         </section>
