@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Computer</title>
+  <meta name="description" content="How Computer collects, uses, shares and deletes your data — the game, the cross-server telephone and the ship phone.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/vendor/98.css">
+  <link rel="stylesheet" href="assets/css/retro.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+
+  <header class="site-header window">
+    <div class="title-bar">
+      <div class="title-bar-text"><img class="title-logo" src="assets/img/logo.svg" alt="">Computer — Discord bot</div>
+      <div class="title-bar-controls" aria-hidden="true">
+        <button aria-label="Minimize" tabindex="-1"></button>
+        <button aria-label="Maximize" tabindex="-1"></button>
+        <button aria-label="Close" tabindex="-1"></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <div class="brand-row">
+        <img class="brand-logo" src="assets/img/logo.svg" alt="Pixel-art CRT computer logo">
+        <div class="brand-text">
+          <h1>Privacy Policy</h1>
+          <p class="tagline">What is stored, who receives it, and how to erase it.</p>
+        </div>
+        <div class="brand-cta">
+          <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1532049960693006376&amp;permissions=4503599627683904&amp;integration_type=0&amp;scope=bot" rel="noopener">Add to Discord</a>
+          <a class="btn" href="index.html">Back to home</a>
+        </div>
+      </div>
+      <button class="nav-toggle btn" aria-expanded="true" aria-controls="mainnav">&#9776; Menu</button>
+      <nav class="menubar" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="space-mafia.html">Space Mafia</a>
+        <a href="telephone.html">Telephone</a>
+        <a href="commands.html">Commands</a>
+        <a href="docs.html">Documentation</a>
+        <a href="community.html">Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="docs-layout">
+      <aside class="docnav" aria-label="Privacy Policy contents">
+        <button class="docnav-toggle btn" aria-expanded="false" aria-controls="docnav-list">&#9776; Contents</button>
+        <nav id="docnav-list">
+          <ul class="tree-view">
+            <li><a href="#scope">What this covers</a></li>
+            <li><a href="#who">Who runs it</a></li>
+            <li><a href="#collect">What we collect — game</a></li>
+            <li><a href="#phone-data">What we collect — telephone</a></li>
+            <li><a href="#memory">What is only in memory</a></li>
+            <li><a href="#sources">Where the data comes from</a></li>
+            <li><a href="#use">What we use it for</a></li>
+            <li><a href="#share">Who we share it with</a></li>
+            <li><a href="#ai">AI and Groq</a></li>
+            <li><a href="#retention">How long we keep it</a></li>
+            <li><a href="#rights">Your rights</a></li>
+            <li><a href="#moderation">Moderation and safety</a></li>
+            <li><a href="#children">Children</a></li>
+            <li><a href="#changes">Changes to this policy</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="docs-body">
+        <section class="section window" aria-labelledby="legal-h">
+          <div class="title-bar"><div class="title-bar-text">privacy.txt</div><div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div></div>
+          <div class="window-body legal">
+<div class="box warn">
+      <h3>THE SHORT VERSION</h3>
+      <p style="margin:0 0 8px">Computer stores very little, because it has to. There are no accounts with passwords, no email addresses, no payment info, no analytics, and no advertising.</p>
+      <ul style="margin:0; padding-left:20px">
+        <li><strong>Game:</strong> your Discord user ID, your display name, and a handful of preferences and career counters.</li>
+        <li><strong>Telephone:</strong> per-server settings and a call history. Never message bodies, except voicemails and call reports.</li>
+        <li><strong>AI bots:</strong> if AI bot chat is switched on, some meeting chat lines are sent to <strong>Groq</strong>. You can opt out — see <a href="#ai">Section 9</a>.</li>
+        <li><strong>You can export or erase your data</strong> from inside Discord, any time. See <a href="#rights">Section 11</a>.</li>
+      </ul>
+    </div>
+
+    
+
+    <section class="section" id="scope" aria-labelledby="scope-title">
+      <h2 class="section-title" id="scope-title">1. WHAT THIS COVERS</h2>
+      <p>Computer is one Discord bot doing three separate jobs. This policy covers all three, because they share a database:</p>
+      <ul>
+        <li><strong>The murder-mystery game</strong> — <code>/sus</code>. The lobby lives in a server channel; the actual game is played through Discord DMs.</li>
+        <li><strong>The cross-server telephone</strong> — <code>/phone</code>. Connects real Discord servers to each other over one shared phone network.</li>
+        <li><strong>The ship phone</strong> — <code>/user</code>. Lets players ring each other by 4-digit extension through DMs.</li>
+      </ul>
+      <p>Discord itself is a separate company with its own privacy policy. Anything Discord holds — including your DMs with the bot — is subject to <a href="https://discord.com/privacy" target="_blank" rel="noopener">Discord's policy</a>, not this one. We only control what our own database files hold.</p>
+    </section>
+
+    <section class="section" id="who" aria-labelledby="who-title">
+      <h2 class="section-title" id="who-title">2. WHO RUNS IT</h2>
+      <p>Computer is an independent project published by Neptune Productions under the Discord user <strong>neptunetheii</strong> (GitHub: notmicrosoft2000-cmd). It is not affiliated with, endorsed by, or sponsored by Discord Inc.</p>
+      <p>The bot's source code is currently kept private, so this page is the authoritative description of what is stored. It is a Python <code>discord.py</code> bot; if the code is ever published, this policy will link to it.</p>
+    </section>
+
+    <section class="section" id="collect" aria-labelledby="collect-title">
+      <h2 class="section-title" id="collect-title">3. WHAT WE COLLECT — GAME</h2>
+      <p>Stored in a single file, <code>accounts.json</code>, keyed by your Discord user ID:</p>
+      <div class="table-scroll"><table class="doc-table">
+        <thead><tr><th>Field</th><th>What it is</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Discord user ID</td><td>Your numeric snowflake. The lookup key.</td><td>Identifies you across sessions and servers.</td></tr>
+          <tr><td>Display name</td><td>Your Discord display name at the time it was read.</td><td>Shown in-game so players know who they're talking to.</td></tr>
+          <tr><td>created_at</td><td>When your profile was first created.</td><td>Housekeeping.</td></tr>
+          <tr><td>accent</td><td>A colour you picked.</td><td>Your in-game look.</td></tr>
+          <tr><td>catchphrase</td><td>A short line you set.</td><td>Bot dialogue uses it in your lines.</td></tr>
+          <tr><td>pronouns</td><td>Free text, your choice.</td><td>Bot dialogue refers to you correctly.</td></tr>
+          <tr><td>custom name</td><td>Optional in-game name.</td><td>Lets you play without your real display name.</td></tr>
+          <tr><td>stats</td><td>games, wins, kills, deaths, ejections, tasks — counters only.</td><td>Personal record, shown by <code>/sus account</code>.</td></tr>
+          <tr><td>phone</td><td>A 4-digit ship extension.</td><td>Your <code>/user phone</code> address.</td></tr>
+          <tr><td>ai_optout</td><td>Whether you opted out of AI sharing.</td><td>Honouring <a href="#ai">Section 9</a>.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="smallprint">We never store your email address, your Discord username, your password, your real name, your location, your IP address, or any payment information. Discord does not expose your email to bots in the first place.</p>
+      <p class="smallprint">Individual game records are <strong>not</strong> kept. We store running totals, not a history of every match. Kill logs, meeting transcripts, and voting records live in memory and are gone when the process ends.</p>
+    </section>
+
+    <section class="section" id="phone-data" aria-labelledby="phone-data-title">
+      <h2 class="section-title" id="phone-data-title">4. WHAT WE COLLECT — TELEPHONE</h2>
+      <p>Stored in a SQLite database, <code>telephone.db</code>. Almost all of it is keyed by <strong>server</strong>, not by person:</p>
+      <div class="table-scroll"><table class="doc-table">
+        <thead><tr><th>Table</th><th>What it holds</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>lines</td><td>Your server's listing name and the channel its phone jack is in.</td><td>Set by <code>/phone register</code>.</td></tr>
+          <tr><td>numbers</td><td>Your server's 4-digit number.</td><td>Unique; a number belongs to exactly one server.</td></tr>
+          <tr><td>settings</td><td>Do-not-disturb, auto-answer.</td><td>Per server.</td></tr>
+          <tr><td>line_filters</td><td>Which of profanity / slurs / links / GIFs to block.</td><td>All on by default, with per-server trust overrides.</td></tr>
+          <tr><td>filter_trust</td><td>Servers you trust to skip filtering.</td><td>You set this; we don't guess it.</td></tr>
+          <tr><td>call_blocks</td><td>Call pairs you've blocked.</td><td>Never routed.</td></tr>
+          <tr><td>speeddial</td><td>Numbered slots pointing at servers.</td><td>Per server.</td></tr>
+          <tr><td>call_alerts</td><td>Which roles or users want a ping when your phone rings.</td><td>The <em>user</em> half of this is the only user ID stored outside <code>accounts.json</code>.</td></tr>
+          <tr><td>rules_agreements</td><td>That your server accepted the code of conduct, and when.</td><td>Shown once per server.</td></tr>
+          <tr><td>call_log</td><td>Caller server, callee server, outcome, timestamp.</td><td>Metadata only. <strong>No message content.</strong></td></tr>
+          <tr><td>voicemails</td><td>Sender's server display name and the message body. Capped at 20 per recipient.</td><td>The one place phone message text is stored on purpose, because a voicemail that isn't saved is worthless.</td></tr>
+          <tr><td>reports</td><td>Reporter, reported servers, reason, and the <strong>full transcript of the reported call</strong>.</td><td>Only created when someone runs <code>/phone report</code>. See <a href="#moderation">Section 12</a>.</td></tr>
+          <tr><td>blacklist</td><td>Servers cut off from the network, with the operator's reason.</td><td>Operators only.</td></tr>
+          <tr><td>stats</td><td>Global network counters, e.g. total calls.</td><td>Aggregate, no personal data.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="box warn">
+        <h3>THE ONE THING WORTH UNDERSTANDING</h3>
+        <p style="margin:0">The telephone relays <strong>messages between unrelated servers run by strangers</strong>. If your server registers a phone jack, everyone on the network can ring you and send text into that channel. That is the entire point of the feature — but it means you are choosing to expose that channel to strangers.</p>
+        <p style="margin:8px 0 0">Use a dedicated channel you don't mind people posting in. Do not register a channel you also use for private staff talk.</p>
+      </div>
+    </section>
+
+    <section class="section" id="memory" aria-labelledby="memory-title">
+      <h2 class="section-title" id="memory-title">5. WHAT IS ONLY IN MEMORY</h2>
+      <p>Not written to disk, and lost whenever the bot restarts:</p>
+      <ul>
+        <li>Active games: player names, roles, room positions, chat logs, kill logs, voting records.</li>
+        <li>Live call transcripts — the messages exchanged during a call currently in progress. These are held in memory and dropped an hour after the call ends, unless somebody filed a report.</li>
+        <li>Who is ringing whom, and who is in the party bridge.</li>
+      </ul>
+      <p class="smallprint">This is good news for privacy. It's also why a crash loses in-flight games. We consider that an acceptable trade.</p>
+    </section>
+
+    <section class="section" id="sources" aria-labelledby="sources-title">
+      <h2 class="section-title" id="sources-title">6. WHERE THE DATA COMES FROM</h2>
+      <ul>
+        <li><strong>Directly from you</strong> — preferences, pronouns, catchphrase, custom name, accent colour, your <strong>I AGREE</strong> click on the code of conduct, opt-outs, and any <code>/phone report</code> you file.</li>
+        <li><strong>From Discord</strong> — your user ID and display name, and your server's ID, name, and channel IDs. The bot cannot function without these.</li>
+        <li><strong>From your server's staff</strong> — a member of staff runs <code>/phone register</code> and can set filters, DND, auto-answer, block servers, and pick alert roles. They are not required to and are not asked to collect anything else.</li>
+        <li><strong>From other servers</strong> — when your server is relayed to, or receives a call from, another server. Their messages arrive in your channel under their own names. We don't add anything to those messages.</li>
+      </ul>
+      <p><strong>Scope of what we can read:</strong> in servers, the bot reads messages <strong>only</strong> in a registered telephone jack channel. It does not read other channels. It does not read your DMs except the DMs it is itself sending you. It does not keep a log of anything it can see.</p>
+    </section>
+
+    <section class="section" id="use" aria-labelledby="use-title">
+      <h2 class="section-title" id="use-title">7. WHAT WE USE IT FOR</h2>
+      <p>Strictly to operate the features you asked for:</p>
+      <ul>
+        <li>Running games and keeping score.</li>
+        <li>Giving you a phone number so other players can ring you.</li>
+        <li>Routing calls, holding voicemails, and applying your content filters.</li>
+        <li>Showing you your own stats when you ask with <code>/sus account</code>.</li>
+        <li>Stopping abuse: enforcing the code of conduct, blacklisting servers, and reading transcripts a server has explicitly reported.</li>
+      </ul>
+      <p><strong>We do not</strong> sell, rent, trade, or broker your data. We do not use it for advertising. We do not build profiles. We do not run automated decision-making that affects you.</p>
+    </section>
+
+    <section class="section" id="share" aria-labelledby="share-title">
+      <h2 class="section-title" id="share-title">8. WHO WE SHARE IT WITH</h2>
+      <p>We share data with three kinds of party, and no others:</p>
+      <ol class="steps">
+        <li><strong>Discord</strong> — the whole game runs on Discord's infrastructure: DMs, channels, webhooks, reactions. Discord processes all of it under their own policy.</li>
+        <li><strong>Groq</strong> — only if AI bot chat is enabled, and only as described in <a href="#ai">Section 9</a>.</li>
+        <li><strong>Our hosting provider</strong> — the bot runs on a small host that stores these files and executes the code. They host it; they don't inspect it.</li>
+      </ol>
+      <div class="box warn">
+        <h3>THIS IS THE ONE THAT SURPRISES PEOPLE</h3>
+        <p style="margin:0">Relayed phone messages are posted into the receiving server through a <strong>webhook wearing the sender's name and avatar</strong>. That is how a message from <code>#1234-A</code> can appear to come from someone in <code>#1234-B</code>. Your server admins can see this. It is a design choice, not a bug — but you should know the receiving side cannot tell a relayed message apart from a locally-typed one by appearance alone.</p>
+      </div>
+      <p>We do not respond to third-party requests for your data, and we cannot hand over anything Discord holds — we don't have it either.</p>
+    </section>
+
+    <section class="section" id="ai" aria-labelledby="ai-title">
+      <h2 class="section-title" id="ai-title">9. AI AND GROQ — READ THIS ONE</h2>
+      <p>Computer's bots can be powered by a language model instead of a fixed script. When that is on, <strong>your meeting chat is sent to Groq, a third-party AI provider</strong>, so their model can write a bot's reply. This is the most significant data flow on this page, so it gets its own section.</p>
+      <h3>Exactly what is sent</h3>
+      <ul>
+        <li>Up to the <strong>last 14 lines of meeting chat</strong>, each with the display name of who said it. Bot lines are included. <strong>Human lines are included.</strong></li>
+        <li>Up to <strong>200 characters</strong> of the message that triggered the bot's reply, quoted with the sender's display name.</li>
+        <li>The bot's own role, personality, behaviour state, and target.</li>
+        <li>Names of players a bot has decided it dislikes.</li>
+      </ul>
+      <h3>What is never sent</h3>
+      <ul>
+        <li>Anything from outside the game channel. Task answers, panel clicks, phone calls, voicemails, call logs, and reports are <strong>never</strong> sent to the AI provider.</li>
+        <li>Your Discord user ID, email, or any account data. Only display names appear in prompts.</li>
+        <li>Anything at all, if AI is not configured — in which case bots use built-in scripted lines and function normally.</li>
+      </ul>
+      <h3>Your controls</h3>
+      <ul>
+        <li><strong>Personal opt-out</strong> — <code>/sus privacy ai:true</code>. Your chat lines are <strong>removed entirely</strong> from AI prompts, and when you're the one who set a bot off, it's told only that a player spoke and that the content was withheld — no name, no quote. The bot still talks; it just can't quote you.</li>
+        <li><strong>Server-wide opt-out</strong> — staff run <code>/sus privacy server_ai:true</code>, and nothing from that server reaches a third party. This setting <strong>persists across restarts</strong>, so a deploy can't quietly undo it.</li>
+        <li><strong>Global opt-out</strong> — the operator can disable AI for the entire network with <code>SUS_AI_ENABLED=false</code>, which stops all AI calls code-path-wide.</li>
+        <li><strong>Three independent layers.</strong> Your opt-out is checked on every prompt, not just when you set it, so it applies mid-game and doesn't depend on a flag someone forgot to flip.</li>
+      </ul>
+      <p class="smallprint">Groq's own handling of API traffic is governed by <a href="https://groq.com/privacy" target="_blank" rel="noopener">Groq's privacy policy</a>. Please read it if the details matter to you.</p>
+    </section>
+
+    <section class="section" id="retention" aria-labelledby="retention-title">
+      <h2 class="section-title" id="retention-title">10. HOW LONG WE KEEP IT</h2>
+      <div class="table-scroll"><table class="doc-table">
+        <thead><tr><th>Data</th><th>Kept for</th></tr></thead>
+        <tbody>
+          <tr><td>Game profiles, stats, preferences</td><td>Until you erase them. There's no automatic expiry.</td></tr>
+          <tr><td>Phone listings &amp; numbers</td><td>Until your server unregisters, or you delete your listing.</td></tr>
+          <tr><td>Call log metadata</td><td><strong>90 days.</strong> Then swept automatically. Network-wide aggregate totals are kept forever.</td></tr>
+          <tr><td>Voicemails</td><td>Until deleted by the recipient or their staff. New ones push out the oldest past <strong>20</strong> per recipient.</td></tr>
+          <tr><td>Call reports &amp; transcripts</td><td><strong>180 days</strong>, then swept. Kept only for calls somebody actually reported.</td></tr>
+          <tr><td>Live call transcripts</td><td>Memory only, dropped <strong>1 hour</strong> after the call ends. Never written to disk unless reported.</td></tr>
+          <tr><td>Games, chat, voting records</td><td>Memory only, until the game ends.</td></tr>
+          <tr><td>Blacklist entries</td><td>Until an operator removes them. Not swept by the timers above.</td></tr>
+        </tbody>
+      </table></div>
+      <p>The sweeps above run automatically on a timer, not on request. Where a data type has no automatic expiry, we say so rather than implying one exists.</p>
+      <p class="smallprint">These windows are configurable by the operator. If they change, this table changes with them — the numbers here are meant to match the code, not to be decorative.</p>
+    </section>
+
+    <section class="section" id="rights" aria-labelledby="rights-title">
+      <h2 class="section-title" id="rights-title">11. YOUR RIGHTS</h2>
+      <p>You can exercise these yourself, from inside Discord. You do not need to email anyone or file a form.</p>
+      <ul>
+        <li><strong>See everything we hold about you</strong> — <code>/sus export</code> sends you a readable summary plus the raw JSON of your profile.</li>
+        <li><strong>Erase it</strong> — <code>/sus forget</code> deletes your profile, releases your ship extension, removes your ring-alert subscription, and resets your stats. <strong>This cannot be undone.</strong></li>
+        <li><strong>Stop AI sharing</strong> — <code>/sus privacy</code> shows your current settings and lets you opt out.</li>
+        <li><strong>Check the AI status of your server</strong> — <code>/sus privacy</code> reports whether the host has AI chat on.</li>
+        <li><strong>Server-side export</strong> — staff can run <code>/phone data export</code> to DM themselves a JSON dump of everything the network holds about their server.</li>
+        <li><strong>Server-side erasure</strong> — staff can run <code>/phone data forget</code> to wipe their listing, number, filters, trusts, blocks, speed dials, ring alerts, call history, voicemails, and any reports filed by or about the server. Blacklist entries are kept — that's the operator's record of a decision, not your data.</li>
+      </ul>
+      <p>If you are <strong>under 18</strong>, a parent or guardian can ask us to erase a profile by making the same request. Just say so in the contact below and we'll take the word for it rather than interrogating a minor about their data rights.</p>
+      <p class="smallprint">Stats are cumulative counters with no backup of past games, so forgetting you resets the record with nothing lost in the void. The ship extension does become available for reassignment.</p>
+    </section>
+
+    <section class="section" id="moderation" aria-labelledby="moderation-title">
+      <h2 class="section-title" id="moderation-title">12. MODERATION AND SAFETY</h2>
+      <p>The telephone connects strangers. That creates obvious risks, so here is the whole enforcement model:</p>
+      <ul>
+        <li>Every server accepts a <strong>code of conduct</strong> once, by clicking <strong>I AGREE</strong>, before any phone command works.</li>
+        <li>Content filters for <strong>profanity, slurs, links, and GIFs</strong> run by default. A server can trust another server to skip filtering, but that trust is mutual and revocable.</li>
+        <li><code>/phone report</code> saves the transcript of the call in progress and flags the involved servers for operators. Operators read these with <code>/phone data reports</code> — the reports were always reviewable, not just collected.</li>
+        <li>Operators can blacklist a server, which blocks its phone outright, tears down any call in progress, and stops it relaying messages.</li>
+      </ul>
+      <p><strong>Two things to be honest about:</strong></p>
+      <ul>
+        <li>A report stores the <strong>full transcript</strong> of the call, including messages from every participant. Filing one captures other people's messages too. That is the point — a transcript nobody keeps can't be reviewed — but it does mean a report is not a private note to staff.</li>
+        <li>Enforcement is ultimately on <strong>server staff</strong>. If your server's members break the rules and staff don't act, the whole server can be cut off. Choose servers you trust, or run one with moderation you actually pay attention to.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="children" aria-labelledby="children-title">
+      <h2 class="section-title" id="children-title">13. CHILDREN</h2>
+      <p>Computer is not directed at children under 13, and we don't knowingly collect data from them. Discord's minimum age is 13 in most countries. The game is playable by teens and adults; the telephone network is explicitly a public space where the code of conduct forbids content inappropriate for minors, and violations get a server blacklisted.</p>
+      <p>If you believe a child under 13 has used the bot, contact us and we'll erase the profile.</p>
+    </section>
+
+    <section class="section" id="changes" aria-labelledby="changes-title">
+      <h2 class="section-title" id="changes-title">14. CHANGES TO THIS POLICY</h2>
+      <p>We may update this page as the bot changes. If a change materially affects what we collect or who we share it with — particularly anything in <a href="#ai">Section 9</a> — we'll update the page and adjust the effective date below.</p>
+      <p class="smallprint">Because the bot's source is public, you can always read the code and see for yourself what is stored. If this page and the code ever disagree, the code is the truth and this page is the bug.</p>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <h2 class="section-title" id="contact-title">15. CONTACT &amp; EFFECTIVE DATE</h2>
+      <p><strong>Effective date:</strong> <code>5 October 2026</code>.</p>
+      <p><strong>Questions, corrections, or an erasure request:</strong> open an issue on <a href="https://discord.gg/3ew2nxAjbC" target="_blank" rel="noopener">the support server</a>, or reach the operator on Discord as <strong>neptunetheii</strong> or by email at <a href="mailto:neptunetheii@proton.me">neptunetheii@proton.me</a>. If this page is ever out of date, say so and we'll fix the page — that's a bug report like any other.</p>
+      <p><strong>Related:</strong> <a href="terms.html">Terms of Service</a> · <a href="index.html">Back to the bot</a></p>
+    </section>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">Computer — site information</div>
+        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
+      </div>
+      <div class="window-body">
+        <div class="footer-row">
+          <nav class="footer-links" aria-label="Footer">
+            <a href="index.html">Home</a>
+            <a href="space-mafia.html">Space Mafia</a>
+            <a href="telephone.html">Telephone</a>
+            <a href="commands.html">Commands</a>
+            <a href="docs.html">Documentation</a>
+            <a href="community.html">Community</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+          </nav>
+          <div>Visitors: <span class="odometer" id="hit-counter" aria-hidden="true"></span><span class="visually-hidden">decorative counter, not real analytics</span></div>
+        </div>
+        <hr class="dotted">
+        <div class="footer-row">
+          <span class="badge800">Best viewed at 800 &times; 600</span>
+          <span>Last updated: <time datetime="2026-10-13">13 Oct 2026</time></span>
+        </div>
+                <div class="footer-row" style="justify-content:center">
+          <div class="badges">
+            <img src="assets/img/badges/html40.svg" alt="HTML 4.0 valid" width="88" height="31">
+            <img src="assets/img/badges/y2k.svg" alt="Y2K compliant" width="88" height="31">
+            <img src="assets/img/badges/netscape.svg" alt="Best viewed in Netscape" width="88" height="31">
+            <img src="assets/img/badges/ie.svg" alt="Get Internet Explorer" width="88" height="31">
+            <img src="assets/img/badges/flash.svg" alt="Get Flash Player" width="88" height="31">
+            <img src="assets/img/badges/frames.svg" alt="This site is frames free" width="88" height="31">
+            <img src="assets/img/badges/notepad.svg" alt="Made with Notepad" width="88" height="31">
+            <a href="community.html"><img src="assets/img/badges/guestbook.svg" alt="Sign my guestbook" width="88" height="31"></a>
+            <a href="https://discord.gg/3ew2nxAjbC" rel="noopener"><img src="assets/img/badges/discord.svg" alt="Powered by Discord" width="88" height="31"></a>
+            <img src="assets/img/badges/construction.svg" alt="Under construction" width="88" height="31">
+            <img src="assets/img/badges/800x600.svg" alt="Best viewed at 800 by 600" width="88" height="31">
+          </div>
+        </div>
+<p class="footer-fineprint">
+          &copy; <span data-year>2026</span> Computer. Not affiliated with Discord Inc., Innersloth or Among Us.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
