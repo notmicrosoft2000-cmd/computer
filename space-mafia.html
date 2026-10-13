@@ -11,18 +11,10 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="wrap">
+<div class="page">
 
-  <header class="site-header window">
-    <div class="title-bar">
-      <div class="title-bar-text"><img class="title-logo" src="assets/img/logo.svg" alt="">Computer — Discord bot</div>
-      <div class="title-bar-controls" aria-hidden="true">
-        <button aria-label="Minimize" tabindex="-1"></button>
-        <button aria-label="Maximize" tabindex="-1"></button>
-        <button aria-label="Close" tabindex="-1"></button>
-      </div>
-    </div>
-    <div class="window-body">
+  <header class="site-header">
+    <div class="banner">
       <div class="brand-row">
         <img class="brand-logo" src="assets/img/logo.svg" alt="Pixel-art CRT computer logo">
         <div class="brand-text">
@@ -34,26 +26,63 @@
           <a class="btn" href="commands.html#space-mafia">All game commands</a>
         </div>
       </div>
-      <button class="nav-toggle btn" aria-expanded="true" aria-controls="mainnav">&#9776; Menu</button>
-      <nav class="menubar" id="mainnav" aria-label="Main navigation">
+    </div>
+    <button class="nav-toggle btn" aria-expanded="true" aria-controls="mainnav">&#9776; Menu</button>
+    <nav class="menubar" id="mainnav" aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="space-mafia.html" aria-current="page">Space Mafia</a>
-        <a href="telephone.html">Telephone</a>
+        <a href="space-mafia.html" aria-current="page">Space Mafia <span class="newflag">new</span></a>
+        <a href="telephone.html">Telephone <span class="newflag">new</span></a>
         <a href="commands.html">Commands</a>
         <a href="docs.html">Documentation</a>
         <a href="community.html">Community</a>
-      </nav>
-    </div>
+    </nav>
   </header>
 
-  <main id="main">
+      <div class="layout">
+      <aside class="col-left" aria-label="Page contents">
+        <div class="sidebox">
+          <h2 class="side-head">On this page</h2>
+          <ul class="side-list">
+            <li><a href="#sm-intro">The lobby is in a channel. The game happens in your DMs.</a></li>
+            <li><a href="#sm-lobby">Lobby control console</a></li>
+            <li><a href="#sm-roles">Crewmates, impostors, and the ones in between</a></li>
+            <li><a href="#sm-vote">What a vote looks like</a></li>
+            <li><a href="#sm-ship">Rooms, sabotage and minigames</a></li>
+            <li><a href="#sm-rules">Tune the voyage</a></li>
+            <li><a href="#sm-cmds">Running a game</a></li>
+            <li><a href="#sm-how">From lobby to case file</a></li>
+          </ul>
+        </div>
+        <div class="sidebox">
+          <h2 class="side-head">Site map</h2>
+          <ul class="side-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="space-mafia.html">Space Mafia <span class="newflag">new</span></a></li>
+            <li><a href="telephone.html">Telephone <span class="newflag">new</span></a></li>
+            <li><a href="commands.html">Commands</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="sidebox">
+          <h2 class="side-head">What's new</h2>
+          <ul class="side-list">
+            <li><span class="newflag">new</span> Privacy &amp; Terms on this site</li>
+            <li>Desktop icons &amp; 88&times;31 badges</li>
+            <li>Cross-server telephone &amp; Phone Book</li>
+          </ul>
+        </div>
+        <div class="sidebox construction">
+          <img src="assets/img/badges/construction.svg" alt="Under construction" width="88" height="31">
+          <p class="blink">always under construction</p>
+        </div>
+      </aside>
+      <main id="main" class="col-center">
 
-    <section class="section window" aria-labelledby="sm-intro">
-      <div class="title-bar">
-        <div class="title-bar-text">space_mafia — about</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="sm-intro">
+      <div class="section-body">
         <h2 class="section-title" id="sm-intro">The lobby is in a channel. The game happens in your DMs.</h2>
         <p class="panel-copy">
           Run <code>/sus new</code> in any channel and players press <strong>join</strong>. When the host
@@ -68,12 +97,8 @@
     </section>
 
     <!-- ============================ lobby demo ============================ -->
-    <section class="section window" aria-labelledby="sm-lobby">
-      <div class="title-bar">
-        <div class="title-bar-text">Lobby preview <span class="sample-flag">simulated</span></div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="sm-lobby">
+      <div class="section-body">
         <h2 class="section-title" id="sm-lobby">Lobby control console</h2>
         <p class="panel-copy">
           This is an <strong>interactive illustration only</strong>. It does not start, join or represent a
@@ -99,23 +124,23 @@
           <li role="tab" aria-selected="false" aria-controls="phase-vote" tabindex="-1"><a href="#phase-vote">Voting</a></li>
           <li role="tab" aria-selected="false" aria-controls="phase-res" tabindex="-1"><a href="#phase-res">Results</a></li>
         </menu>
-        <div class="window" role="tabpanel" id="phase-lobby" aria-label="Lobby phase">
-          <div class="window-body">
+        <div class="group" role="tabpanel" id="phase-lobby" aria-label="Lobby phase">
+          <div class="section-body">
             <p class="panel-copy">Players join, the host pads the crew with bots (<em>+ bot</em> / <em>&minus; bot</em>), pings the server with <em>ping players</em>, then hits <em>begin</em>.</p>
           </div>
         </div>
-        <div class="window" role="tabpanel" id="phase-disc" aria-label="Discussion phase" hidden>
-          <div class="window-body">
+        <div class="group" role="tabpanel" id="phase-disc" aria-label="Discussion phase" hidden>
+          <div class="section-body">
             <p class="panel-copy">A body is reported or the emergency button is hit. Everyone gathers in the cafeteria; chat lines relay into every living player's DMs while the discussion timer runs.</p>
           </div>
         </div>
-        <div class="window" role="tabpanel" id="phase-vote" aria-label="Voting phase" hidden>
-          <div class="window-body">
+        <div class="group" role="tabpanel" id="phase-vote" aria-label="Voting phase" hidden>
+          <div class="section-body">
             <p class="panel-copy">Vote menus slide into living players' DMs. Majority ejects; ties and skip-majority eject nobody. Then it is back to tasks.</p>
           </div>
         </div>
-        <div class="window" role="tabpanel" id="phase-res" aria-label="Results phase" hidden>
-          <div class="window-body">
+        <div class="group" role="tabpanel" id="phase-res" aria-label="Results phase" hidden>
+          <div class="section-body">
             <p class="panel-copy">A victory card posts in the channel with the full case file: role reveal, kill timeline, kill-cam reel and voting record. One button starts a rematch.</p>
           </div>
         </div>
@@ -124,12 +149,8 @@
     </section>
 
     <!-- ============================== roles ============================== -->
-    <section class="section window" aria-labelledby="sm-roles">
-      <div class="title-bar">
-        <div class="title-bar-text">Roles</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="sm-roles">
+      <div class="section-body">
         <h2 class="section-title" id="sm-roles">Crewmates, impostors, and the ones in between</h2>
         <p class="panel-copy">
           <span class="role-chip crew">Crewmate</span>
@@ -166,12 +187,8 @@
     </section>
 
     <!-- ============================== voting ============================= -->
-    <section class="section window" aria-labelledby="sm-vote">
-      <div class="title-bar">
-        <div class="title-bar-text">Voting interface <span class="sample-flag">example</span></div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="sm-vote">
+      <div class="section-body">
         <h2 class="section-title" id="sm-vote">What a vote looks like</h2>
         <p class="panel-copy">A static example of the DM vote menu. Real ballots appear in players' DMs during a game.</p>
         <div class="vote-box" role="table" aria-label="Example vote tally">
@@ -187,12 +204,8 @@
     </section>
 
     <!-- =========================== ship + tasks ========================= -->
-    <section class="section window" aria-labelledby="sm-ship">
-      <div class="title-bar">
-        <div class="title-bar-text">The ship &amp; your tasks</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="sm-ship">
+      <div class="section-body">
         <h2 class="section-title" id="sm-ship">Rooms, sabotage and minigames</h2>
         <div class="grid-2">
           <div>
@@ -221,12 +234,8 @@
     </section>
 
     <!-- ========================== house rules ========================== -->
-    <section class="section window" aria-labelledby="sm-rules">
-      <div class="title-bar">
-        <div class="title-bar-text">House rules — /sus settings</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="sm-rules">
+      <div class="section-body">
         <h2 class="section-title" id="sm-rules">Tune the voyage</h2>
         <p class="panel-copy">The host opens <code>/sus settings</code> for an interactive panel. Settings are saved per channel and apply to every new game, with some applied live.</p>
         <div class="table-scroll">
@@ -250,12 +259,8 @@
     </section>
 
     <!-- ============================ commands =========================== -->
-    <section class="section window" aria-labelledby="sm-cmds">
-      <div class="title-bar">
-        <div class="title-bar-text">Game commands</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="sm-cmds">
+      <div class="section-body">
         <h2 class="section-title" id="sm-cmds">Running a game</h2>
         <div class="table-scroll">
           <table class="doc-table">
@@ -276,12 +281,8 @@
     </section>
 
     <!-- ============================== how ============================== -->
-    <section class="section window" aria-labelledby="sm-how">
-      <div class="title-bar">
-        <div class="title-bar-text">How a round flows</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="sm-how">
+      <div class="section-body">
         <h2 class="section-title" id="sm-how">From lobby to case file</h2>
         <ol>
           <li><strong>Lobby</strong> — <code>/sus new</code>, players join, the host adds bots and begins.</li>
@@ -295,53 +296,44 @@
     </section>
 
   </main>
+    </div>
 
   <footer class="site-footer">
-    <div class="window">
-      <div class="title-bar">
-        <div class="title-bar-text">Computer — site information</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
-        <div class="footer-row">
-          <nav class="footer-links" aria-label="Footer">
-            <a href="index.html">Home</a>
-            <a href="space-mafia.html">Space Mafia</a>
-            <a href="telephone.html">Telephone</a>
-            <a href="commands.html">Commands</a>
-            <a href="docs.html">Documentation</a>
-            <a href="community.html">Community</a>
-            <a href="privacy.html" rel="noopener">Privacy</a>
-            <a href="terms.html" rel="noopener">Terms</a>
-          </nav>
-          <div>Visitors: <span class="odometer" id="hit-counter" aria-hidden="true"></span><span class="visually-hidden">decorative counter, not real analytics</span></div>
-        </div>
-        <hr class="dotted">
-        <div class="footer-row">
-          <span class="badge800">Best viewed at 800 &times; 600</span>
-          <span>Last updated: <time datetime="2026-10-12">12 Oct 2026</time></span>
-        </div>
-                <div class="footer-row" style="justify-content:center">
-          <div class="badges">
-            <img src="assets/img/badges/html40.svg" alt="HTML 4.0 valid" width="88" height="31">
-            <img src="assets/img/badges/y2k.svg" alt="Y2K compliant" width="88" height="31">
-            <img src="assets/img/badges/netscape.svg" alt="Best viewed in Netscape" width="88" height="31">
-            <img src="assets/img/badges/ie.svg" alt="Get Internet Explorer" width="88" height="31">
-            <img src="assets/img/badges/flash.svg" alt="Get Flash Player" width="88" height="31">
-            <img src="assets/img/badges/frames.svg" alt="This site is frames free" width="88" height="31">
-            <img src="assets/img/badges/notepad.svg" alt="Made with Notepad" width="88" height="31">
-            <a href="community.html"><img src="assets/img/badges/guestbook.svg" alt="Sign my guestbook" width="88" height="31"></a>
-            <a href="https://discord.gg/3ew2nxAjbC" rel="noopener"><img src="assets/img/badges/discord.svg" alt="Powered by Discord" width="88" height="31"></a>
-            <img src="assets/img/badges/construction.svg" alt="Under construction" width="88" height="31">
-            <img src="assets/img/badges/800x600.svg" alt="Best viewed at 800 by 600" width="88" height="31">
-          </div>
-        </div>
-<p class="footer-fineprint">
-          &copy; <span data-year>2026</span> Computer. Not affiliated with Discord Inc., Innersloth or Among Us.
-          Lobby and vote previews are simulated with fictional players.
-        </p>
-      </div>
+    <div class="footer-row">
+      <nav class="footer-links" aria-label="Footer">
+          <a href="index.html">Home</a>
+          <a href="space-mafia.html">Space Mafia</a>
+          <a href="telephone.html">Telephone</a>
+          <a href="commands.html">Commands</a>
+          <a href="docs.html">Documentation</a>
+          <a href="community.html">Community</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+      </nav>
+      <div>Visitors: <span class="odometer" id="hit-counter" aria-hidden="true"></span><span class="visually-hidden">decorative counter, not real analytics</span></div>
     </div>
+    <hr class="hr">
+    <div class="footer-row">
+      <span class="badge800">Best viewed at 800 &times; 600</span>
+      <span class="on-construction">&#128679; this site is always under construction &#128679;</span>
+      <span>Last updated: <time datetime="2026-10-13">13 Oct 2026</time></span>
+    </div>
+    <div class="footer-row footer-badges">
+        <div class="badges">
+          <img src="assets/img/badges/html40.svg" alt="HTML 4.0 valid" width="88" height="31">
+          <img src="assets/img/badges/y2k.svg" alt="Y2K compliant" width="88" height="31">
+          <img src="assets/img/badges/netscape.svg" alt="Best viewed in Netscape" width="88" height="31">
+          <img src="assets/img/badges/ie.svg" alt="Get Internet Explorer" width="88" height="31">
+          <img src="assets/img/badges/flash.svg" alt="Get Flash Player" width="88" height="31">
+          <img src="assets/img/badges/frames.svg" alt="This site is frames free" width="88" height="31">
+          <img src="assets/img/badges/notepad.svg" alt="Made with Notepad" width="88" height="31">
+          <a href="community.html"><img src="assets/img/badges/guestbook.svg" alt="Sign my guestbook" width="88" height="31"></a>
+          <a href="https://discord.gg/3ew2nxAjbC" rel="noopener"><img src="assets/img/badges/discord.svg" alt="Powered by Discord" width="88" height="31"></a>
+          <img src="assets/img/badges/construction.svg" alt="Under construction" width="88" height="31">
+          <img src="assets/img/badges/800x600.svg" alt="Best viewed at 800 by 600" width="88" height="31">
+        </div>
+    </div>
+    <p class="footer-fineprint">&copy; <span data-year>2026</span> Computer. Not affiliated with Discord Inc., Innersloth or Among Us. Lobby and vote previews are simulated with fictional players.</p>
   </footer>
 
 </div>

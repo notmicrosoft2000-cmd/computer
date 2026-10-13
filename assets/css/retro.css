@@ -1,15 +1,17 @@
 /* ==========================================================================
-   COMPUTER — retro Windows 98 desktop theme
-   Built on the real 98.css library. 98.css owns every bevel, button, field,
-   tab, table and title bar. This file adds the *desktop* (icons, taskbar,
-   Start menu, browser chrome), the old-web page furniture (webring, hit
-   counter, 88x31 badges, guestbook), layout and typography.
+   COMPUTER — Windows 9x bevels, classic web layout
+   Built on the real 98.css library. 98.css owns every bevel, button, field
+   and table. This file adds a *web page* layout on top: a tiled desktop, a
+   beveled banner and menu bar, a sidebar with plain link lists, and content
+   that flows as an ordinary document — headings, paragraphs, lists, tables
+   and etched rules — instead of a stack of titled windows.
    ========================================================================== */
 
 :root {
   --desktop: #0a7a7a;
   --silver: #c0c0c0;
   --silver-light: #dfdfdf;
+  --grey: #808080;
   --navy: #000080;
   --navy-link: #0000ee;
   --title-blue: #1084d0;
@@ -17,30 +19,23 @@
   --ok: #008000;
   --warn: #a05000;
   --bad: #c00000;
-  --page-max: 1000px;
+  --page-max: 1040px;
 }
 
 * { box-sizing: border-box; }
 
-.wrap {
-  width: 100%;
-  max-width: var(--page-max);
-  margin: 0 auto;
-  padding: 10px 8px 30px;
-}
+html { background: var(--desktop); }
 
 body {
   margin: 0;
   color: var(--ink);
   font-family: Tahoma, "MS Sans Serif", Geneva, Verdana, Arial, sans-serif;
   font-size: 12px;
-  line-height: 1.4;
+  line-height: 1.5;
   background-color: var(--desktop);
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Crect width='8' height='8' fill='%230a7a7a'/%3E%3Crect width='2' height='2' x='0' y='0' fill='%23086d6d'/%3E%3Crect width='2' height='2' x='5' y='5' fill='%23086d6d'/%3E%3C/svg%3E");
   background-attachment: fixed;
 }
-
-body.desktop { padding: 8px 8px 46px; }
 
 a { color: var(--navy-link); }
 a:hover { color: var(--bad); }
@@ -61,7 +56,7 @@ img { image-rendering: pixelated; }
 .skip-link:focus { left: 8px; top: 8px; }
 
 /* ==========================================================================
-   Desktop icons (a fixed column on wide screens)
+   Desktop icons (a fixed column on very wide screens)
    ========================================================================== */
 
 .desk-icons { display: none; }
@@ -89,202 +84,172 @@ img { image-rendering: pixelated; }
 .dicon:hover span, .dicon:focus span { background: var(--navy); text-shadow: none; }
 
 /* ==========================================================================
-   Browser chrome header (Internet-Explorer-style toolbar)
+   The page — a white document floating on the tiled desktop
    ========================================================================== */
 
-.browser { margin-bottom: 10px; }
-.browser .title-bar { min-height: 21px; }
-.title-logo { width: 15px; height: 15px; vertical-align: -3px; margin-right: 5px; }
-
-.browser-toolbar {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 3px;
-  padding: 3px 4px; background: var(--silver);
-  border-bottom: 1px solid #808080;
+.page {
+  max-width: var(--page-max);
+  margin: 12px auto 26px;
+  background: #fff;
+  border: 1px solid #404040;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, .35);
 }
-.tool-btn {
-  display: inline-flex; align-items: center; gap: 5px;
-  min-height: 22px; padding: 2px 8px 2px 6px;
-  border: 1px solid transparent;
-  background: none; font-family: Tahoma, Arial; font-size: 11px; color: #000;
-  cursor: pointer; text-decoration: none;
-}
-.tool-btn:hover { border-color: #fff #808080 #808080 #fff; background: #c8c8c8; color: #000; }
-.tool-btn:active { border-color: #808080 #fff #fff #808080; }
-.tool-btn[disabled] { color: #808080; cursor: default; }
-.tool-btn .glyph {
-  display: inline-block; width: 14px; height: 14px; line-height: 14px;
-  text-align: center; font-size: 11px;
-  background: #d8d8d8; box-shadow: inset -1px -1px #808080, inset 1px 1px #fff;
-}
-.tool-sep { width: 1px; height: 20px; margin: 0 3px; background: #808080; box-shadow: 1px 0 #fff; }
-
-.address-row {
-  display: flex; align-items: center; gap: 6px;
-  padding: 3px 6px; background: var(--silver);
-  border-bottom: 1px solid #808080;
-}
-.address-row label { font-size: 11px; color: #000; }
-.address {
-  flex: 1 1 auto; min-width: 0;
-  font-family: "Lucida Console", "Courier New", monospace; font-size: 11px;
-  padding: 2px 5px; background: #fff;
-  box-shadow: inset -1px -1px #fff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-
-/* site navigation as an old menu bar */
-.menubar {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 1px;
-  padding: 2px 3px;
-  border-top: 1px solid #fff; border-bottom: 1px solid #808080;
-  background: var(--silver);
-}
-.menubar a {
-  display: inline-block; padding: 3px 10px;
-  color: #000; text-decoration: none; font-size: 12px; white-space: nowrap;
-}
-.menubar a:hover, .menubar a:focus-visible { background: var(--navy); color: #fff; }
-.menubar a[aria-current="page"] { background: var(--silver-light); color: #000; font-weight: 700; box-shadow: inset -1px -1px #fff, inset 1px 1px #808080; }
-.menubar .menubar-sep { width: 1px; height: 16px; background: #808080; box-shadow: 1px 0 #fff; margin: 0 2px; }
-
-.browser-status {
-  display: flex; align-items: center; justify-content: space-between; gap: 8px;
-  padding: 2px 6px; background: var(--silver);
-  border-top: 1px solid #fff;
-  font-size: 11px;
-}
-.browser-status .left, .browser-status .right { display: flex; align-items: center; gap: 8px; }
-.browser-status .cell { box-shadow: inset -1px -1px #fff, inset 1px 1px #808080; padding: 1px 6px; }
 
 /* ==========================================================================
-   Three-column old-web layout
+   Banner + menu bar (the site chrome)
+   ========================================================================== */
+
+.site-header { margin: 0; }
+
+.banner {
+  padding: 12px 14px;
+  background: var(--silver);
+  border-bottom: 1px solid var(--grey);
+  box-shadow: inset 0 1px #fff, inset 0 -1px var(--silver-light);
+}
+
+.brand-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.brand-logo { width: 52px; height: 52px; flex: 0 0 auto; }
+.brand-text { flex: 1 1 260px; min-width: 0; }
+.brand-text h1 {
+  margin: 0;
+  font-family: "Pixelated MS Sans Serif", "MS Sans Serif", Tahoma, Arial, sans-serif;
+  font-size: 24px; font-weight: 700; line-height: 1.1; color: #000;
+  text-shadow: 1px 1px 0 #fff;
+}
+.tagline { margin: 3px 0 0; font-size: 12px; color: #303030; }
+
+.brand-cta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+.brand-cta p { margin: 0; }
+
+/* Main navigation as a row of beveled toolbar buttons */
+.nav-toggle { display: none; margin: 8px 12px 0; }
+
+.menubar {
+  display: flex; flex-wrap: wrap; gap: 2px;
+  padding: 3px 4px;
+  background: var(--silver);
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid var(--grey);
+  box-shadow: inset 0 1px var(--silver-light);
+}
+.menubar a {
+  display: inline-block; padding: 4px 13px;
+  font-size: 12px; color: #000; text-decoration: none; white-space: nowrap;
+  background: var(--silver);
+  box-shadow: inset -1px -1px var(--grey), inset 1px 1px #fff;
+}
+.menubar a:hover, .menubar a:focus-visible {
+  background: var(--silver-light); color: #000;
+}
+.menubar a[aria-current="page"] {
+  background: #b4b4b4; font-weight: 700;
+  box-shadow: inset 1px 1px var(--grey), inset -1px -1px #fff;
+}
+
+/* ==========================================================================
+   Two-column web layout: sidebar + content
    ========================================================================== */
 
 .layout {
   display: grid;
-  grid-template-columns: 176px minmax(0, 1fr) 176px;
-  gap: 9px;
+  grid-template-columns: 216px minmax(0, 1fr);
+  gap: 18px;
   align-items: start;
-  max-width: var(--page-max);
-  margin: 0 auto;
+  padding: 14px;
 }
-.col-left, .col-right { display: flex; flex-direction: column; gap: 9px; }
-.col-center { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.col-left { min-width: 0; }
+.col-center { min-width: 0; }
 
-@media (min-width: 1180px) {
-  .layout { padding-left: 6px; }
+/* Sidebar widgets */
+.sidebox { margin: 0 0 16px; }
+.sidebox:last-child { margin-bottom: 0; }
+.side-head {
+  margin: 0 0 5px; padding-bottom: 3px;
+  font-family: "Pixelated MS Sans Serif", Tahoma, Arial, sans-serif;
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--navy);
+  border-bottom: 1px solid var(--grey);
+  box-shadow: 0 1px 0 #fff;
+}
+.side-list { list-style: none; margin: 0; padding: 0; }
+.side-list li { padding: 3px 0; border-bottom: 1px dotted #c8c8c8; }
+.side-list li:last-child { border-bottom: 0; }
+.side-list a { text-decoration: underline; }
+.side-list .newflag { margin-right: 5px; }
+
+.construction { text-align: center; }
+.construction img { width: 88px; height: 31px; margin-bottom: 4px; }
+
+.blink {
+  margin: 0; font-size: 11px; font-weight: 700; color: var(--bad);
+  text-transform: uppercase; letter-spacing: .05em;
+  animation: blink 1.1s steps(2, start) infinite;
 }
 
 /* ==========================================================================
-   Window helpers
+   Content column — an ordinary document
    ========================================================================== */
 
-.window { min-width: 0; }
-.window-body { padding: 8px; }
-.window-body > *:first-child { margin-top: 0; }
-.window-body > *:last-child { margin-bottom: 0; }
-
-.win-toolbar {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
-  padding: 3px 5px; background: var(--silver);
-  border-bottom: 1px solid #808080;
-}
-.win-toolbar .tool-btn { min-height: 20px; }
+.section { margin: 0 0 22px; }
+.section:last-child { margin-bottom: 0; }
 
 .section-title {
-  font-family: "Pixelated MS Sans Serif", Tahoma, Arial;
-  font-size: 14px; margin: 0 0 6px; padding-bottom: 2px;
-  border-bottom: 1px dotted #808080;
+  margin: 0 0 8px; padding-bottom: 4px;
+  font-family: "Pixelated MS Sans Serif", "MS Sans Serif", Tahoma, Arial, sans-serif;
+  font-size: 15px; font-weight: 700; color: var(--navy);
+  border-bottom: 1px solid var(--grey);
+  box-shadow: 0 1px 0 #fff;
 }
-.subtitle { font-size: 12px; font-weight: 700; margin: 9px 0 4px; color: #000080; }
+.section-body > *:first-child { margin-top: 0; }
+.section-body > *:last-child { margin-bottom: 0; }
+
+.subtitle { font-size: 12px; font-weight: 700; margin: 10px 0 4px; color: var(--navy); }
 
 p, li, td, dd, dt { font-size: 12px; }
-.panel-copy { margin: 0 0 7px; }
+.panel-copy { margin: 0 0 8px; }
 .panel-copy:last-child { margin-bottom: 0; }
 
-.hr { border: 0; border-top: 1px solid #808080; border-bottom: 1px solid #fff; margin: 8px 0; }
-.dotted { border: 0; border-top: 1px dotted #808080; margin: 8px 0; }
+.tight { margin: 5px 0; padding-left: 20px; }
+.tight li { margin: 2px 0; }
+ol.steps { margin: 6px 0; padding-left: 22px; }
+ol.steps li { margin: 4px 0; }
+
+.hr { height: 0; margin: 10px 0; border: 0; border-top: 1px solid var(--grey); border-bottom: 1px solid #fff; }
+.dotted { margin: 9px 0; border: 0; border-top: 1px dotted var(--grey); }
 
 .smallprint { color: #404040; font-size: 11px; }
+
 .newflag {
   display: inline-block; padding: 0 3px; margin-left: 4px;
   font-size: 9px; font-weight: 700; letter-spacing: .04em;
-  color: #fff; background: #c00000; text-transform: uppercase;
+  color: #fff; background: var(--bad); text-transform: uppercase;
   animation: blink 1s steps(2, start) infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
 
-/* ==========================================================================
-   Sidebar widgets
-   ========================================================================== */
-
-.widget-links { list-style: none; margin: 0; padding: 0; }
-.widget-links li { padding: 1px 0; border-bottom: 1px dotted #d0d0d0; }
-.widget-links li:last-child { border-bottom: 0; }
-.widget-links a { text-decoration: underline; }
-
-.whatsnew { list-style: none; margin: 0; padding: 0; }
-.whatsnew li { padding: 3px 0; border-bottom: 1px dotted #d0d0d0; }
-.whatsnew li:last-child { border-bottom: 0; }
-.whatsnew time { display: block; color: #808080; font-size: 10px; }
-
-.webring { text-align: center; }
-.webring .ring-name {
-  display: block; font-family: "Pixelated MS Sans Serif", Tahoma; font-size: 12px;
-  color: #000080; margin-bottom: 4px;
-}
-.webring .ring-nav { display: flex; justify-content: center; gap: 4px; margin-bottom: 4px; }
-.webring .ring-nav a {
-  display: block; padding: 1px 6px; font-size: 11px; text-decoration: none; color: #000;
-  background: var(--silver); box-shadow: inset -1px -1px #808080, inset 1px 1px #fff;
-}
-.webring .ring-nav a:hover { background: var(--silver-light); color: #000; }
-
-.counter-box { text-align: center; }
-.odometer { display: inline-flex; gap: 1px; }
-.odometer span {
-  display: inline-block; width: 15px; padding: 1px 0; text-align: center;
-  font-family: "Lucida Console", monospace; font-size: 12px;
-  color: #00ff00; background: #000;
-  box-shadow: inset -1px -1px #404040, inset 1px 1px #303030;
-}
-
-.badges { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
-.badges img { width: 88px; height: 31px; }
-.badges img:hover { outline: 1px dotted #000; }
-
-.award-row { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.on-construction { font-weight: 700; color: var(--bad); }
 
 /* ==========================================================================
-   Guestbook + poll (meaningful interactions, clearly demos)
+   Boxes (interactive demos only, on an otherwise plain page)
    ========================================================================== */
 
-.guestbook-entries { list-style: none; margin: 8px 0 0; padding: 0; }
-.guestbook-entries li {
-  padding: 5px 6px; margin-bottom: 5px; background: #fffef0;
-  box-shadow: inset -1px -1px #fff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+.group { }
+.box,
+[role="tabpanel"],
+.phone-card {
+  margin: 8px 0; padding: 9px 10px; background: #fff;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px var(--grey), inset -2px -2px var(--silver-light), inset 2px 2px #0a0a0a;
 }
-.guestbook-entries .who { font-weight: 700; color: #000080; }
-.guestbook-entries .when { color: #808080; font-size: 10px; }
-
-.poll-option { display: flex; align-items: center; gap: 6px; padding: 2px 0; }
-.poll-bar { flex: 1 1 auto; height: 12px; background: #fff; box-shadow: inset -1px -1px #fff, inset 1px 1px #808080; }
-.poll-bar span { display: block; height: 100%; background: var(--navy); width: 0; }
-.poll-pct { width: 34px; text-align: right; font-family: "Lucida Console", monospace; font-size: 11px; }
-
-/* ==========================================================================
-   Forms / field help
-   ========================================================================== */
-
-.field-note { color: #404040; font-size: 11px; margin: 2px 0 0; }
-.field-error { color: #a00000; font-size: 11px; margin: 3px 0 0; font-weight: 700; }
+.phase-tabs { margin: 6px 0 8px; }
+.phase-note { margin: 8px 0 0; color: #404040; font-size: 11px; }
 
 /* ==========================================================================
    Tables (documentation)
    ========================================================================== */
 
 .table-scroll { width: 100%; overflow-x: auto; }
-table.doc-table { white-space: normal; min-width: 560px; }
+table.doc-table { white-space: normal; min-width: 520px; }
 table.doc-table td { vertical-align: top; padding: 3px 6px; height: auto; }
 table.doc-table tbody tr:nth-child(even) td { background: #f4f4f4; }
 table.doc-table .col-cmd { white-space: nowrap; }
@@ -300,12 +265,12 @@ pre {
   font-family: "Lucida Console", "Courier New", monospace; font-size: 11px;
   white-space: pre-wrap; word-break: break-word;
   background: #fff; padding: 6px 8px; margin: 0;
-  box-shadow: inset -1px -1px #fff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px var(--grey), inset -2px -2px var(--silver-light), inset 2px 2px #0a0a0a;
 }
 pre code { font-size: 11px; }
 
 /* ==========================================================================
-   Status list
+   Status list, tags and flags
    ========================================================================== */
 
 .status-list { list-style: none; margin: 0; padding: 0; }
@@ -315,7 +280,7 @@ pre code { font-size: 11px; }
 
 .status-dot {
   display: inline-block; width: 9px; height: 9px; margin-right: 4px; vertical-align: 0;
-  background: var(--silver); box-shadow: inset -1px -1px #808080, inset 1px 1px #fff;
+  background: var(--silver); box-shadow: inset -1px -1px var(--grey), inset 1px 1px #fff;
 }
 .status-dot.ok { background: #00c000; box-shadow: inset -1px -1px #003300, inset 1px 1px #b6ffb6; }
 .status-dot.warn { background: #e0b000; box-shadow: inset -1px -1px #5a4400, inset 1px 1px #fff0b0; }
@@ -323,13 +288,13 @@ pre code { font-size: 11px; }
 
 .sample-flag {
   display: inline-block; padding: 0 4px; font-size: 9px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .04em; color: #fff; background: #808080;
+  text-transform: uppercase; letter-spacing: .04em; color: #fff; background: var(--grey);
   box-shadow: inset -1px -1px #404040, inset 1px 1px #c0c0c0; vertical-align: 1px;
 }
 
 .tag {
   display: inline-block; padding: 0 5px; margin: 0 3px 3px 0; font-size: 11px;
-  background: var(--silver-light); box-shadow: inset -1px -1px #808080, inset 1px 1px #fff;
+  background: var(--silver-light); box-shadow: inset -1px -1px var(--grey), inset 1px 1px #fff;
 }
 
 /* ==========================================================================
@@ -338,14 +303,52 @@ pre code { font-size: 11px; }
 
 .btn {
   display: inline-block; min-height: 23px; padding: 3px 12px;
-  font-family: "Pixelated MS Sans Serif", Tahoma, Arial; font-size: 11px;
+  font-family: "Pixelated MS Sans Serif", Tahoma, Arial, sans-serif; font-size: 11px;
   color: #000; text-decoration: none; text-align: center; background: var(--silver);
-  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px var(--silver-light);
   cursor: pointer;
 }
 .btn, .btn:visited { color: #000; }
-.btn:active { box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey; }
+.btn:active { box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px var(--silver-light), inset 2px 2px grey; }
 .btn-strong { font-weight: 700; }
+
+/* ==========================================================================
+   Sidebar navigation for docs / commands / legal (also used by main.js)
+   ========================================================================== */
+
+.docs-body { min-width: 0; }
+.docnav-toggle { display: none; width: 100%; margin-bottom: 6px; }
+.docs-body section { scroll-margin-top: 12px; }
+
+details.doc {
+  margin: 6px 0; background: #fff;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px var(--silver-light), inset 2px 2px #0a0a0a;
+}
+details.doc > summary { cursor: pointer; padding: 3px 7px; font-weight: 700; background: var(--silver-light); list-style: none; }
+details.doc > summary::-webkit-details-marker { display: none; }
+details.doc > summary::before { content: "+"; display: inline-block; width: 11px; font-weight: 700; }
+details.doc[open] > summary::before { content: "\2212"; }
+details.doc .doc-inner { padding: 7px; border-top: 1px dotted var(--grey); }
+
+/* ==========================================================================
+   Legal pages (privacy / terms)
+   ========================================================================== */
+
+.legal .box {
+  margin: 8px 0; padding: 7px 9px; background: #ffffe1;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px var(--grey), inset -2px -2px var(--silver-light), inset 2px 2px #0a0a0a;
+}
+.legal .box.warn { border-left: 3px solid var(--bad); }
+.legal .box h3 { margin: 0 0 4px; }
+.legal .section { margin: 16px 0; }
+.legal h3 { font-size: 12px; font-weight: 700; margin: 10px 0 4px; color: var(--navy); }
+.legal .smallprint { color: #404040; font-size: 11px; margin: 6px 0; }
+.legal .table-scroll { margin: 6px 0; }
+.legal table.doc-table { min-width: 520px; margin: 0; }
+.legal table.doc-table td:first-child { white-space: nowrap; font-weight: 700; }
+.legal ul, .legal ol { padding-left: 20px; }
+.legal li { margin: 2px 0; }
+.legal code { background: var(--silver-light); padding: 0 2px; }
 
 /* ==========================================================================
    Space Mafia lobby demo
@@ -353,9 +356,9 @@ pre code { font-size: 11px; }
 
 .slots { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin: 7px 0; }
 .slot {
-  font-family: "Pixelated MS Sans Serif", Tahoma; font-size: 10px; text-align: center;
+  font-family: "Pixelated MS Sans Serif", Tahoma, sans-serif; font-size: 10px; text-align: center;
   padding: 5px 2px; background: #fff;
-  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px var(--silver-light), inset 2px 2px #0a0a0a;
 }
 .slot b { display: block; font-size: 10px; }
 .slot small { display: block; color: #555; font-size: 9px; }
@@ -368,6 +371,7 @@ pre code { font-size: 11px; }
 .role-chip.imp { background: #b00000; }
 .role-chip.neutral { background: #6a1a8f; }
 
+.vote-box { max-width: 420px; }
 .vote-item { display: grid; grid-template-columns: 1fr 80px; align-items: center; gap: 8px; padding: 3px 0; }
 .vote-item .tally { font-family: "Lucida Console", monospace; text-align: right; }
 
@@ -378,7 +382,7 @@ pre code { font-size: 11px; }
 .phone { max-width: 400px; }
 .lcd {
   font-family: "Lucida Console", monospace; color: #101010; background: #9fb08f;
-  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px var(--silver-light), inset 2px 2px #0a0a0a;
   padding: 7px; margin-bottom: 7px;
 }
 .lcd-status { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; font-weight: 700; text-transform: uppercase; }
@@ -390,265 +394,92 @@ pre code { font-size: 11px; }
 .ring-anim { animation: ring .7s steps(2) infinite; }
 @keyframes ring { 0% { transform: translateX(0); } 100% { transform: translateX(2px); } }
 
-/* ==========================================================================
-   Documentation side nav + collapsibles
-   ========================================================================== */
-
-.docs-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 9px; align-items: start; }
-.docnav { position: sticky; top: 8px; }
-.docnav-toggle { display: none; width: 100%; margin-bottom: 5px; }
-.docnav ul.tree-view { max-height: 72vh; overflow: auto; }
-.docnav .tree-view a { display: block; padding: 1px 2px; text-decoration: none; }
-.docnav .tree-view a:hover { background: var(--navy); color: #fff; }
-.docnav .tree-view a[aria-current="true"] { background: var(--navy); color: #fff; }
-
-.docs-body section { scroll-margin-top: 8px; }
-
-details.doc {
-  margin: 6px 0; background: #fff;
-  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
-}
-details.doc > summary { cursor: pointer; padding: 3px 7px; font-weight: 700; background: var(--silver-light); list-style: none; }
-details.doc > summary::-webkit-details-marker { display: none; }
-details.doc > summary::before { content: "+"; display: inline-block; width: 11px; font-weight: 700; }
-details.doc[open] > summary::before { content: "\2212"; }
-details.doc .doc-inner { padding: 7px; border-top: 1px dotted #808080; }
+.field-row { display: flex; align-items: center; gap: 6px; margin: 0 0 8px; }
+.field-note { color: #404040; font-size: 11px; margin: 2px 0 0; }
+.field-error { color: #a00000; font-size: 11px; margin: 3px 0 0; font-weight: 700; }
 
 /* ==========================================================================
-   Legal pages (privacy / terms)
+   Feature blocks (home page)
    ========================================================================== */
 
-.legal .box {
-  margin: 8px 0; padding: 7px 9px; background: #ffffe1;
-  box-shadow: inset -1px -1px #fff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+.grid-2 > * { min-width: 0; }
+.feature { display: flex; flex-direction: column; }
+.feature-head { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+.feature-icon { width: 32px; height: 32px; }
+.feature h3 {
+  margin: 0; font-family: "Pixelated MS Sans Serif", Tahoma, sans-serif; font-size: 14px; color: var(--navy);
 }
-.legal .box.warn { border-left: 3px solid var(--bad); }
-.legal .box h3 { margin: 0 0 4px; }
-.legal section { margin: 14px 0; }
-.legal h2.section-title { margin-top: 0; }
-.legal h3 { font-size: 12px; font-weight: 700; margin: 10px 0 4px; color: var(--navy); }
-.legal .smallprint { color: #404040; font-size: 11px; margin: 6px 0; }
-.legal .table-scroll { margin: 6px 0; }
-.legal table.doc-table { min-width: 520px; margin: 0; }
-.legal table.doc-table td:first-child { white-space: nowrap; font-weight: 700; }
-.legal ul, .legal ol { padding-left: 20px; }
-.legal li { margin: 2px 0; }
-.legal code { background: var(--silver-light); padding: 0 2px; }
+.feature-actions { margin-top: auto; padding-top: 7px; }
 
 /* ==========================================================================
-   Marquee ticker
+   Badges + hit counter
    ========================================================================== */
 
-.ticker {
-  overflow: hidden; white-space: nowrap; background: #000; color: #ffff66;
-  font-family: Tahoma, Arial; font-size: 12px; padding: 3px 0; margin-bottom: 9px;
-  max-width: var(--page-max); margin-left: auto; margin-right: auto;
-  box-shadow: inset -1px -1px #fff, inset 1px 1px #808080;
+.badges { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+.badges img { width: 88px; height: 31px; }
+.badges img:hover { outline: 1px dotted #000; }
+
+.odometer { display: inline-flex; gap: 1px; vertical-align: middle; }
+.odometer span {
+  display: inline-block; width: 15px; padding: 1px 0; text-align: center;
+  font-family: "Lucida Console", monospace; font-size: 12px;
+  color: #00ff00; background: #000;
+  box-shadow: inset -1px -1px #404040, inset 1px 1px #303030;
 }
-.ticker span { display: inline-block; padding-left: 100%; animation: marquee 34s linear infinite; }
-@keyframes marquee { to { transform: translateX(-100%); } }
 
 /* ==========================================================================
    Site footer
    ========================================================================== */
 
-.site-footer { max-width: var(--page-max); margin: 9px auto 0; }
-.footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; }
-.footer-links { display: flex; flex-wrap: wrap; gap: 3px 12px; }
-
-.webmaster {
-  display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
-}
-
-/* ==========================================================================
-   TASKBAR
-   ========================================================================== */
-
-.taskbar {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 9000;
-  display: flex; align-items: center; gap: 4px;
-  height: 34px; padding: 2px 3px;
+.site-footer {
+  padding: 10px 14px 12px;
   background: var(--silver);
   border-top: 1px solid #fff;
-  box-shadow: inset 0 1px #dfdfdf;
+  box-shadow: inset 0 1px var(--silver-light);
 }
-.start-button {
-  display: inline-flex; align-items: center; gap: 5px;
-  height: 26px; padding: 0 8px 0 5px;
-  font-family: "Pixelated MS Sans Serif", Tahoma; font-size: 12px; font-weight: 700;
-  color: #000; cursor: pointer; border: none;
-  background: var(--silver);
-  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+.footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 3px 14px; }
+.footer-links a { text-decoration: underline; }
+.footer-badges { margin-top: 8px; }
+.badge800 { font-weight: 700; }
+.footer-fineprint {
+  margin: 8px 0 0; padding-top: 8px; border-top: 1px dotted var(--grey);
+  color: #303030; font-size: 11px;
 }
-.start-button[aria-expanded="true"] { box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey; }
-.win-flag {
-  width: 17px; height: 15px; flex: 0 0 auto;
-  background:
-    linear-gradient(#f05030, #f05030) 0 0 / 7px 7px no-repeat,
-    linear-gradient(#50b050, #50b050) 9px 0 / 7px 7px no-repeat,
-    linear-gradient(#5080e0, #5080e0) 0 8px / 7px 7px no-repeat,
-    linear-gradient(#f0c030, #f0c030) 9px 8px / 7px 7px no-repeat;
-  filter: drop-shadow(0 0 0 #000);
-  transform: skewX(-8deg);
-}
-.quick-launch { display: none; gap: 2px; padding: 0 3px; border-left: 1px solid #808080; box-shadow: inset 1px 0 #fff; }
-@media (min-width: 720px) { .quick-launch { display: flex; } }
-.quick-launch img { width: 16px; height: 16px; }
-
-.task-buttons { display: flex; flex: 1 1 auto; gap: 3px; min-width: 0; overflow: hidden; }
-.task-btn {
-  display: flex; align-items: center; gap: 5px;
-  max-width: 160px; min-width: 90px; height: 24px; padding: 0 7px;
-  font-family: Tahoma, Arial; font-size: 11px; color: #000; text-align: left; cursor: pointer;
-  border: none; background: var(--silver);
-  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
-}
-.task-btn .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.task-btn.active { box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey; background: #d0d0d0; }
-.task-btn.min { color: #606060; }
-
-.tray {
-  display: flex; align-items: center; gap: 8px;
-  height: 24px; padding: 0 8px;
-  border: 1px solid #808080;
-  box-shadow: inset 1px 1px #fff, inset -1px -1px #dfdfdf;
-}
-.tray .tray-icon { font-size: 13px; line-height: 1; cursor: default; }
-.clock { font-size: 11px; font-variant-numeric: tabular-nums; min-width: 62px; text-align: center; }
-
-/* ==========================================================================
-   START MENU
-   ========================================================================== */
-
-.start-menu {
-  position: fixed; left: 3px; bottom: 34px; z-index: 9500;
-  display: none; width: 384px; max-width: calc(100vw - 6px);
-  background: var(--silver);
-  border: 1px solid #0a0a0a;
-  box-shadow: inset -1px -1px #dfdfdf, inset 1px 1px #fff, 3px 3px 0 rgba(0,0,0,.35);
-}
-.start-menu.open { display: flex; }
-.start-rail {
-  width: 26px; flex: 0 0 auto; background: #000080;
-  display: flex; align-items: flex-end; justify-content: center;
-  padding-bottom: 8px;
-}
-.start-rail span {
-  writing-mode: vertical-rl; transform: rotate(180deg);
-  font-family: "Pixelated MS Sans Serif", Tahoma; font-size: 15px; font-weight: 700;
-  color: #c0c0c0; letter-spacing: 1px;
-}
-.start-items { flex: 1 1 auto; padding: 3px 0; }
-.start-item {
-  display: flex; align-items: center; gap: 9px;
-  padding: 5px 10px; color: #000; text-decoration: none; font-size: 12px;
-  background: none; border: none; width: 100%; text-align: left; cursor: pointer;
-}
-.start-item:hover, .start-item:focus-visible { background: var(--navy); color: #fff; }
-.start-item .ico { width: 24px; height: 24px; flex: 0 0 auto; }
-.start-item .label { flex: 1 1 auto; }
-.start-item .label small { display: block; font-size: 10px; color: #555; }
-.start-item:hover .label small { color: #d0d0ff; }
-.start-item .arrow { font-size: 11px; }
-.start-sep { height: 1px; margin: 3px 6px; background: #808080; box-shadow: 0 1px #fff; }
-
-.start-submenu { display: none; position: absolute; left: 300px; bottom: 8px; z-index: 9600;
-  background: var(--silver); border: 1px solid #0a0a0a;
-  box-shadow: inset -1px -1px #dfdfdf, inset 1px 1px #fff, 3px 3px 0 rgba(0,0,0,.35);
-  min-width: 190px; padding: 3px 0;
-}
-.start-submenu.open { display: block; }
-
-/* ==========================================================================
-   Win98 modal dialog (used by window controls / fake menu items)
-   ========================================================================== */
-
-.dialog-backdrop {
-  position: fixed; inset: 0; z-index: 9800; display: flex;
-  align-items: flex-start; justify-content: center; padding-top: 80px;
-  background: rgba(0,0,0,.12);
-}
-.dialog { width: 380px; max-width: calc(100vw - 24px); }
-.dialog .window-body { display: flex; gap: 12px; align-items: flex-start; }
-.dialog .dialog-icon { width: 32px; height: 32px; flex: 0 0 auto; }
-.dialog .dialog-text { flex: 1 1 auto; }
-.dialog .dialog-actions { display: flex; justify-content: center; gap: 8px; padding: 6px 0 2px; }
-
-/* ==========================================================================
-   Window manager states
-   ========================================================================== */
-
-.window { position: relative; }
-.window.wm-min { display: none; }
-.window.wm-max {
-  position: fixed; left: 6px; right: 6px; top: 6px; bottom: 42px; z-index: 8000;
-  margin: 0; overflow: auto;
-}
-.window.wm-max .window-body { max-width: none; }
-.window.wm-drag { cursor: grabbing; }
-.window.wm-drag .title-bar { cursor: grabbing; }
-.window .title-bar { cursor: default; }
-@media (hover: hover) and (min-width: 762px) {
-  .window .title-bar { cursor: grab; }
-}
-
-/* ==========================================================================
-   no-JS fallback navigation
-   ========================================================================== */
-
-.nojs-nav { padding: 6px 8px; margin-bottom: 8px; background: var(--silver);
-  box-shadow: inset -1px -1px #fff, inset 1px 1px #808080; }
-.nojs-nav a { margin-right: 10px; }
 
 /* ==========================================================================
    Responsive
    ========================================================================== */
 
-@media (max-width: 900px) {
-  .layout { grid-template-columns: 1fr; }
-  .desk-icons { display: none; }
-}
-
 @media (max-width: 760px) {
-  body.desktop { padding: 6px 6px 46px; }
+  .page { margin: 8px 6px 20px; }
+  .brand-cta { margin-left: 0; }
   .grid-2 { grid-template-columns: 1fr; }
   .slots { grid-template-columns: repeat(2, 1fr); }
-  .docs-layout { grid-template-columns: 1fr; }
-  .docnav { position: static; }
+  .layout { grid-template-columns: 1fr; padding: 10px; }
+  .col-left { margin-bottom: 6px; }
+  .sidebox { margin-bottom: 12px; }
+
+  .nav-toggle { display: inline-block; }
+  .menubar { flex-direction: column; align-items: stretch; }
+  .menubar a { padding: 9px 10px; border-bottom: 1px dotted #a0a0a0; }
+  .menubar.collapsed a { display: none; }
+
   .docnav-toggle { display: inline-block; }
   .docnav nav { display: none; }
   .docnav.open nav { display: block; }
 
-  .menubar { flex-direction: column; align-items: stretch; }
-  .menubar a { padding: 9px 10px; border-bottom: 1px dotted #a0a0a0; }
-  .menubar .menubar-sep { display: none; }
-  .nav-toggle { display: inline-block; width: 100%; margin: 4px 0 2px; }
-  .menubar.collapsed a { display: none; }
-
-  .start-menu { width: calc(100vw - 6px); }
-  .start-submenu { left: 12px; bottom: auto; top: 0; }
-  .tray .tray-icon { display: none; }
-
-  .browser-toolbar .tool-btn .txt { display: none; }
+  .desk-icons { display: none; }
 }
 
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
-.feature { display: flex; flex-direction: column; }
-.feature .window-body { display: flex; flex-direction: column; flex: 1; }
-.feature .feature-head { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
-.feature .feature-icon { width: 32px; height: 32px; }
-.feature h3 { margin: 0; font-family: "Pixelated MS Sans Serif", Tahoma; font-size: 13px; }
-.feature .feature-actions { margin-top: auto; padding-top: 7px; }
-
 @media (prefers-reduced-motion: reduce) {
-  .ticker span { animation: none; padding-left: 8px; }
-  .newflag { animation: none; }
+  .newflag, .blink { animation: none; }
   .ring-anim { animation: none; }
   * { scroll-behavior: auto !important; }
 }
 
 @media print {
-  body { background: #fff; }
-  .taskbar, .start-menu, .desk-icons, .ticker, .browser-toolbar { display: none !important; }
+  html, body { background: #fff; }
+  .desk-icons, .site-footer .badges, .nav-toggle { display: none !important; }
 }

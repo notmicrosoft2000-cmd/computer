@@ -11,20 +11,12 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="wrap">
+<div class="page">
 
-  <header class="site-header window">
-    <div class="title-bar">
-      <div class="title-bar-text"><img class="title-logo" src="assets/img/logo.svg" alt="">Computer — Discord bot</div>
-      <div class="title-bar-controls" aria-hidden="true">
-        <button aria-label="Minimize" tabindex="-1"></button>
-        <button aria-label="Maximize" tabindex="-1"></button>
-        <button aria-label="Close" tabindex="-1"></button>
-      </div>
-    </div>
-    <div class="window-body">
+  <header class="site-header">
+    <div class="banner">
       <div class="brand-row">
-        <img class="brand-logo" src="assets/img/telephone.svg" alt="Pixel-art telephone logo">
+        <img class="brand-logo" src="assets/img/telephone.svg" alt="Pixel-art CRT computer logo">
         <div class="brand-text">
           <h1>Telephone</h1>
           <p class="tagline">Dial an entire Discord server. Answer, get a busy signal, hang up.</p>
@@ -34,26 +26,61 @@
           <a class="btn" href="commands.html#telephone">All phone commands</a>
         </div>
       </div>
-      <button class="nav-toggle btn" aria-expanded="true" aria-controls="mainnav">&#9776; Menu</button>
-      <nav class="menubar" id="mainnav" aria-label="Main navigation">
+    </div>
+    <button class="nav-toggle btn" aria-expanded="true" aria-controls="mainnav">&#9776; Menu</button>
+    <nav class="menubar" id="mainnav" aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="space-mafia.html">Space Mafia</a>
-        <a href="telephone.html" aria-current="page">Telephone</a>
+        <a href="space-mafia.html">Space Mafia <span class="newflag">new</span></a>
+        <a href="telephone.html" aria-current="page">Telephone <span class="newflag">new</span></a>
         <a href="commands.html">Commands</a>
         <a href="docs.html">Documentation</a>
         <a href="community.html">Community</a>
-      </nav>
-    </div>
+    </nav>
   </header>
 
-  <main id="main">
+      <div class="layout">
+      <aside class="col-left" aria-label="Page contents">
+        <div class="sidebox">
+          <h2 class="side-head">On this page</h2>
+          <ul class="side-list">
+            <li><a href="#tel-intro">A party line between servers</a></li>
+            <li><a href="#tel-demo">Place a demonstration call</a></li>
+            <li><a href="#tel-logh">Call history</a></li>
+            <li><a href="#tel-how">Finding people, answering, and privacy</a></li>
+            <li><a href="#tel-user">The player-to-player ship phone</a></li>
+            <li><a href="#tel-eti">House rules for a public wire</a></li>
+          </ul>
+        </div>
+        <div class="sidebox">
+          <h2 class="side-head">Site map</h2>
+          <ul class="side-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="space-mafia.html">Space Mafia <span class="newflag">new</span></a></li>
+            <li><a href="telephone.html">Telephone <span class="newflag">new</span></a></li>
+            <li><a href="commands.html">Commands</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="sidebox">
+          <h2 class="side-head">What's new</h2>
+          <ul class="side-list">
+            <li><span class="newflag">new</span> Privacy &amp; Terms on this site</li>
+            <li>Desktop icons &amp; 88&times;31 badges</li>
+            <li>Cross-server telephone &amp; Phone Book</li>
+          </ul>
+        </div>
+        <div class="sidebox construction">
+          <img src="assets/img/badges/construction.svg" alt="Under construction" width="88" height="31">
+          <p class="blink">always under construction</p>
+        </div>
+      </aside>
+      <main id="main" class="col-center">
 
-    <section class="section window" aria-labelledby="tel-intro">
-      <div class="title-bar">
-        <div class="title-bar-text">telephone — about</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="tel-intro">
+      <div class="section-body">
         <h2 class="section-title" id="tel-intro">A party line between servers</h2>
         <p class="panel-copy">
           The <code>/phone</code> system connects <strong>whole Discord servers</strong> to each other. Each listed
@@ -80,12 +107,8 @@
     <section class="section" aria-label="Telephone demonstration">
       <div class="grid-2">
 
-        <div class="window" id="phone-card" aria-labelledby="tel-demo">
-          <div class="title-bar">
-            <div class="title-bar-text">switchboard.exe <span class="sample-flag">simulated</span></div>
-            <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-          </div>
-          <div class="window-body">
+        <div class="phone-card" id="phone-card" aria-labelledby="tel-demo">
+          <div class="section-body">
             <h2 class="section-title" id="tel-demo">Place a demonstration call</h2>
             <div class="phone">
               <div class="lcd" role="status" aria-live="polite">
@@ -130,12 +153,8 @@
           </div>
         </div>
 
-        <div class="window" aria-labelledby="tel-logh">
-          <div class="title-bar">
-            <div class="title-bar-text">call_log.txt <span class="sample-flag">demo data</span></div>
-            <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-          </div>
-          <div class="window-body">
+        <div class="phone-card" aria-labelledby="tel-logh">
+          <div class="section-body">
             <h2 class="section-title" id="tel-logh">Call history</h2>
             <p class="panel-copy">
               The rows below are <strong>fictional demonstration data</strong>. Calls you simulate in the panel on
@@ -160,12 +179,8 @@
     </section>
 
     <!-- ============================ how it works ============================ -->
-    <section class="section window" aria-labelledby="tel-how">
-      <div class="title-bar">
-        <div class="title-bar-text">Operator's manual</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="tel-how">
+      <div class="section-body">
         <h2 class="section-title" id="tel-how">Finding people, answering, and privacy</h2>
 
         <h3 style="font-size:13px">How servers discover each other</h3>
@@ -201,12 +216,8 @@
     </section>
 
     <!-- ============================ ship phone ============================ -->
-    <section class="section window" id="user-phone" aria-labelledby="tel-user">
-      <div class="title-bar">
-        <div class="title-bar-text">ship phone — /user</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" id="user-phone" aria-labelledby="tel-user">
+      <div class="section-body">
         <h2 class="section-title" id="tel-user">The player-to-player ship phone</h2>
         <p class="panel-copy">
           Not to be confused with the cross-server line. The <code>/user</code> phone calls
@@ -222,12 +233,8 @@
     </section>
 
     <!-- ============================ etiquette ============================ -->
-    <section class="section window" aria-labelledby="tel-eti">
-      <div class="title-bar">
-        <div class="title-bar-text">Telephone etiquette</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="tel-eti">
+      <div class="section-body">
         <h2 class="section-title" id="tel-eti">House rules for a public wire</h2>
         <ul class="tight">
           <li>No slurs, ever. Keep it clean by default.</li>
@@ -241,53 +248,44 @@
     </section>
 
   </main>
+    </div>
 
   <footer class="site-footer">
-    <div class="window">
-      <div class="title-bar">
-        <div class="title-bar-text">Computer — site information</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
-        <div class="footer-row">
-          <nav class="footer-links" aria-label="Footer">
-            <a href="index.html">Home</a>
-            <a href="space-mafia.html">Space Mafia</a>
-            <a href="telephone.html">Telephone</a>
-            <a href="commands.html">Commands</a>
-            <a href="docs.html">Documentation</a>
-            <a href="community.html">Community</a>
-            <a href="privacy.html" rel="noopener">Privacy</a>
-            <a href="terms.html" rel="noopener">Terms</a>
-          </nav>
-          <div>Visitors: <span class="odometer" id="hit-counter" aria-hidden="true"></span><span class="visually-hidden">decorative counter, not real analytics</span></div>
-        </div>
-        <hr class="dotted">
-        <div class="footer-row">
-          <span class="badge800">Best viewed at 800 &times; 600</span>
-          <span>Last updated: <time datetime="2026-10-12">12 Oct 2026</time></span>
-        </div>
-                <div class="footer-row" style="justify-content:center">
-          <div class="badges">
-            <img src="assets/img/badges/html40.svg" alt="HTML 4.0 valid" width="88" height="31">
-            <img src="assets/img/badges/y2k.svg" alt="Y2K compliant" width="88" height="31">
-            <img src="assets/img/badges/netscape.svg" alt="Best viewed in Netscape" width="88" height="31">
-            <img src="assets/img/badges/ie.svg" alt="Get Internet Explorer" width="88" height="31">
-            <img src="assets/img/badges/flash.svg" alt="Get Flash Player" width="88" height="31">
-            <img src="assets/img/badges/frames.svg" alt="This site is frames free" width="88" height="31">
-            <img src="assets/img/badges/notepad.svg" alt="Made with Notepad" width="88" height="31">
-            <a href="community.html"><img src="assets/img/badges/guestbook.svg" alt="Sign my guestbook" width="88" height="31"></a>
-            <a href="https://discord.gg/3ew2nxAjbC" rel="noopener"><img src="assets/img/badges/discord.svg" alt="Powered by Discord" width="88" height="31"></a>
-            <img src="assets/img/badges/construction.svg" alt="Under construction" width="88" height="31">
-            <img src="assets/img/badges/800x600.svg" alt="Best viewed at 800 by 600" width="88" height="31">
-          </div>
-        </div>
-<p class="footer-fineprint">
-          &copy; <span data-year>2026</span> Computer. Not affiliated with Discord Inc.
-          The telephone panel and call history on this page are simulated demonstrations with fictional data.
-        </p>
-      </div>
+    <div class="footer-row">
+      <nav class="footer-links" aria-label="Footer">
+          <a href="index.html">Home</a>
+          <a href="space-mafia.html">Space Mafia</a>
+          <a href="telephone.html">Telephone</a>
+          <a href="commands.html">Commands</a>
+          <a href="docs.html">Documentation</a>
+          <a href="community.html">Community</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+      </nav>
+      <div>Visitors: <span class="odometer" id="hit-counter" aria-hidden="true"></span><span class="visually-hidden">decorative counter, not real analytics</span></div>
     </div>
+    <hr class="hr">
+    <div class="footer-row">
+      <span class="badge800">Best viewed at 800 &times; 600</span>
+      <span class="on-construction">&#128679; this site is always under construction &#128679;</span>
+      <span>Last updated: <time datetime="2026-10-13">13 Oct 2026</time></span>
+    </div>
+    <div class="footer-row footer-badges">
+        <div class="badges">
+          <img src="assets/img/badges/html40.svg" alt="HTML 4.0 valid" width="88" height="31">
+          <img src="assets/img/badges/y2k.svg" alt="Y2K compliant" width="88" height="31">
+          <img src="assets/img/badges/netscape.svg" alt="Best viewed in Netscape" width="88" height="31">
+          <img src="assets/img/badges/ie.svg" alt="Get Internet Explorer" width="88" height="31">
+          <img src="assets/img/badges/flash.svg" alt="Get Flash Player" width="88" height="31">
+          <img src="assets/img/badges/frames.svg" alt="This site is frames free" width="88" height="31">
+          <img src="assets/img/badges/notepad.svg" alt="Made with Notepad" width="88" height="31">
+          <a href="community.html"><img src="assets/img/badges/guestbook.svg" alt="Sign my guestbook" width="88" height="31"></a>
+          <a href="https://discord.gg/3ew2nxAjbC" rel="noopener"><img src="assets/img/badges/discord.svg" alt="Powered by Discord" width="88" height="31"></a>
+          <img src="assets/img/badges/construction.svg" alt="Under construction" width="88" height="31">
+          <img src="assets/img/badges/800x600.svg" alt="Best viewed at 800 by 600" width="88" height="31">
+        </div>
+    </div>
+    <p class="footer-fineprint">&copy; <span data-year>2026</span> Computer. Not affiliated with Discord Inc. The telephone panel and call history on this page are simulated demonstrations with fictional data.</p>
   </footer>
 
 </div>

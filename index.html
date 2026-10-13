@@ -21,18 +21,10 @@
   <a class="dicon" href="community.html"><img src="assets/img/icons/notepad.svg" alt="" width="32" height="32"><span>Guestbook</span></a>
   <a class="dicon" href="privacy.html"><img src="assets/img/icons/recycle.svg" alt="" width="32" height="32"><span>Recycle Bin</span></a>
 </nav>
-<div class="wrap">
+<div class="page">
 
-  <header class="site-header window">
-    <div class="title-bar">
-      <div class="title-bar-text"><img class="title-logo" src="assets/img/logo.svg" alt="">Computer — Discord bot</div>
-      <div class="title-bar-controls" aria-hidden="true">
-        <button aria-label="Minimize" tabindex="-1"></button>
-        <button aria-label="Maximize" tabindex="-1"></button>
-        <button aria-label="Close" tabindex="-1"></button>
-      </div>
-    </div>
-    <div class="window-body">
+  <header class="site-header">
+    <div class="banner">
       <div class="brand-row">
         <img class="brand-logo" src="assets/img/logo.svg" alt="Pixel-art CRT computer logo">
         <div class="brand-text">
@@ -41,36 +33,69 @@
         </div>
         <div class="brand-cta">
           <p style="margin:0">
-            <span class="sample-flag">sample</span>
-            status <span class="status-dot ok" aria-hidden="true"></span><a href="#status">online</a>
+          <span class="sample-flag">sample</span>
+          status <span class="status-dot ok" aria-hidden="true"></span><a href="#status">online</a>
           </p>
           <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1532049960693006376&amp;permissions=4503599627683904&amp;integration_type=0&amp;scope=bot" rel="noopener">Add to Discord</a>
         </div>
       </div>
-      <button class="nav-toggle btn" aria-expanded="true" aria-controls="mainnav">&#9776; Menu</button>
-      <nav class="menubar" id="mainnav" aria-label="Main navigation">
+    </div>
+    <button class="nav-toggle btn" aria-expanded="true" aria-controls="mainnav">&#9776; Menu</button>
+    <nav class="menubar" id="mainnav" aria-label="Main navigation">
         <a href="index.html" aria-current="page">Home</a>
-        <a href="space-mafia.html">Space Mafia</a>
-        <a href="telephone.html">Telephone</a>
+        <a href="space-mafia.html">Space Mafia <span class="newflag">new</span></a>
+        <a href="telephone.html">Telephone <span class="newflag">new</span></a>
         <a href="commands.html">Commands</a>
         <a href="docs.html">Documentation</a>
         <a href="community.html">Community</a>
-      </nav>
-    </div>
+    </nav>
   </header>
 
-  <main id="main">
+      <div class="layout">
+      <aside class="col-left" aria-label="Page contents">
+        <div class="sidebox">
+          <h2 class="side-head">On this page</h2>
+          <ul class="side-list">
+            <li><a href="#welcome-title">Your Discord server just got a little more interesting.</a></li>
+            <li><a href="#f-mafia">Space Mafia</a></li>
+            <li><a href="#f-phone">Telephone</a></li>
+            <li><a href="#preview-title">Try these first</a></li>
+            <li><a href="#setup-title">Wiring it into your server</a></li>
+            <li><a href="#status-title">System status</a></li>
+            <li><a href="#updates-title">Recent updates</a></li>
+          </ul>
+        </div>
+        <div class="sidebox">
+          <h2 class="side-head">Site map</h2>
+          <ul class="side-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="space-mafia.html">Space Mafia <span class="newflag">new</span></a></li>
+            <li><a href="telephone.html">Telephone <span class="newflag">new</span></a></li>
+            <li><a href="commands.html">Commands</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="sidebox">
+          <h2 class="side-head">What's new</h2>
+          <ul class="side-list">
+            <li><span class="newflag">new</span> Privacy &amp; Terms on this site</li>
+            <li>Desktop icons &amp; 88&times;31 badges</li>
+            <li>Cross-server telephone &amp; Phone Book</li>
+          </ul>
+        </div>
+        <div class="sidebox construction">
+          <img src="assets/img/badges/construction.svg" alt="Under construction" width="88" height="31">
+          <p class="blink">always under construction</p>
+        </div>
+      </aside>
+      <main id="main" class="col-center">
 
     <!-- ============================ welcome ============================ -->
-    <section class="section window" aria-labelledby="welcome-title">
-      <div class="title-bar">
-        <div class="title-bar-text">Welcome to the Computer home page</div>
-        <div class="title-bar-controls" aria-hidden="true">
-          <button aria-label="Minimize" tabindex="-1"></button>
-          <button aria-label="Close" tabindex="-1"></button>
-        </div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="welcome-title">
+      <div class="section-body">
         <h2 class="section-title" id="welcome-title">Your Discord server just got a little more interesting.</h2>
         <p class="panel-copy">
           Play <strong>Space Mafia</strong> with your friends, or pick up the <strong>telephone</strong>
@@ -95,12 +120,8 @@
     <section class="section" aria-label="Featured systems">
       <div class="grid-2">
 
-        <article class="window feature" aria-labelledby="f-mafia">
-          <div class="title-bar">
-            <div class="title-bar-text">space_mafia.exe</div>
-            <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-          </div>
-          <div class="window-body">
+        <article class="feature" aria-labelledby="f-mafia">
+          <div class="section-body">
             <div class="feature-head">
               <img class="feature-icon" src="assets/img/crewmate.svg" alt="">
               <h3 id="f-mafia">Space Mafia</h3>
@@ -119,12 +140,8 @@
           </div>
         </article>
 
-        <article class="window feature" aria-labelledby="f-phone">
-          <div class="title-bar">
-            <div class="title-bar-text">telephone.exe</div>
-            <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-          </div>
-          <div class="window-body">
+        <article class="feature" aria-labelledby="f-phone">
+          <div class="section-body">
             <div class="feature-head">
               <img class="feature-icon" src="assets/img/telephone.svg" alt="">
               <h3 id="f-phone">Telephone</h3>
@@ -147,12 +164,8 @@
     </section>
 
     <!-- ========================= command preview ========================= -->
-    <section class="section window" aria-labelledby="preview-title">
-      <div class="title-bar">
-        <div class="title-bar-text">Quick start — a few commands</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="preview-title">
+      <div class="section-body">
         <h2 class="section-title" id="preview-title">Try these first</h2>
         <p class="panel-copy">Everything runs from a handful of slash commands. The rest is buttons and menus.</p>
         <div class="table-scroll">
@@ -175,12 +188,8 @@
     </section>
 
     <!-- ============================ setup ============================== -->
-    <section class="section window" aria-labelledby="setup-title">
-      <div class="title-bar">
-        <div class="title-bar-text">Setup wizard</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="setup-title">
+      <div class="section-body">
         <h2 class="section-title" id="setup-title">Wiring it into your server</h2>
         <ol>
           <li><strong>Add the bot.</strong> Use the <a href="https://discord.com/oauth2/authorize?client_id=1532049960693006376&amp;permissions=4503599627683904&amp;integration_type=0&amp;scope=bot" rel="noopener">Add to Discord</a> link. Grant <em>Manage Webhooks</em> if you want the full-name telephone experience (see <a href="docs.html#permissions">permissions</a>).</li>
@@ -193,12 +202,8 @@
     </section>
 
     <!-- ============================ status ============================= -->
-    <section class="section window" id="status" aria-labelledby="status-title">
-      <div class="title-bar">
-        <div class="title-bar-text">Service status</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" id="status" aria-labelledby="status-title">
+      <div class="section-body">
         <h2 class="section-title" id="status-title">System status <span class="sample-flag">sample display</span></h2>
         <p class="panel-copy">
           This panel is a <strong>static sample</strong>. It is not connected to live telemetry and must not be
@@ -218,78 +223,59 @@
     </section>
 
     <!-- ============================ updates ============================ -->
-    <section class="section window" aria-labelledby="updates-title">
-      <div class="title-bar">
-        <div class="title-bar-text">CHANGELOG.TXT</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
+    <section class="section" aria-labelledby="updates-title">
+      <div class="section-body">
         <h2 class="section-title" id="updates-title">Recent updates</h2>
         <ul>
-          <li><strong>2026-10-13</strong> — Privacy Policy and Terms of Service move onto this site; desktop icons and classic 88&times;31 web badges added.</li>
+          <li><span class="newflag">new</span> <strong>2026-10-13</strong> — Privacy Policy and Terms of Service move onto this site; desktop icons and classic 88&times;31 web badges added.</li>
           <li><strong>2026-10-12</strong> — New retro website goes live. Space Mafia and Telephone now have their own pages.</li>
           <li><strong>2026-10-06</strong> — Vote rewards, streaks and the voter badge land in <code>/vote</code>.</li>
           <li><strong>2026-10-05</strong> — Marionette strings, ghost guardian angels, and richer end-of-game case files.</li>
           <li><strong>2026-09</strong> — The cross-server telephone gains privacy and rules consent gates, safety filters and a public Phone Book.</li>
         </ul>
-                <div class="footer-row" style="justify-content:center">
-          <div class="badges">
-            <img src="assets/img/badges/html40.svg" alt="HTML 4.0 valid" width="88" height="31">
-            <img src="assets/img/badges/y2k.svg" alt="Y2K compliant" width="88" height="31">
-            <img src="assets/img/badges/netscape.svg" alt="Best viewed in Netscape" width="88" height="31">
-            <img src="assets/img/badges/ie.svg" alt="Get Internet Explorer" width="88" height="31">
-            <img src="assets/img/badges/flash.svg" alt="Get Flash Player" width="88" height="31">
-            <img src="assets/img/badges/frames.svg" alt="This site is frames free" width="88" height="31">
-            <img src="assets/img/badges/notepad.svg" alt="Made with Notepad" width="88" height="31">
-            <a href="community.html"><img src="assets/img/badges/guestbook.svg" alt="Sign my guestbook" width="88" height="31"></a>
-            <a href="https://discord.gg/3ew2nxAjbC" rel="noopener"><img src="assets/img/badges/discord.svg" alt="Powered by Discord" width="88" height="31"></a>
-            <img src="assets/img/badges/construction.svg" alt="Under construction" width="88" height="31">
-            <img src="assets/img/badges/800x600.svg" alt="Best viewed at 800 by 600" width="88" height="31">
-          </div>
-        </div>
-<p class="footer-fineprint">Site changelog. Feature notes summarise the bot's documented behaviour; no live data is shown.</p>
+<p class="smallprint">Site changelog. Feature notes summarise the bot's documented behaviour; no live data is shown.</p>
       </div>
     </section>
 
   </main>
-
-  <div class="marquee-strip" aria-hidden="true">
-    <span>&#9733; WELCOME TO THE COMPUTER HOME PAGE &#9733; SPACE MAFIA + CROSS-SERVER TELEPHONE &#9733; BEST VIEWED AT 800&times;600 &#9733; SIGN OUR GUESTBOOK (COMING SOON) &#9733; NOW WITH 56K&#8482; &#9733;</span>
-  </div>
+    </div>
 
   <footer class="site-footer">
-    <div class="window">
-      <div class="title-bar">
-        <div class="title-bar-text">Computer — site information</div>
-        <div class="title-bar-controls" aria-hidden="true"><button aria-label="Close" tabindex="-1"></button></div>
-      </div>
-      <div class="window-body">
-        <div class="footer-row">
-          <nav class="footer-links" aria-label="Footer">
-            <a href="index.html">Home</a>
-            <a href="space-mafia.html">Space Mafia</a>
-            <a href="telephone.html">Telephone</a>
-            <a href="commands.html">Commands</a>
-            <a href="docs.html">Documentation</a>
-            <a href="community.html">Community</a>
-            <a href="privacy.html" rel="noopener">Privacy</a>
-            <a href="terms.html" rel="noopener">Terms</a>
-          </nav>
-          <div>Visitors: <span class="odometer" id="hit-counter" aria-hidden="true"></span><span class="visually-hidden">decorative counter, not real analytics</span></div>
-        </div>
-        <hr class="dotted">
-        <div class="footer-row">
-          <span class="badge800">Best viewed at 800 &times; 600</span>
-          <span class="on-construction">&#128679; Guestbook coming soon</span>
-          <span>Last updated: <time datetime="2026-10-12">12 Oct 2026</time></span>
-        </div>
-        <p class="footer-fineprint">
-          &copy; <span data-year>2026</span> Computer. Community fansite for a Discord bot.
-          Not affiliated with Discord Inc., Innersloth or Among Us.
-          The visitor counter and status lights are decorative / sample and do not represent live analytics.
-        </p>
-      </div>
+    <div class="footer-row">
+      <nav class="footer-links" aria-label="Footer">
+          <a href="index.html">Home</a>
+          <a href="space-mafia.html">Space Mafia</a>
+          <a href="telephone.html">Telephone</a>
+          <a href="commands.html">Commands</a>
+          <a href="docs.html">Documentation</a>
+          <a href="community.html">Community</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+      </nav>
+      <div>Visitors: <span class="odometer" id="hit-counter" aria-hidden="true"></span><span class="visually-hidden">decorative counter, not real analytics</span></div>
     </div>
+    <hr class="hr">
+    <div class="footer-row">
+      <span class="badge800">Best viewed at 800 &times; 600</span>
+      <span class="on-construction">&#128679; this site is always under construction &#128679;</span>
+      <span>Last updated: <time datetime="2026-10-13">13 Oct 2026</time></span>
+    </div>
+    <div class="footer-row footer-badges">
+        <div class="badges">
+          <img src="assets/img/badges/html40.svg" alt="HTML 4.0 valid" width="88" height="31">
+          <img src="assets/img/badges/y2k.svg" alt="Y2K compliant" width="88" height="31">
+          <img src="assets/img/badges/netscape.svg" alt="Best viewed in Netscape" width="88" height="31">
+          <img src="assets/img/badges/ie.svg" alt="Get Internet Explorer" width="88" height="31">
+          <img src="assets/img/badges/flash.svg" alt="Get Flash Player" width="88" height="31">
+          <img src="assets/img/badges/frames.svg" alt="This site is frames free" width="88" height="31">
+          <img src="assets/img/badges/notepad.svg" alt="Made with Notepad" width="88" height="31">
+          <a href="community.html"><img src="assets/img/badges/guestbook.svg" alt="Sign my guestbook" width="88" height="31"></a>
+          <a href="https://discord.gg/3ew2nxAjbC" rel="noopener"><img src="assets/img/badges/discord.svg" alt="Powered by Discord" width="88" height="31"></a>
+          <img src="assets/img/badges/construction.svg" alt="Under construction" width="88" height="31">
+          <img src="assets/img/badges/800x600.svg" alt="Best viewed at 800 by 600" width="88" height="31">
+        </div>
+    </div>
+    <p class="footer-fineprint">&copy; <span data-year>2026</span> Computer. Community fansite for a Discord bot. Not affiliated with Discord Inc., Innersloth or Among Us. The visitor counter and status lights are decorative / sample and do not represent live analytics.</p>
   </footer>
 
 </div>
