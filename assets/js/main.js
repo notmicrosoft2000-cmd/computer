@@ -11,107 +11,55 @@
     return Array.prototype.slice.call((root || document).querySelectorAll(sel));
   };
 
-  /* ------------------------------------------------------ Start menu + clock */
-  function initShell() {
-    var orb = qs("#start-orb");
-    var menu = qs("#startmenu");
-    var search = qs("#sm-search");
-    var empty = qs("#sm-empty");
+  /* -------------------------------------------------------- mobile nav --- */
+  function initNav() {
+    var toggle = qs(".nav-toggle");
+    var nav = qs("#site-nav");
+    if (!toggle || !nav) return;
 
     function setOpen(open) {
-      if (!menu || !orb) return;
-      menu.classList.toggle("open", open);
-      orb.setAttribute("aria-expanded", String(open));
-      if (open && search) { search.value = ""; filterPrograms(); search.focus(); }
+      nav.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", String(open));
     }
-    function filterPrograms() {
-      if (!menu || !search) return;
-      var term = search.value.trim().toLowerCase();
-      var any = false;
-      qsa(".sm-programs .sm-link", menu).forEach(function (a) {
-        var show = !term || a.textContent.toLowerCase().indexOf(term) !== -1;
-        a.hidden = !show;
-        if (show) any = true;
-      });
-      if (empty) empty.hidden = any || !term;
-    }
-
-    if (orb && menu) {
-      orb.addEventListener("click", function (ev) {
-        ev.stopPropagation();
-        setOpen(!menu.classList.contains("open"));
-      });
-      search && search.addEventListener("input", filterPrograms);
-      document.addEventListener("click", function (ev) {
-        if (!menu.classList.contains("open")) return;
-        if (menu.contains(ev.target) || orb.contains(ev.target)) return;
-        setOpen(false);
-      });
-    }
-
-    // ---- clock -----------------------------------------------------------
-    var time = qs("#tray-time");
-    var date = qs("#tray-date");
-    function tick() {
-      var now = new Date();
-      if (time) {
-        time.textContent = ("0" + now.getHours()).slice(-2) + ":" + ("0" + now.getMinutes()).slice(-2);
-      }
-      if (date) {
-        date.textContent = (now.getMonth() + 1) + "/" + now.getDate() + "/" + now.getFullYear();
-      }
-    }
-    tick();
-    window.setInterval(tick, 15000);
+    toggle.addEventListener("click", function (ev) {
+      ev.stopPropagation();
+      setOpen(!nav.classList.contains("open"));
+    });
+    qsa("a", nav).forEach(function (a) {
+      a.addEventListener("click", function () { setOpen(false); });
+    });
+    document.addEventListener("click", function (ev) {
+      if (!nav.classList.contains("open")) return;
+      if (nav.contains(ev.target) || toggle.contains(ev.target)) return;
+      setOpen(false);
+    });
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape") setOpen(false);
+    });
   }
 
-  /* ------------------------------------------------- window controls + dialogs */
-  function initWindows() {
-    var win = qs("#app");
-    if (win) {
-      var min = qs(".title-bar-controls .is-minimize", win);
-      var max = qs(".title-bar-controls .is-maximize", win);
-      var close = qs(".title-bar-controls .is-close", win);
-      min && min.addEventListener("click", function () { win.classList.toggle("is-minimized"); });
-      max && max.addEventListener("click", function () { win.classList.toggle("is-maximized"); });
-      close && close.addEventListener("click", function () { openDialog("closed"); });
-    }
+  /* ------------------------------------------------------- table of contents */
+  function initToc() {
+    var links = qsa(".toc a[href^='#']");
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var byId = {};
+    var targets = [];
+    links.forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      var el = document.getElementById(id);
+      if (el) { byId[id] = a; targets.push(el); }
+    });
+    if (!targets.length) return;
 
-    function openDialog(id) {
-      var d = document.getElementById(id);
-      if (d) d.classList.add("show");
-    }
-    function closeDialog(d) {
-      d.classList.remove("show");
-      if (location.hash === "#" + d.id) {
-        history.replaceState(null, "", location.pathname + location.search);
-      }
-    }
-    qsa("[data-dialog-close]").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var d = document.getElementById(btn.getAttribute("data-dialog-close"));
-        if (d) closeDialog(d);
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        qsa(".toc a.is-active").forEach(function (x) { x.classList.remove("is-active"); });
+        var link = byId[entry.target.id];
+        if (link) link.classList.add("is-active");
       });
-    });
-    // #about / #closed links work through :target too — mirror into .show.
-    function syncHash() {
-      qsa('.window[role="dialog"]').forEach(function (d) {
-        if (location.hash === "#" + d.id) d.classList.add("show");
-      });
-    }
-    window.addEventListener("hashchange", syncHash);
-    syncHash();
-    document.addEventListener("keydown", function (ev) {
-      if (ev.key === "Escape") {
-        qsa('.window[role="dialog"].show').forEach(closeDialog);
-        var menu = qs("#startmenu");
-        if (menu && menu.classList.contains("open")) {
-          menu.classList.remove("open");
-          var orb = qs("#start-orb");
-          orb && orb.setAttribute("aria-expanded", "false");
-        }
-      }
-    });
+    }, { rootMargin: "-80px 0px -68% 0px", threshold: 0 });
+    targets.forEach(function (t) { observer.observe(t); });
   }
 
   /* ---------------------------------------------------------- copy buttons */
@@ -138,7 +86,7 @@
   function initFilter() {
     var box = qs("[data-filter-input]");
     if (!box) return;
-    var rows = qsa("table.doc-table tbody tr, .filter-item");
+    var rows = qsa("[data-filter-section] table.doc-table tbody tr, [data-filter-section] .filter-item");
     var sections = qsa("[data-filter-section]");
     var empty = qs("[data-filter-empty]");
     var apply = function () {
@@ -157,7 +105,8 @@
       if (empty) empty.hidden = any || !term;
     };
     box.addEventListener("input", apply);
-    qs("[data-filter-clear]") && qs("[data-filter-clear]").addEventListener("click", function () {
+    var clear = qs("[data-filter-clear]");
+    if (clear) clear.addEventListener("click", function () {
       box.value = ""; apply(); box.focus();
     });
   }
@@ -213,15 +162,10 @@
       }
     }
 
-    qs("#slot-plus") && qs("#slot-plus").addEventListener("click", function () {
-      count = Math.min(MAX, count + 1); render();
-    });
-    qs("#slot-minus") && qs("#slot-minus").addEventListener("click", function () {
-      count = Math.max(MIN, count - 1); render();
-    });
-    qs("#slot-reset") && qs("#slot-reset").addEventListener("click", function () {
-      count = 6; render();
-    });
+    var plus = qs("#slot-plus"), minus = qs("#slot-minus"), reset = qs("#slot-reset");
+    plus && plus.addEventListener("click", function () { count = Math.min(MAX, count + 1); render(); });
+    minus && minus.addEventListener("click", function () { count = Math.max(MIN, count - 1); render(); });
+    reset && reset.addEventListener("click", function () { count = 6; render(); });
     render();
   }
 
@@ -360,8 +304,8 @@
 
   /* ------------------------------------------------------------- bootstrap */
   function init() {
-    initShell();
-    initWindows();
+    initNav();
+    initToc();
     initCopy();
     initFilter();
     initLobbyDemo();

@@ -1,12 +1,13 @@
 # Computer — website
 
-Windows&nbsp;7 desktop-style site for the **Computer** Discord bot, built on the
-real [7.css](https://khang-nd.github.io/7.css/) library. It is a plain, static
-site — no build step, no framework — published with GitHub Pages.
+Aero-styled site for the **Computer** Discord bot. It is a plain, static site —
+no build step, no framework, no dependencies — published with GitHub Pages.
 
-Every page is an application window on a shared desktop: the same wallpaper,
-desktop shortcuts, taskbar, Start menu and window frame surround each page's
-content.
+This is a normal scrolling website wearing the Windows&nbsp;Aero visual
+language: translucent "glass" panels, soft blue gradients, glossy highlights
+and gentle shadows. It is deliberately **not** a mock desktop — there is no
+taskbar, no Start menu and no draggable windows. Just a sticky glass header,
+a content column, a sticky on-page list and a footer.
 
 **Live:** https://notmicrosoft2000-cmd.github.io/computer/
 
@@ -14,10 +15,10 @@ content.
 
 | File | Purpose |
 |------|---------|
-| `index.html` | Home — welcome, two feature windows, command preview, setup guide, sample status, changelog. |
+| `index.html` | Home — welcome, two feature cards, command preview, setup guide, sample status, changelog. |
 | `space-mafia.html` | The Space Mafia game: simulated lobby console, roles, voting example, house rules. |
 | `telephone.html` | The cross-server telephone: simulated switchboard + call log, etiquette, privacy. |
-| `commands.html` | Full command reference, filterable, grouped into General / Space Mafia / Telephone / Administration / Configuration. |
+| `commands.html` | Full command reference, filterable, grouped into General / Space Mafia / Cross-server matchmaking / Telephone / Administration / Configuration. |
 | `docs.html` | Installation, permissions, self-hosting, troubleshooting and FAQ. |
 | `community.html` | Verified project links and contributing notes. |
 | `privacy.html` | Privacy policy. |
@@ -33,12 +34,15 @@ computer-site/
 │   privacy.html, terms.html, 404.html
 ├── .nojekyll                 # serve files as-is on GitHub Pages
 └── assets/
-    ├── vendor/7.css          # the 7.css library (vendored, self-contained)
-    ├── vendor/7.css.LICENSE  # its MIT licence
-    ├── css/win7.css          # desktop shell + content styling on top of 7.css
-    ├── js/main.js            # vanilla JS for the shell and the demos
-    └── img/*.svg             # pixel-art icons (crispEdges, no gradients)
+    ├── css/aero.css          # the whole theme: shell + components
+    ├── js/main.js            # vanilla JS for the nav and the demos
+    └── img/*.svg             # flat single-colour icons
 ```
+
+The header, footer and page grid are emitted by a small one-shot generator
+(`aero.py`, kept outside the repo) that reads each page's existing content and
+re-wraps it. The generated HTML is committed; the site itself has no build
+step.
 
 ## Run locally
 
@@ -70,11 +74,13 @@ To preview `404.html` with its real base path, serve a directory that contains a
 
 ## Editing
 
-- Visual language comes from 7.css. Add desktop shell and content styling in
-  `assets/css/win7.css` rather than overriding the Aero window frames, buttons
-  and fields.
+- All styling lives in `assets/css/aero.css`. Design tokens (colour, glass,
+  shadow, radius, font) are CSS custom properties at the top of the file;
+  change them there rather than hunting for hex values.
 - Page behaviour lives in `assets/js/main.js`; it is defensive, so pages only
-  use the parts they include. The shell (Start menu, clock, window controls)
-  and the Space Mafia / telephone demos are all self-contained.
+  use the parts they include. It drives the mobile nav, the on-page (TOC)
+  scroll-spy, the command filter, and the Space Mafia / telephone demos.
+- A page with a sticky on-page list uses `.page-grid.has-aside` plus an
+  `<aside class="page-aside">`; pages without one just use `.page-grid`.
 - When you change the real bot's commands or features, update `commands.html`
   and the relevant feature page to match.
